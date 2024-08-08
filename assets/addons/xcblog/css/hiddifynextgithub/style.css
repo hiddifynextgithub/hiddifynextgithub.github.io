@@ -1,0 +1,695 @@
+/*
+Theme Name: Flores - Bootstrap 5 Lander The Ultimate Product Landing Pages HTML CSS Template
+Theme URI: https://templatejungle.com/
+Author: TemplatesJungle
+Author URI: https://templatejungle.com/
+Description: Flores - Bootstrap 5 Lander The Ultimate Product Landing Pages HTML CSS Template is specially designed shop packaged for Lander The Ultimate Product Landing Pages by TemplatesJungle.
+Version: 1.1
+*/
+
+/*--------------------------------------------------------------
+This is main CSS file that contains custom style rules used in this template
+--------------------------------------------------------------*/
+
+/*------------------------------------*\
+    Table of contents
+\*------------------------------------*/
+
+/*------------------------------------------------
+CSS STRUCTURE:
+
+1. VARIABLES
+2. GENERAL TYPOGRAPHY
+
+--------------------------------------------------------------*/
+body {
+  --heading-font: "Poppins", Georgia, serif;
+  --heading-font-weight: 400;
+  --heading-color: #313131;
+  --heading-line-height: 1.24;
+
+  --swiper-theme-color: #8C907E;
+
+  /* bootstrap */
+  --bs-body-font-family: "Poppins", Georgia, serif;
+  --bs-body-font-size: 16px;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.9;
+  --bs-body-color: #616161;
+  --bs-body-color-rgb: 1.6, 1.6, 1.6;
+  --bs-body-bg-rgb: 249, 245, 243;
+  --bs-body-bg: #FFF;
+
+  --bs-primary: #0A74F1;
+  --bs-black: #111;
+  --bs-white: #fff;
+  --bs-light: #f8f8f8;
+  --bs-dark: #313131;
+  --bs-gray: #C5C5C5;
+  --bs-dark-gray: #9D9D9D;
+  --bs-gray-200: #E9EAED;  
+  --bs-gray-300: #D7D7D7;    
+
+  --bs-primary-rgb: 10, 116, 241;
+  --bs-black-rgb: 17, 17, 17;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-light-rgb: 249, 250, 252;
+  --bs-dark-rgb: 33, 37, 41;
+
+  --bs-link-color: #313131;
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: #313131;
+  --bs-link-hover-color-rgb: 178, 133, 110;
+}
+
+body {
+  letter-spacing: 0.03rem;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: var(--heading-font);
+  font-weight: var(--heading-font-weight);
+  color: var(--heading-color);
+  line-height: var(--heading-line-height);
+}
+
+h1.light,
+.h1,
+h2.light,
+.h2,
+h3.light,
+.h3,
+h4.light,
+.h4,
+h5.light,
+.h5,
+h6.light,
+.h6 {
+  color: var(--bs-light);
+}
+
+h1,
+h2,
+h3 {
+  margin: 25px 0;
+}
+
+h5,
+h6 {
+  letter-spacing: 1px;
+}
+
+h1,
+.h1 {
+  font-size: 9.5rem;
+}
+
+h2,
+.h2 {
+  font-size: 3.6rem;
+}
+
+h3,
+.h3 {
+  font-size: 2.8rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.8rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.4rem;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--bs-primary);
+}
+
+input:focus {
+  outline: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* font weight */
+.fw-medium {
+  font-weight: 600;
+}
+.fw-semibold {
+  font-weight: 700;
+}
+
+@media (min-width: 1600px) {
+.container, .container-lg {
+    max-width: 1550px;
+  }
+.container-md {
+    max-width: 1430px;
+  }
+.container {
+    max-width: 1200px;
+  }
+}
+
+/* list group */
+.list-group-item {
+  --bs-list-group-item-padding-x: 0;
+  --bs-list-group-border-width: 0;
+}
+
+/* btn */
+.btn {
+  --bs-btn-border-radius: 0;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+  padding: 1.2rem 3.5rem;
+}
+
+.btn-primary {
+  --bs-btn-color: var(--bs-light);
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--bs-light);
+  --bs-btn-hover-bg: var(--bs-dark);
+  --bs-btn-hover-border-color: var(--bs-dark);
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: var(--bs-light);
+  --bs-btn-active-bg: var(--bs-dark);
+  --bs-btn-active-border-color: var(--bs-dark);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--bs-light);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
+.btn.btn-primary:hover {
+  background: var(--bs-dark);
+  border: 1px solid var(--bs-dark);
+}
+
+.btn.btn-white {
+  background: var(--bs-white);
+  border: 1px solid var(--bs-gray);
+}
+
+.btn.btn-white:hover {
+  background: var(--bs-primary);
+  border: 1px solid var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.btn-outline-gray {
+  color: #212529;
+  border-color: var(--bs-gray-300);
+}
+
+.btn.btn-outline-gray:hover {
+  border: 1px solid var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+/* text white */
+.text-white {
+  --heading-color: var(--bs-light);
+  --bs-breadcrumb-item-active-color: var(--bs-light);
+  --bs-breadcrumb-divider-color: var(--bs-light);
+  --bs-link-color-rgb: var(--bs-light-rgb);
+  --bs-link-hover-color-rgb: var(--bs-light-rgb);
+}
+
+.text-white .nav-link {
+  --bs-nav-link-color: var(--bs-light);
+  --bs-nav-link-hover-color: var(--bs-light);
+  --bs-nav-link-active-color: var(--bs-light);
+  --bs-navbar-active-color: var(--bs-light);
+}
+
+.text-gray-200 {
+  --heading-color: var(--bs-gray-200);
+  --bs-link-color-rgb: var(--bs-gray-200);
+  color: var(--bs-gray-200);
+}
+
+.text-dark-gray {
+  color: var(--bs-dark-gray);
+}
+
+/* dark theme */
+[data-bs-theme=dark] {
+  color-scheme: dark;
+
+  --swiper-pagination-bullet-inactive-color: #FFFFFF;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+
+  --heading-color: #fff;
+  --bs-link-color: #CCCCCC;
+  --bs-link-hover-color: var(--bs-primary);
+  --bs-link-color-rgb: 204, 204, 204;
+  --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+  --bs-body-color: #d1d1d1;
+  --bs-body-bg: #010B30;
+  --bs-body-bg-rgb: 2, 2, 2;
+}
+
+[data-bs-theme=dark] .dropdown-menu {
+  --bs-body-color: #616161;
+  --bs-body-color-rgb: 1.6, 1.6, 1.6;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-body-bg: #FFF;
+  --bs-dropdown-link-hover-bg: var(--bs-light);
+}
+
+[data-bs-theme=dark] .btn-close {
+  filter: none;
+}
+
+/* text-dark */
+.text-dark a.nav-link {
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+}
+/* base styles */
+a {
+  transition: all 0.3s ease-out;
+}
+/* preloader */
+.preloader {
+  position: fixed;
+  z-index: 99;
+  background: var(--bs-dark);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.preloader.loaded {
+  height: 0;
+}
+
+/* margin */
+.my-lg-6 {
+  margin-top: 4.5rem!important;
+  margin-bottom: 4.5rem!important;
+}
+.my-lg-7 {
+  margin-top: 6rem!important;
+  margin-bottom: 6rem!important;
+}
+.my-lg-8 {
+  margin-top: 8.5rem!important;
+  margin-bottom: 8rem!important;
+}
+.my-lg-9 {
+  margin-top: 10rem!important;
+  margin-bottom: 10rem!important;
+}
+.my-lg-10 {
+  margin-top: 12.5rem!important;
+  margin-bottom: 12.5rem!important;
+}
+
+.mt-lg-0 {
+  margin-top: 0rem !important;
+}
+.mb-lg-0 {
+  margin-bottom: 0rem !important;
+}
+
+/* padding x */
+@media only screen and (min-width: 1200px) {  
+  .px-lg-6 {
+    padding-left: 4.5rem!important;
+    padding-right: 4.5rem!important;
+  }
+  .px-lg-7 {
+    padding-left: 6rem!important;
+    padding-right: 6rem!important;
+  }
+  .px-lg-8 {
+    padding-left: 8.5rem!important;
+    padding-right: 8rem!important;
+  }
+  .px-lg-9 {
+    padding-left: 10rem!important;
+    padding-right: 10rem!important;
+  }
+  .px-lg-10 {
+    padding-left: 12.5rem!important;
+    padding-right: 12.5rem!important;
+  }
+}
+
+/* padding y */
+  .py-lg-6 {
+    padding-top: 4.5rem!important;
+    padding-bottom: 4.5rem!important;
+  }
+  .py-lg-7 {
+    padding-top: 6rem!important;
+    padding-bottom: 6rem!important;
+  }
+  .py-lg-8 {
+    padding-top: 8.5rem!important;
+    padding-bottom: 8rem!important;
+  }
+  .py-5 my-5 {
+    padding-top: 10rem!important;
+    padding-bottom: 10rem!important;
+  }
+  .py-lg-10 {
+    padding-top: 12.5rem!important;
+    padding-bottom: 12.5rem!important;
+  }
+
+/* padding none */
+.pt-lg-0 {
+  padding-top: 0rem !important;
+}
+.pb-lg-0 {
+  padding-bottom: 0rem !important;
+}
+
+/* - Border Color
+------------------------------------------------------------- */ 
+.border-gray {
+  border: 1px solid var(--bs-gray-300);
+}
+.border-white {
+  border: 1px solid var(--bs-white);
+}
+
+/* - Border width
+------------------------------------------------------------- */ 
+.border-2 {
+  border-width: 2px;
+}
+.border-3 {
+  border-width: 3px;
+}
+.border-4 {
+  border-width: 4px;
+}
+.border-10 {
+  border-width: 10px;
+}
+
+/* - Display Header
+------------------------------------------------------------- */ 
+@media (min-width: 1200px) {
+  .display-1 {
+     font-size: calc(1.625rem + 3.7vw);
+     line-height: 1.2;
+  }
+ }
+
+/* - Svg Color
+------------------------------------------------------------- */ 
+.svg-primary {
+  fill: var(--bs-primary);
+  color: var(--bs-primary);
+}
+.svg-gray {
+  fill: var(--bs-gray);
+  color: var(--bs-gray);
+}
+.svg-gray:hover {
+  fill: var(--bs-primary);
+  color: var(--bs-primary);
+}
+.svg-yellow {
+  fill: var(--bs-yellow);
+  color: var(--bs-yellow);
+}
+.svg-white {
+  fill: var(--bs-white);
+  color: var(--bs-white);
+}
+
+/* - Bg Overlay
+------------------------------------------------------------*/
+.bg-overlay .overlay-item {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: 0.7s ease-in-out;
+  cursor: pointer;
+}
+.bg-overlay .image-holder:hover .overlay-item {
+  opacity: 1;
+  background-color: rgba(10, 116, 141, 0.4);
+  border-radius: 0.3rem;
+}
+
+/* - Header
+------------------------------------------------------------- */ 
+/* a.nav-link {
+  transition: border-bottom 0.3s ease-out;
+} */
+/* .offcanvas-body .navbar-nav a.nav-link.active,
+.offcanvas-body .navbar-nav a.nav-link:hover {
+  color: var(--bs-primary) !important;
+  border-bottom: 3px solid var(--bs-primary);
+}
+.offcanvas-body .navbar-nav a.nav-link.text-light.active,
+.offcanvas-body .navbar-nav a.nav-link.text-light:hover {
+  color: var(--bs-light) !important;
+  border-bottom: 3px solid var(--bs-light);
+} */
+
+/* Fixed Header
+------------------------------------------------------------- */ 
+.site-header {
+  transition: background-color 0.6s ease-out, border 0.6s ease-out;
+}
+
+.site-header.text-white .logo-light {
+  display: block;
+}
+
+.site-header.text-white .logo-dark {
+  display: none;
+}
+
+.site-header.text-dark .logo-dark {
+  display: block;
+}
+
+.site-header.text-dark .logo-light {
+  display: none;
+}
+/* - Billboard ( Homepage2)
+------------------------------------------------------------- */ 
+#intro .content-box {
+  top: 0;
+  bottom: 0;
+  left: 70px;
+  right: 0;
+}
+
+@media (max-width: 1200px) {
+  .navbar-nav .nav-link.active, .navbar-nav .nav-link.show,
+  .offcanvas.offcanvas-end a {
+    color: var(--bs-dark);
+  }
+  .navbar-nav .nav-item {
+    border-bottom: 1px solid var(--bs-gray-200);
+    text-align: left;
+    width: 100%;
+  }
+  .navbar-nav .dropdown-menu {
+    border: none;
+  }
+}
+
+@media (max-width: 1340px) {
+  #intro .content-box {
+    top: -114px;
+  }
+}
+
+/* - Billboard ( Homepage3)
+------------------------------------------------------------- */ 
+/* .homepage-v3 .intro-content {
+  top: 20%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+} */
+
+/* - Testimonials
+------------------------------------------------------------- */ 
+#testimonials .swiper.review-swiper {
+  overflow-y: inherit;
+}
+#testimonials .review-swiper .swiper-pagination {
+  bottom: -50px;
+}
+.swiper-pagination span.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  transition: 0.2s ease-in-out;
+}
+.swiper-pagination span.swiper-pagination-bullet-active {
+  outline: 2px solid var(--bs-primary);
+  border: 3px solid var(--bs-white);
+  background-color: var(--bs-primary);
+}
+
+/* - Video
+------------------------------------------------------------- */ 
+.video-content .player {
+  top: 0;  
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.video-content .player .play-btn {
+  width: 70px;
+  height: 70px;
+}
+.video-content .play-btn:hover {
+  --bs-bg-opacity: 1;
+}
+
+/* - Products
+------------------------------------------------------------- */
+#our-products .swiper.product-swiper {
+  overflow-y: inherit;
+}
+.product-swiper .swiper-pagination {
+  bottom: -50px;
+}
+
+/* - Subscribe
+------------------------------------------------------------- */
+.subscribe-content button {
+  right: 0;
+}
+
+@media (max-width: 650px) {
+  .subscribe-content button {
+    bottom: -80px;
+    width: 100%;
+ }
+}
+
+/* - FAQs
+------------------------------------------------------------- */
+#faqs .accordion-button::after {
+  background-size: 2.5rem;
+  width: 2rem;
+  height: 2rem; 
+  transition: 0.3s ease-in-out;
+}
+#faqs .accordion-button.collapsed::after {
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 2.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='plus' viewBox='0 0 16 16'%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3E%3C/svg%3E");
+}
+#faqs .accordion-button:not(.collapsed)::after {
+  transform: rotate(0deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='minus' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");  
+}
+
+/* - Mobile App
+------------------------------------------------------------- */
+#mobile-app .bg-pattern {
+  top: 60px;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.circle-bg {
+  position: relative;
+}
+
+.circle-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 550px;
+  height: 550px;
+  background-color: #F9FAFC;
+  border-radius: 50%;
+  z-index: -1;
+}
+@media (max-width: 992px) {
+  .circle-bg::after {
+    width: 350px;
+    height: 350px;
+    left: 0;
+    right: 0;
+    margin: auto;
+ }
+}
+
+/* scroll spy */
+.scrollspy-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.scrollspy-nav .scrollspy-link {
+  transition: 0.3s ease;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.scrollspy-nav .scrollspy-link:hover {
+  color: #fff;
+}
+
+.scrollspy-nav .scrollspy-indicator {
+  position: absolute;
+  height: 3px;
+  width: 0;
+  background: var(--bs-primary);
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s, left 0.1s;
+}
+
+#why .item {margin-bottom: 2rem;}
+
+.navbar-brand h1, .navbar-brand span {font-size: 2.5rem;margin: auto;}
