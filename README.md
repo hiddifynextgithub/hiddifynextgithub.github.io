@@ -1,4 +1,4 @@
-# 「9月17日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接  更新时间 2024-09-17 09:15:36
+# 「9月18日」最高速度20.7M/S，2024年HiddifyNext每天更新免费节点订阅链接  更新时间 2024-09-18 08:55:03
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hiddifynextgithub.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://hiddifynextgithub.github.io/uploads/2024/09/0-20240917.yaml
-- https://hiddifynextgithub.github.io/uploads/2024/09/1-20240917.yaml
-- https://hiddifynextgithub.github.io/uploads/2024/09/2-20240917.yaml
-- https://hiddifynextgithub.github.io/uploads/2024/09/3-20240917.yaml
-- https://hiddifynextgithub.github.io/uploads/2024/09/4-20240917.yml
+- https://hiddifynextgithub.github.io/uploads/2024/09/0-20240918.yaml
+- https://hiddifynextgithub.github.io/uploads/2024/09/1-20240918.yaml
+- https://hiddifynextgithub.github.io/uploads/2024/09/2-20240918.yaml
+- https://hiddifynextgithub.github.io/uploads/2024/09/3-20240918.yaml
+- https://hiddifynextgithub.github.io/uploads/2024/09/4-20240918.yml
 
 ### V2ray订阅链接
 
-- https://hiddifynextgithub.github.io/uploads/2024/09/0-20240917.txt
-- https://hiddifynextgithub.github.io/uploads/2024/09/1-20240917.txt
-- https://hiddifynextgithub.github.io/uploads/2024/09/2-20240917.txt
-- https://hiddifynextgithub.github.io/uploads/2024/09/3-20240917.txt
-- https://hiddifynextgithub.github.io/uploads/2024/09/4-20240917.txt
+- https://hiddifynextgithub.github.io/uploads/2024/09/0-20240918.txt
+- https://hiddifynextgithub.github.io/uploads/2024/09/1-20240918.txt
+- https://hiddifynextgithub.github.io/uploads/2024/09/2-20240918.txt
+- https://hiddifynextgithub.github.io/uploads/2024/09/3-20240918.txt
+- https://hiddifynextgithub.github.io/uploads/2024/09/4-20240918.txt
 
 ## 更多clash节点订阅 ：
 
