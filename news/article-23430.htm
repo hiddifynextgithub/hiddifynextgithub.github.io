@@ -160,7 +160,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>找一台可连接互联网的虚拟机来制作编译好的Nginx包，具体操作如下</p> <h2><a id="1_4" rel="nofollow"></a>1、准备一台虚拟机（可访问互联网）</h2> <h2><a id="2_6" rel="nofollow"></a>2、安装所需插件</h2> <pre><code class="prism language-sh">$ yum -y install gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel gcc-c++ libtool</code></pre> <h2><a id="3nginx_12" rel="nofollow"></a>3、准备nginx包</h2> <h3><a id="31_14" rel="nofollow"></a>3.1、下载</h3> <p>通过网页下载，然后上传到Centos7系统的/opt目录下</p> <p>或者，直接在Centos7系统下接命令下载到/opt目录下</p> <pre><code class="prism language-sh">$ cd /opt $ wget http://nginx.org/download/nginx-1.14.0.tar.gz</code></pre> <h3><a id="32__25" rel="nofollow"></a>3.2 解压</h3> <p>解压 nginx-1.14.0.tar.gz，并重命名为 nginx</p> <pre><code class="prism language-sh">$ cd /opt $ tar zxf nginx-1.14.0.tar.gz</code></pre> <h3><a id="33__34" rel="nofollow"></a>3.3 重命名</h3> <pre><code class="prism language-sh">$ cd /opt $ mv nginx-1.14.0 nginx</code></pre> <h2><a id="4nginx_41" rel="nofollow"></a>4、配置nginx</h2> <pre><code class="prism language-sh">$ cd /opt/nginx $ ./configure --prefix=/usr/local/nginx  --conf-path=/usr/local/nginx/conf/nginx.conf  --error-log-path=/usr/local/nginx/log/error.log --http-log-path=/usr/local/nginx/log/access.log</code></pre> <p>注：此处配置Nginx安装目录为 /usr/local/nginx，将来安装时，会在/usr/local/下生成nginx目录。</p> <h2><a id="5Nginx_50" rel="nofollow"></a>5、编译Nginx</h2> <pre><code class="prism language-sh">$ cd /opt/nginx $ make</code></pre> <h2><a id="6Nginx_57" rel="nofollow"></a>6、打包Nginx</h2> <pre><code class="prism language-sh">$ cd /opt $ tar cvzf nginx.hasmake.1.14.0.tar.gz nginx</code></pre> <p>打包后，会在/opt 目录下生成一个 nginx.hasmake.1.14.0.tar.gz 包</p> </h1> <ul> <li>上传包</li> </ul> <p>应用 nginx.hasmake.1.14.0.tar.gz 已编译好的包，上传到对应的Centos7系统上，比如此处放到 /opt 目录下，则安装很简单</p> <pre><code class="prism language-sh">$ cd /opt $ tar zxf nginx.hasmake.1.14.0.tar.gz	#解压后得到 nginx 目录 $ cd nginx								#进入 nginx 目录 $ make install							#安装</code></pre> <ul> <li>解压</li> </ul> <p>安装完成后，将会在 /usr/local 目录下，生成一个 nginx 目录。如下</p> <pre><code class="prism language-sh">$ ll /usr/local/nginx drwxr-xr-x. 2 root root 4096 11月 10 14:22 conf drwxr-xr-x. 2 root root   38 11月 10 14:22 html drwxr-xr-x. 2 root root    6 11月 10 14:22 log drwxr-xr-x. 2 root root    6 11月 10 14:22 logs drwxr-xr-x. 2 root root   18 11月 10 14:22 sbin</code></pre> <ul> <li>nginx 配置文件测试</li> </ul> <pre><code class="prism language-sh">$ /usr/local/nginx/sbin/nginx -t</code></pre> <ul> <li>nginx 启动</li> </ul> <pre><code class="prism language-sh">$ /usr/local/nginx/sbin/nginx</code></pre> </div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>找一台可连接互联网的虚拟机来制作编译好的Nginx包，具体操作如下</p> <h2><a id="1_4" rel="nofollow"></a>1、准备一台虚拟机（可访问互联网）</h2> <h2><a id="2_6" rel="nofollow"></a>2、安装所需插件</h2> <pre><code class="prism language-sh">$ yum -y install gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel gcc-c++ libtool</code></pre> <h2><a id="3nginx_12" rel="nofollow"></a>3、准备nginx包</h2> <h3><a id="31_14" rel="nofollow"></a>3.1、下载</h3> <p>通过网页下载，然后上传到Centos7系统的/opt目录下</p> <p>或者，直接在Centos7系统下接命令下载到/opt目录下</p> <pre><code class="prism language-sh">$ cd /opt $ wget http://nginx.org/download/nginx-1.14.0.tar.gz</code></pre> <h3><a id="32__25" rel="nofollow"></a>3.2 解压</h3> <p>解压 nginx-1.14.0.tar.gz，并重命名为 nginx</p> <pre><code class="prism language-sh">$ cd /opt $ tar zxf nginx-1.14.0.tar.gz</code></pre> <h3><a id="33__34" rel="nofollow"></a>3.3 重命名</h3> <pre><code class="prism language-sh">$ cd /opt $ mv nginx-1.14.0 nginx</code></pre> <h2><a id="4nginx_41" rel="nofollow"></a>4、配置nginx</h2> <pre><code class="prism language-sh">$ cd /opt/nginx $ ./configure --prefix=/usr/local/nginx  --conf-path=/usr/local/nginx/conf/nginx.conf  --error-log-path=/usr/local/nginx/log/error.log --http-log-path=/usr/local/nginx/log/access.log</code></pre> <p>注：此处配置Nginx安装目录为 /usr/local/nginx，将来安装时，会在/usr/local/下生成nginx目录。</p> <h2><a id="5Nginx_50" rel="nofollow"></a>5、编译Nginx</h2> <pre><code class="prism language-sh">$ cd /opt/nginx $ make</code></pre> <h2><a id="6Nginx_57" rel="nofollow"></a>6、打包Nginx</h2> <pre><code class="prism language-sh">$ cd /opt $ tar cvzf nginx.hasmake.1.14.0.tar.gz nginx</code></pre> <p>打包后，会在/opt 目录下生成一个 nginx.hasmake.1.14.0.tar.gz 包</p> </h1> <ul> <li>上传包</li> </ul> <p>应用 nginx.hasmake.1.14.0.tar.gz 已编译好的包，上传到对应的Centos7系统上，比如此处放到 /opt 目录下，则安装很简单</p> <pre><code class="prism language-sh">$ cd /opt $ tar zxf nginx.hasmake.1.14.0.tar.gz	#解压后得到 nginx 目录 $ cd nginx								#进入 nginx 目录 $ make install							#安装</code></pre> <ul> <li>解压</li> </ul> <p>安装完成后，将会在 /usr/local 目录下，生成一个 nginx 目录。如下</p> <pre><code class="prism language-sh">$ ll /usr/local/nginx drwxr-xr-x. 2 root root 4096 11月 10 14:22 conf drwxr-xr-x. 2 root root   38 11月 10 14:22 html drwxr-xr-x. 2 root root    6 11月 10 14:22 log drwxr-xr-x. 2 root root    6 11月 10 14:22 logs drwxr-xr-x. 2 root root   18 11月 10 14:22 sbin</code></pre> <ul> <li>nginx 配置文件测试</li> </ul> <pre><code class="prism language-sh">$ /usr/local/nginx/sbin/nginx -t</code></pre> <ul> <li>nginx 启动</li> </ul> <pre><code class="prism language-sh">$ /usr/local/nginx/sbin/nginx</code></pre> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-22957.htm">猫三联狂犬疫苗猫吐绿（猫咪打完狂犬疫苗吐黄水和白沫）</a></p>
                                         <p>下一个：<a href="/news/article-23433.htm">动物防疫疫苗管理办法最新版本全文（动物防疫疫苗管理工作）</a></p>
@@ -173,16 +174,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-latest-hiddify-next-node.htm" title="「8月28日」最高速度19.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月28日」最高速度19.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-27-today-hiddify-next-node.htm" title="「10月27日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月27日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-node-subscribe-links.htm" title="「11月10日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月10日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe-links.htm" title="「11月9日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月9日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23433.htm" title="动物防疫疫苗管理办法最新版本全文（动物防疫疫苗管理工作）">动物防疫疫苗管理办法最新版本全文（动物防疫疫苗管理工作）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-24-hiddify-next-windows.htm" title="「8月24日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月24日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-hiddify-next-windows.htm" title="「10月16日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月16日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-hiddify-next-windows.htm" title="「10月12日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月12日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-hiddify-next-node.htm" title="「10月30日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月30日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23430.htm" title="Centos7离线安装Nginx亲测版">Centos7离线安装Nginx亲测版</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-latest-hiddify-next-node.htm" title="「11月3日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月3日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-18-hiddify-next-windows.htm" title="「8月18日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月18日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-high-speed-nodes.htm" title="「9月21日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月21日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-latest-hiddify-next-node.htm" title="「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-1-free-high-speed-nodes.htm" title="「9月1日」最高速度21.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月1日」最高速度21.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-hiddify-next-node.htm" title="「12月13日」最高速度22.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月13日」最高速度22.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-hiddify-next-node.htm" title="「9月14日」最高速度20.7M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月14日」最高速度20.7M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22499.htm" title="封箱胶带机器设备价格">封箱胶带机器设备价格</a></li>
+                        <li class="py-2"><a href="/news/article-20208.htm" title="基于docker部署Oracle 19c的详细记录_docker">基于docker部署Oracle 19c的详细记录_docker</a></li>
+                        <li class="py-2"><a href="/news/article-24811.htm" title="农业大学动物医院地址 中国农业大学动物医院地址">农业大学动物医院地址 中国农业大学动物医院地址</a></li>
                     </ul>
     </div>
 </div>
@@ -194,7 +195,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -218,6 +219,15 @@
     </section>
         <div class="footer-bottom py-3 text-center">
         <div class="container-lg">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
             <p class="m-0">
                 HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
             </p>

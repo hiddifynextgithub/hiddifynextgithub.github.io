@@ -160,7 +160,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <h2>SpringCloud视频教程：</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://ke.qq.com/course/2805647?tuin=a3e3fb1&amp;from_uin=171851697&amp;from=1000201007"  title="SpringCloud快速入门-学习视频教程-腾讯课堂" rel="nofollow">SpringCloud快速入门-学习视频教程-腾讯课堂</a></p> <h2>个人博客纯净版</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.51ufo.cn/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F/2020/07/11/SpringCloud%E5%85%A5%E9%97%A818-Spring-Cloud-Gateway%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E7%94%B1%E6%96%AD%E8%A8%80%E5%B7%A5%E5%8E%82.html"  title="Spring Cloud Gateway自定义路由断言工厂 | 代码搬运工" rel="nofollow">Spring Cloud Gateway自定义路由断言工厂 | 代码搬运工</a></p> <p>自定义路由断言工厂需要继承 AbstractRoutePredicateFactory 类，重写 apply 方法的逻辑和shortcutFieldOrder方法。</p> <p>在 apply 方法中可以通过 exchange.getRequest() 拿到 ServerHttpRequest 对象，从而可以获取到请求的参数、请求方式、请求头等信息。</p> <p>apply 方法的参数是自定义的配置类，在使用的时候配置参数，在 apply 方法中直接获取使用。</p> <p>命名需要以 RoutePredicateFactory 结尾，比如 CheckAuthRoutePredicateFactory，那么在使用的时候 CheckAuth 就是这个路由断言工厂的名称。代码如下所示。</p> <pre><code>@Slf4j @Component public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactory&lt;CheckAuthRoutePredicateFactory.Config&gt; {       public CheckAuthRoutePredicateFactory() {         super(Config.class);         log.info("Loaded RoutePredicateFactory [CheckAuth]");     }      @Override     public List&lt;String&gt; shortcutFieldOrder() {         return Arrays.asList("name");     }       @Override     public Predicate&lt;ServerWebExchange&gt; apply(Config config) {          return exchange -&gt; {             if (config.getName().equals("zhangsan")) {                 return true;             }             return false;         };     }       public static class Config {          private String name;          public void setName(String name) {             this.name = name;         }          public String getName() {             return name;         }     }  }  </code></pre> <p>在application.yml中添加路由配置，如下：</p> <pre><code>spring:   cloud:     gateway:       routes:       - id: customer_route         predicates:         - CheckAuth=zhangsan         uri: http://51ufo.cn </code></pre> <p>本文代码git地址&nbsp;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/xmingtx/springcloud-lesson.git"  title="springcloud-lesson: springcloud课程源码" rel="nofollow">springcloud-lesson: springcloud课程源码</a></p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>SpringCloud视频教程：</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://ke.qq.com/course/2805647?tuin=a3e3fb1&amp;from_uin=171851697&amp;from=1000201007"  title="SpringCloud快速入门-学习视频教程-腾讯课堂" rel="nofollow">SpringCloud快速入门-学习视频教程-腾讯课堂</a></p> <h2>个人博客纯净版</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.51ufo.cn/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F/2020/07/11/SpringCloud%E5%85%A5%E9%97%A818-Spring-Cloud-Gateway%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E7%94%B1%E6%96%AD%E8%A8%80%E5%B7%A5%E5%8E%82.html"  title="Spring Cloud Gateway自定义路由断言工厂 | 代码搬运工" rel="nofollow">Spring Cloud Gateway自定义路由断言工厂 | 代码搬运工</a></p> <p>自定义路由断言工厂需要继承 AbstractRoutePredicateFactory 类，重写 apply 方法的逻辑和shortcutFieldOrder方法。</p> <p>在 apply 方法中可以通过 exchange.getRequest() 拿到 ServerHttpRequest 对象，从而可以获取到请求的参数、请求方式、请求头等信息。</p> <p>apply 方法的参数是自定义的配置类，在使用的时候配置参数，在 apply 方法中直接获取使用。</p> <p>命名需要以 RoutePredicateFactory 结尾，比如 CheckAuthRoutePredicateFactory，那么在使用的时候 CheckAuth 就是这个路由断言工厂的名称。代码如下所示。</p> <pre><code>@Slf4j @Component public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactory&lt;CheckAuthRoutePredicateFactory.Config&gt; {       public CheckAuthRoutePredicateFactory() {         super(Config.class);         log.info("Loaded RoutePredicateFactory [CheckAuth]");     }      @Override     public List&lt;String&gt; shortcutFieldOrder() {         return Arrays.asList("name");     }       @Override     public Predicate&lt;ServerWebExchange&gt; apply(Config config) {          return exchange -&gt; {             if (config.getName().equals("zhangsan")) {                 return true;             }             return false;         };     }       public static class Config {          private String name;          public void setName(String name) {             this.name = name;         }          public String getName() {             return name;         }     }  }  </code></pre> <p>在application.yml中添加路由配置，如下：</p> <pre><code>spring:   cloud:     gateway:       routes:       - id: customer_route         predicates:         - CheckAuth=zhangsan         uri: http://51ufo.cn </code></pre> <p>本文代码git地址&nbsp;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/xmingtx/springcloud-lesson.git"  title="springcloud-lesson: springcloud课程源码" rel="nofollow">springcloud-lesson: springcloud课程源码</a></p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-25738.htm">同安宠物领养中心在哪里啊电话 同安宠物领养中心在哪里啊电话号码</a></p>
                                         <p>下一个：<a href="/news/article-26183.htm">写了个开源小中间件——运行时动态日志等级开关</a></p>
@@ -173,16 +174,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-24329.htm" title="动物医院好评模板图片高清下载大全（动物医院名片）">动物医院好评模板图片高清下载大全（动物医院名片）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-hiddify-next-node.htm" title="「9月27日」最高速度21.3M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月27日」最高速度21.3M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-30-node-share.htm" title="「8月30日」最高速度21.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月30日」最高速度21.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-high-speed-nodes.htm" title="「12月11日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月11日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-node-share-links.htm" title="「11月2日」最高速度18.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月2日」最高速度18.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-latest-hiddify-next-node.htm" title="「8月28日」最高速度19.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月28日」最高速度19.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-9-16-free-subscribe-node.htm" title="「9月16日」最高速度21.3M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月16日」最高速度21.3M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="「10月18日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月18日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-hiddify-next-node.htm" title="「10月5日」最高速度22.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月5日」最高速度22.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-hiddify-next-node.htm" title="「10月31日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月31日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-free-subscribe-node.htm" title="「9月24日」最高速度20.7M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月24日」最高速度20.7M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-today-hiddify-next-node.htm" title="「10月28日」最高速度18.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月28日」最高速度18.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20208.htm" title="基于docker部署Oracle 19c的详细记录_docker">基于docker部署Oracle 19c的详细记录_docker</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-hiddify-next-node.htm" title="「11月6日」最高速度19.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月6日」最高速度19.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-subscribe-node.htm" title="「11月18日」最高速度18.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月18日」最高速度18.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-hiddify-next-node.htm" title="「12月4日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月4日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-free-node-subscribe.htm" title="「10月9日」最高速度18.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月9日」最高速度18.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-14-hiddify-next-windows.htm" title="「8月14日」最高速度22.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月14日」最高速度22.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-node-share-links.htm" title="「11月21日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月21日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -194,7 +195,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -218,6 +219,15 @@
     </section>
         <div class="footer-bottom py-3 text-center">
         <div class="container-lg">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
             <p class="m-0">
                 HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
             </p>
