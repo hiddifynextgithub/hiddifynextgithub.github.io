@@ -2,14 +2,13 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-37096.htm" />
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/page-9.htm" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>测试es from size error，from + size must be less than or equal to: [10000]异常问题</title>
-        <meta name="description" content="测试案例 1，查询第三页每页3334 { &nbsp;&nbsp;&nbsp;&nbsp;"page":3, &nbsp;&nbsp;&nbsp;&nbsp;"size":3334 } 2，查询第一页" />
+    <title>新闻资讯 - HiddifyNextGithub免费节点官网 - 第8页</title>
         <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
@@ -32,7 +31,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="detail">
+<body data-page="category">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
             <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
@@ -145,12 +144,11 @@
     <section id="intro" class="scrollspy-section bg-light" style="background: url(__ADDON__/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
         <div class="container-lg py-5">
             <div class="row justify-content-center py-5">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-2 fw-bold mt-5 pt-5">测试es from size error，from + size must be less than or equal to: [10000]异常问题</h1>
+                <div class="col-lg-5 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">新闻资讯</h1>
                     <nav class="breadcrumb justify-content-center">
                         <a class="breadcrumb-item" href="/">首页</a>
-                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
-                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                        <span class="breadcrumb-item active" aria-current="page">新闻资讯</span>
                     </nav>
                 </div>
             </div>
@@ -160,13 +158,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
-                  				  				  				<div id="content_views" class="htmledit_views"> <h3>测试案例</h3> <p>1，查询第三页每页3334</p> <p>{<!-- --><br /> &nbsp;&nbsp;&nbsp;&nbsp;"page":3,<br /> &nbsp;&nbsp;&nbsp;&nbsp;"size":3334<br /> }</p> <p>2，查询第一页，每页100001</p> <p>{<!-- --><br /> &nbsp;&nbsp;&nbsp;&nbsp;"page":1,<br /> &nbsp;&nbsp;&nbsp;&nbsp;"size":100001<br /> }</p> <p>3，查询第26页，每页200条</p> <p>{<!-- --><br /> &nbsp;&nbsp;&nbsp;&nbsp;"page":26,<br /> &nbsp;&nbsp;&nbsp;&nbsp;"size":200<br /> }</p> <p>以上查询都会报异常。</p> <h3>控制方案</h3> <p>如何控制发生异常，常见如</p> <p>控制每页数量不大于10000，但是如情况1，3还是会发生异常。</p> <p>1，可能会问，es默认最大查询量10000，每页小于10000啊。但是es分页，会首先取到所有数据，再分页</p> <p>总量3*3334和26*200，总量都大于10000，所以异常。</p> <p>2，虽然实际情况每页不会3334这么大，会像第3种，每页会查询200，然后前端对20条数据再次分页，当翻页总量大于200，后台es才会查询下一页。实际的操作也不会翻这么多页（前端分页200/size*26）。但是还是存在异常的可能性。以上两种只是控制</p> <p>每页数据量10000以内，不能避免发生异常的可能性。</p> <p>3，控制查询总量，有没有意义，比如我只限制查询总量5000条或者10000条</p> <p>我觉得没意义，首先比如查询到100万条数据，返回总量肯定100万，你告诉查询5000条或者10000条肯定是错的；其次你也没法保证查询的总量是5000或1万。</p> <p>推荐：使用search_after进行分页，参考：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.csdn.net/console/editor/html/106314361"  rel="nofollow">https://mp.csdn.net/console/editor/html/106314361</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/zzh920625/article/details/84593590"  rel="nofollow">https://blog.csdn.net/zzh920625/article/details/84593590</a></p> <h3>代码如下</h3> <pre><code> @Override   public Rpage&lt;ResShopProductExtensionInfoDataVO&gt; selectList(ReqShopProductExtensionInfoSearchVO req) {     try {       SearchRequest searchRequest = new SearchRequest(EsOperateTables.SHOP_PRODUCT_EXTENSION_INFO.getAlias());       SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();       List&lt;String&gt; fields = Arrays.stream(ResShopProductExtensionInfoVO.class.getDeclaredFields())           /*将类属性名转为es中带下划线的字段名*/           .map(field -&gt; BizStringUtils.humpToLine(field.getName()))           .collect(Collectors.toList());       sourceBuilder.fetchSource(fields.toArray(new String[fields.size()]), null);       BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();       ShopProductExtensionInfoConverter.setSomeCondition(req, sourceBuilder, boolQueryBuilder);       sourceBuilder.size(req.getSize() &gt; 10000 ? 10000 : req.getSize());       sourceBuilder.from((req.getPage() - 1) * req.getSize());       searchRequest.source(sourceBuilder);       log.info("terms查询DSL语句：" + searchRequest.toString());       SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);       long totalHits = 0L;       if (searchResponse != null) {         totalHits = searchResponse.getHits().getTotalHits();       }       long maxCount = new Long(ConstantsUtils.QueryPartams.MAX_RESULT_COUNT).intValue();//100000       long totalCount = totalHits;       totalHits = totalHits &lt;= maxCount ? totalHits : maxCount;       List&lt;Map&lt;String, Object&gt;&gt; mapList = Lists.newArrayListWithCapacity(searchResponse.getHits().getHits().length);//每页200实际查询的量       Arrays.stream(searchResponse.getHits().getHits()).forEach(hit -&gt; mapList.add(hit.getSourceAsMap()));       YhPageBase page = new YhPageBase(mapList, totalHits, req.getSize().longValue(), req.getPage().longValue());       List&lt;ResShopProductExtensionInfoVO&gt; resList = new ArrayList&lt;&gt;();       if (CollectionUtils.isNotEmpty(page.getList())) {         resList = JSONObject.parseArray(JSONObject.toJSONString(page.getList()), ResShopProductExtensionInfoVO.class);       }       Page rpage = new Page();       rpage.setTotalNum((int) totalCount);//总量       rpage.setPageSize(req.getSize());       rpage.setPageNo(req.getPage());       rpage.setResult(adapter(resList, req));//每页实际查询量       return Rpage.success(rpage);     } catch (Exception e) {       log.error("查询出单方式配置es信息出错", e);     }     return Rpage.success(new Page&lt;&gt;());   }</code></pre> </div> 			                <div class="clearfix"></div>
-                <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-36612.htm">宠物粮食品牌取名大全四个字 宠物粮食品牌取名大全四个字</a></p>
-                                        <p>下一个：<a href="/news/article-37097.htm">日本人胎素的功效与作用莱乃康(日本莱乃康人胎素价格)</a></p>
+                    <div class="xcblog-blog-list">
+                                                <div class="row item xcblog-blog-item" data-date="2024-11-29">
+                            <div class="col-md-3">
+                                <div class="video-content">
+                                    <a href="/news/article-18865.htm" class="xcblog-blog-url">
+                                        <img src="/uploads/20240808-2/23329b04d5a880f85e541d6fe870e391.webp" alt="三国杀局内特效有哪些（三国杀局内特效有哪些皮肤）" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="detail-content">
+                                    <div class="detail-item">
+                                        <a href="/news/article-18865.htm" class="xcblog-blog-url">
+                                            <h3 class="fs-3 mb-1 xcblog-blog-title">三国杀局内特效有哪些（三国杀局内特效有哪些皮肤）</h3>
+                                        </a>
+                                        <p>摘要：       本篇文章给大家谈谈三国杀局内特效有哪些，以及三国杀局内特效有哪些皮肤对应的知识点，希望对各位有所帮助，不要忘了收藏本站喔。本文目录一览：1、三国杀ol动皮杀的时候都有特效吗?...</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="pagination"><li><a href="/news/page-8.htm">&laquo;</a></li> <li><a href="/news/">1</a></li><li><a href="/news/page-2.htm">2</a></li><li><a href="/news/page-3.htm">3</a></li><li><a href="/news/page-4.htm">4</a></li><li><a href="/news/page-5.htm">5</a></li><li><a href="/news/page-6.htm">6</a></li><li><a href="/news/page-7.htm">7</a></li><li><a href="/news/page-8.htm">8</a></li><li class="active"><span>9</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
+                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -174,16 +188,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-node-subscribe-links.htm" title="「11月30日」最高速度21.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月30日」最高速度21.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-today-hiddify-next-node.htm" title="「12月15日」最高速度22.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月15日」最高速度22.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-hiddify-next-node.htm" title="「11月11日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月11日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-node-subscribe.htm" title="「11月17日」最高速度19.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月17日」最高速度19.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-latest-hiddify-next-node.htm" title="「11月27日」最高速度21.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月27日」最高速度21.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22499.htm" title="封箱胶带机器设备价格">封箱胶带机器设备价格</a></li>
                         <li class="py-2"><a href="/news/article-29931.htm" title="动物预防接种计划表（动物接种要点）">动物预防接种计划表（动物接种要点）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-27-today-hiddify-next-node.htm" title="「10月27日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月27日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-5-hiddify-next-node-share.htm" title="「11月5日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月5日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="「12月17日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月17日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-hiddify-next-github.htm" title="「11月7日」最高速度18.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月7日」最高速度18.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/news/article-32332.htm" title="领养宠物应该去哪里（领养宠物在哪）">领养宠物应该去哪里（领养宠物在哪）</a></li>
-                        <li class="py-2"><a href="/news/article-19752.htm" title="动物疫苗有没有毒素成份（动物疫苗打到人身上有事吗）">动物疫苗有没有毒素成份（动物疫苗打到人身上有事吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-high-speed-nodes.htm" title="「12月11日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月11日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-6-hiddify-next-node-share.htm" title="「12月6日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月6日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-node-subscribe-links.htm" title="「11月10日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月10日」最高速度18.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="「12月17日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月17日」最高速度18.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21581.htm" title="MVVM中的数据的刷新">MVVM中的数据的刷新</a></li>
                     </ul>
     </div>
 </div>
