@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-47974.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具</title>
+        <meta name="description" content="前言：  注意题目，这篇文章说的是操作，也就是重在应用，更多的是一个入门的或者说一篇概览，所以大佬们多多担待，不涉及底层分析和很多的源码，所以如果看官想看以上两者的可以划走了，有时间又不懒的话，可能以" />
+        <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-47974.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/4f498dfa48dea75429df0453ab13d4ae.webp" />
+        <meta property="og:release_date" content="2025-01-29T10:28:19" />
+    <meta property="og:updated_time" content="2025-01-29T10:28:19" />
+        <meta property="og:description" content="前言：  注意题目，这篇文章说的是操作，也就是重在应用，更多的是一个入门的或者说一篇概览，所以大佬们多多担待，不涉及底层分析和很多的源码，所以如果看官想看以上两者的可以划走了，有时间又不懒的话，可能以" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7EDWRR8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LL7EDWRR8Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+            <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+            <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M24.59 16.59L17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10l10-10l-1.41-1.41z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M160 96.039v32h304v63.345l-35.5 112.655H149.932L109.932 16H16v32h66.068l40 288.039h329.9L496 196.306V96.039H160zm16.984 272.305a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Zm224-96a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="balloon" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path d="M8 16.607c1.15.86 2.518 1.38 4 1.393c4.142.034 7.594-3.92 7.56-8.196C19.527 5.53 16.142 2.034 12 2c-4.142-.034-7.473 3.404-7.44 7.68A8.88 8.88 0 0 0 5.244 13" />
+                <path d="M15.5 9a3.035 3.035 0 0 0-3-3M12 20.35c.321 0 .482 0 .593-.022c.654-.128 1.051-.772.858-1.39c-.033-.105-.109-.242-.261-.515M12 20.35c-.321 0-.482 0-.593-.022c-.654-.128-1.051-.772-.858-1.39c.033-.105.109-.242.261-.515M12 20.35v2.15" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="bag-heart" viewBox="0 0 24 24">
+            <g fill="none">
+                <path fill="currentColor" d="m12 12.191l-.519.542a.75.75 0 0 0 1.038 0L12 12.191Zm-.957 3.675l-.444.604l.444-.604Zm1.914 0l-.444-.605l.444.605Zm-.957.462v.75v-.75Zm-.514-1.067c-.417-.307-.878-.69-1.227-1.093c-.368-.426-.509-.757-.509-.971h-1.5c0 .77.441 1.45.875 1.952c.453.525 1.014.984 1.474 1.321l.887-1.21ZM9.75 13.197c0-.576.263-.827.492-.907c.25-.088.714-.06 1.24.443l1.037-1.083c-.825-.79-1.861-1.096-2.773-.776c-.934.327-1.496 1.226-1.496 2.323h1.5Zm3.65 3.273c.46-.337 1.022-.796 1.475-1.32c.434-.502.875-1.183.875-1.953h-1.5c0 .214-.141.545-.51.971c-.348.403-.809.786-1.226 1.093l.887 1.21Zm2.35-3.273c0-1.097-.563-1.996-1.496-2.323c-.912-.32-1.948-.014-2.773.776l1.038 1.083c.525-.503.989-.531 1.24-.443c.228.08.491.33.491.907h1.5ZM10.6 16.47c.368.27.782.608 1.4.608v-1.5c-.024 0-.04 0-.094-.03a4 4 0 0 1-.42-.287l-.887 1.21Zm1.914-1.21a4 4 0 0 1-.42.289c-.054.029-.07.029-.094.029v1.5c.618 0 1.032-.337 1.4-.608l-.886-1.21Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 6V5a3 3 0 1 1 6 0v1m5.224 6.526c-.586-3.121-.878-4.682-1.99-5.604C17.125 6 15.537 6 12.36 6h-.72c-3.176 0-4.764 0-5.875.922c-1.11.922-1.403 2.483-1.989 5.604c-.823 4.389-1.234 6.583-.034 8.029C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445c.696-.84.85-1.93.696-3.555" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="handiplast" viewBox="0 0 24 24">
+            <g fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 7.642L9.071 3.213a4.142 4.142 0 0 0-5.858 5.858L14.93 20.787a4.142 4.142 0 0 0 5.858-5.858l-4.358-4.358" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m12 17.858l-2.929 2.929A4.142 4.142 0 0 1 2.596 20m3.546-8l-2.929 2.929c-.322.322-.58.685-.774 1.071M12 6.142l2.929-2.929a4.142 4.142 0 1 1 5.858 5.858L17.857 12" />
+                <path fill="currentColor" d="M15.841 12.871a.788.788 0 1 1-1.114 1.114a.788.788 0 0 1 1.114-1.114Zm-3.712-3.712a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Zm4.641 6.497a.787.787 0 1 1-1.114 1.114a.787.787 0 0 1 1.114-1.114ZM9.345 8.23A.788.788 0 1 0 8.23 9.346A.788.788 0 0 0 9.345 8.23Zm3.712 3.713a.787.787 0 1 1-1.113 1.114a.787.787 0 0 1 1.113-1.114Zm.928 2.785a.788.788 0 1 1-1.114 1.113a.788.788 0 0 1 1.114-1.113Zm-3.712-3.713a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Z" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28ZM8 6.69v18.62L24.925 16Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="call-chat" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 2.75a4.25 4.25 0 0 0-3.807 6.142c.16.32.225.71.12 1.102l-.253.946l.946-.253a1.567 1.567 0 0 1 1.102.12A4.25 4.25 0 1 0 17 2.75ZM11.25 7a5.75 5.75 0 1 1 3.19 5.15a.126.126 0 0 0-.04-.013h-.007l-1.112.297a1.4 1.4 0 0 1-1.715-1.714l.298-1.113V9.6a.126.126 0 0 0-.014-.04a5.73 5.73 0 0 1-.6-2.56ZM3.718 4.092c1.226-1.29 3.254-1.049 4.268.385l1.26 1.783c.811 1.147.743 2.74-.225 3.76l-.245.257c0 .002 0 .004-.002.006c-.013.037-.045.152-.013.372c.067.456.418 1.381 1.846 2.884c1.432 1.508 2.3 1.864 2.703 1.929a.608.608 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.718c-4.134-4.352-4.919-8.137-5.018-9.986c-.049-.914.358-1.697.894-2.261l.544.516l-.544-.516l1.57-1.653Zm3.043 1.25c-.512-.724-1.433-.767-1.956-.217l-1.57 1.653c-.33.349-.505.748-.483 1.148c.08 1.51.731 4.952 4.607 9.033c4.064 4.279 7.809 4.4 9.244 4.258c.283-.028.575-.186.854-.48l1.42-1.495c.614-.645.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.455.48l-.544-.517c.543.517.543.517.542.518l-.001.002l-.003.003l-.007.006l-.014.014a1.003 1.003 0 0 1-.136.112c-.08.057-.186.12-.321.172c-.276.11-.64.168-1.091.095c-.878-.143-2.028-.773-3.55-2.377c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.592 1.592 0 0 1 .23-.427l.03-.037l.014-.015l.006-.006l.003-.003l.002-.002s.001-.001.545.515l-.544-.516l.287-.302c.445-.47.51-1.264.088-1.86L6.76 5.342Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="mail" viewBox="0 0 21 21">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 6.5v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2z" />
+                <path d="m5.5 7.5l5 3l5-3" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="location" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M5.25 7.7c0-3.598 3.059-6.45 6.75-6.45c3.608 0 6.612 2.725 6.745 6.208l.478.16c.463.153.87.289 1.191.439c.348.162.667.37.911.709c.244.338.341.707.385 1.088c.04.353.04.78.04 1.269v5.748c0 .61 0 1.13-.047 1.547c-.05.438-.161.87-.463 1.237a2.25 2.25 0 0 1-.62.525c-.412.237-.855.276-1.296.253c-.42-.022-.933-.107-1.534-.208l-.041-.007c-1.293-.215-1.814-.296-2.322-.254a4.3 4.3 0 0 0-.552.083c-.498.109-.976.342-2.159.933l-.122.061c-1.383.692-2.234 1.118-3.154 1.251c-.276.04-.555.06-.835.06c-.928-.002-1.825-.301-3.28-.786a73.75 73.75 0 0 1-.127-.043l-.384-.128l-.037-.012c-.463-.154-.87-.29-1.191-.44c-.348-.162-.667-.37-.911-.709c-.244-.338-.341-.707-.385-1.088c-.04-.353-.04-.78-.04-1.269v-5.02c0-.786 0-1.448.067-1.967c.07-.542.23-1.072.666-1.47a2.25 2.25 0 0 1 .42-.304c.517-.287 1.07-.27 1.605-.166c.11.021.223.047.342.078c-.066-.446-.1-.89-.1-1.328Zm.499 3.01a9.414 9.414 0 0 0-1.028-.288c-.395-.077-.525-.03-.586.004a.747.747 0 0 0-.14.101c-.053.048-.138.156-.19.556c-.053.41-.055.974-.055 1.825v4.93c0 .539.001.88.03 1.138c.028.238.072.327.112.381c.039.055.109.125.326.226c.236.11.56.219 1.07.39l.384.127c1.624.541 2.279.75 2.936.752c.207 0 .413-.015.617-.044c.65-.094 1.276-.397 2.82-1.17l.093-.046c1.06-.53 1.714-.857 2.417-1.01c.246-.054.496-.092.747-.113c.717-.06 1.432.06 2.593.253l.1.017c.655.109 1.083.18 1.407.196c.312.016.419-.025.471-.055a.749.749 0 0 0 .207-.175c.039-.047.097-.146.132-.456c.037-.323.038-.757.038-1.42v-5.667c0-.539-.001-.88-.03-1.138c-.028-.238-.072-.327-.112-.381c-.039-.055-.109-.125-.326-.226c-.236-.11-.56-.219-1.07-.39l-.06-.019a10.701 10.701 0 0 1-1.335 3.788c-.912 1.568-2.247 2.934-3.92 3.663a3.505 3.505 0 0 1-2.794 0c-1.673-.73-3.008-2.095-3.92-3.663a10.856 10.856 0 0 1-.934-2.087ZM12 2.75c-2.936 0-5.25 2.252-5.25 4.95c0 1.418.437 2.98 1.23 4.341c.791 1.362 1.908 2.47 3.223 3.044c.505.22 1.089.22 1.594 0c1.316-.574 2.432-1.682 3.224-3.044c.792-1.36 1.229-2.923 1.229-4.34c0-2.699-2.314-4.951-5.25-4.951Zm0 4a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5ZM9.25 8a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0Z" clip-rule="evenodd" />
+        </symbol>
+    </svg>
+    <header id="header" class="site-header position-fixed z-2 w-100 border-bottom mb-5">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container-lg">
+                                <a class="navbar-brand pb-4" href="/">
+                    <span>Hiddify Next Github</span>
+                </a>
+                                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon" width="50" height="50">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/news/">新闻资讯</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="#">关于</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="#">联系</a>
+                            </li>
+                            
+                            <span class="scrollspy-indicator"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+        <div class="container-lg py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">快速了解Spring，简明Spring使用流程 &#8211; FITA _在线工具</h1>
+                    <nav class="breadcrumb justify-content-center">
+                        <a class="breadcrumb-item" href="/">首页</a>
+                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="scrollspy-section py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="前言">前言：</h3> <ul> <li>注意题目，这篇文章说的是操作，也就是重在应用，更多的是一个入门的或者说一篇概览，所以大佬们多多担待，不涉及底层分析和很多的源码，所以如果看官想看以上两者的可以划走了，有时间又不懒的话，可能以后会写个源码实现+分析的哈哈</li> <li>spring存在的意义:一言以蔽之：解耦，为简化开发而生。程序员只需专注于业务代码实现，不必关心底层实现，并将程序员从大量机械重复的工作类似创建对象、数据库取出数据、导jar包等解脱出来，同时提高了程序的可靠性，大量避免因程序员管理对象不当等造成的问题。</li> <li>spring优点：<br /> 轻量；支持场景广泛；面向接口；面向切面；整合其他优秀框架</li> </ul> <h2 id="spring概览">Spring概览</h2> <p>本文将从IOC;AOP;（这两者都是一种编程思想）;spring整合MyBatis框架;事务这四个最重要的层面展开<br /> 而用框架，不管是spring还是其他的，说白了就是上环境，上依赖</p> <h2 id="spring-依赖">spring 依赖</h2> <details> <summary>点击查看代码</summary> <pre><code>    &lt;dependency&gt;       &lt;groupId&gt;org.springframework&lt;/groupId&gt;       &lt;artifactId&gt;spring-context&lt;/artifactId&gt;       &lt;version&gt;5.2.5.RELEASE&lt;/version&gt;     &lt;/dependency&gt; </code></pre> </details> <h2 id="ioc">IOC</h2> <h3 id="含义">含义</h3> <p>控制反转，即将对象的创建权限和对象之间的依赖关系交给spring框架的容器<br /> 其实我的理解就像是做饭：<br /> 每次做饭都要买菜，择菜切菜，准备好佐料然后才是上锅炒，有时候没电气了还要先缴费，吃完了还得收拾桌子。<br /> 想想要是每次做都只管炒菜，其他的不管，爽不爽？spring就是干这个的，保证电气水充足，佐料都有，，买菜择菜洗菜就好比是根据产品经理的需求创建业务对象（注意不是写实体类），而这个也就是IOC，<br /> 接着话茬，吃完饭或者正在吃的要加量，就是后期运维，收拾碗筷就是产品下架了。<br /> 好了，有了我的抛砖，相信初学者会很容易理解。</p> <h3 id="正传反转">正传反转</h3> <p>正转:由程序员进行对象的创建和依赖注入称为正转.程序员说了算.<br /> 反转：交由spring框架，也就是IOC</p> <h3 id="两种创建方式">两种创建方式</h3> <h4 id="一xml方式">一、xml方式</h4> <h4 id="创建实体类对象">创建实体类对象</h4> <pre><code>&lt;bean id="stu" class="com.huijixu.bean.Students"&gt;&lt;/bean&gt; </code></pre> <h4 id="give-values">give values</h4> <ul> <li>manner1<br /> 实体类必须提供setter（）方法<br /> 这里插嘴：如果该类在数据库里有主键，最好有主键的构造器和没有主键的构造器各搞一个。</li> </ul> <pre><code>&lt;property name="" value=""&gt;&lt;/property&gt; </code></pre> <ul> <li>manner2<br /> 实体类必须提供该类相应成员变量的构造方法</li> </ul> <pre><code>&lt;constructor-arg name="" value=""&gt;&lt;/constructor-arg&gt; </code></pre> <p>还有按照下标的，意义不大也不常用，大家有兴趣可以自行查找很简单</p> <ul> <li>manner3</li> </ul> <h4 id="引用类型的自动注入">引用类型的自动注入</h4> <ul> <li>byName<br /> 按照成员变量的名字让spring去找，一般规范按照驼峰命名法</li> </ul> <pre><code>&lt;property name="myname" value=""&gt;&lt;/property&gt; </code></pre> <ul> <li>byType<br /> 按照类型寻找在spring里和配置文件中同源的实体类注入，可与byName配合使用，比如上文byName 如果是在<code>&lt;bean id="Students" class="..."&gt;&lt;/bean&gt;</code>内的，那就是找是Students类的前提下，xml中对象名名称为myname的对象自动引用注入</li> </ul> <h4 id="二注解方式">二、注解方式</h4> <p>这种方式在中小项目中常用，本人认为注解比xml整洁美观</p> <ul> <li> <p>在spring的配置文件<code>applicationContext.xml</code>中一定要添加包扫描，不添加包扫描spring就不知道去哪里找你写的注解，</p> </li> <li> <p>注解创建对象<br /><code>@Component</code> ：实体类<br /><code>@Service</code> （k可以添加事务管理）：ServiceImple实现类<br /><code>@Controller</code>：控制类<br /><code>@Repository</code>：数据访问层实现类对象创建</p> </li> <li> <p>注解给对象赋值<br /><code>@Value</code>：八种基本类型+String<br /><code>@Autowired</code>：一般用于service层实现类中对于dao层实现类的对象引用类型注入<br /><code>@Qualifier</code>("名称") 当应用类型有别名时，它和@Autowried成套使用</p> </li> </ul> <h3 id="配置文件拆分">配置文件拆分</h3> <ul> <li>原因：</li> </ul> <p>当项目体量逐步增大时，合理拆分易于缩小问题代码范围，通知在开发过程中易于成员间避免出现类似“幻读”的情况</p> <ul> <li>拆分策略：</li> </ul> <p>按功能模块：<br /> book；users；lead；<br /> 按层：<code>mapper 、service、 controller</code><br /> 本人习惯于后者，因为这样可以和三层架构保持统一</p> <ul> <li>组合策略（以按层拆为例）：<br /> 一种直接在spring配置文件在中单写一个，再所拆分的配置文件import进来<br /> 分批导入：</li> </ul> <pre><code> &lt;import resource="applicationContest_service.xml"&gt;&lt;/import&gt; &lt;import resource="applicationContest_mapper.xml"&gt;&lt;/import&gt; .... </code></pre> <p>一次性：</p> <pre><code>&lt;import resource="applicationContest_*.xml"&gt;&lt;/import&gt; </code></pre> <h3 id="要注意的几点">要注意的几点</h3> <h4 id="路径问题">路径问题</h4> <ul> <li>spring.xml 创建业务对象<br /><code>&lt;bean id="someService"class="com.huijixu.s01.SomeServiceImpl"&gt;&lt;/bean&gt;</code><br /> 这里的class一定是Copy Reference,部分初学者要么手写出错，要不路径用的是/分隔导致错误</li> <li>SqlMapperConfig.xml标签一定注意顺序，错了不识别，具体顺序看jar里的说明来就行</li> </ul> <h4 id="命名规范">命名规范</h4> <p>强烈建议新手cv！！</p> <ul> <li>xml文件id名&amp;接口方法名必须一致</li> <li>字段名&amp;实体类成员变量名一致（可以不一致）</li> <li>成员变量名和sql语句中#{}内的名字一定要必须要一致</li> <li>接口名&amp;对应实现类名必须一致（三层架构七大规范之一）</li> </ul> <h4 id="起别名重复代码提取">起别名（重复代码提取）</h4> <p>class，pom.xml,sql语句中，经常会出现大量重复的代码片段，而又不能在抽取细分，而这些又是轻易不会改变的，这时候就可以起别名（或者叫做全局变量）</p> <h4 id="开发的顺序">开发的顺序</h4> <p>建立SQL表 --&gt;搭建环境（pom文件，各种基础配置文件）--&gt;<br /> 构建实体类--&gt;mapper--&gt;service--&gt;controller--&gt;<br /> 测试--&gt;前后端绑定--&gt;测试</p> <p>这是本人的习惯顺序，有条理可以让开发有条不紊，即使出错了也有检查的大致判断，更是程序员基本素养</p> <h4 id="良好的单元测试习惯">良好的单元测试习惯</h4> <p>写完一个功能，测一个功能，没毛病了再下一个，不然各个功能模块的bug一起报，不好调试</p> <h2 id="aop">AOP</h2> <ul> <li>在完成一项业务功能时，对那些重复用到的代码，抽取出来单独开发，然后随用随取，就是AOP，有些类似小项目中自定义的工具类</li> <li>还是用做饭的例子，炒菜的过程中的翻炒；或者说切菜时候的一下一下的切，这些重复的动作，而又是每个炒一道菜（完成一个业务功能）所必须的，就可以理解为AOP，实际开发中，日志，权限，缓存，提交事务等等这些公共通用的就是AOP</li> <li>其实原生的AOP实现是比较麻烦的，所以spring就把aspectJ整合进来了，用AspectJ实现AOP这种编程思想</li> </ul> <h3 id="spring原生aop带来的优点">spring原生AOP带来的优点</h3> <p>一言以蔽之：上接口使开发更美好</p> <h3 id="springaop几种常见的通知类型">springAOP几种常见的通知类型</h3> <ul> <li><code>@Before</code></li> <li> <code>@After</code><br /> 上面两者见名知义：分别在目标方法之前和之后调用</li> <li> <code>Around</code><br /> 拦截目标方法，可以访问并且修改目标方法的返回值</li> <li> <code>Throws</code><br /> 目标方法抛异常时使用，常用于事务回滚</li> </ul> <h3 id="aop优秀框架aspectj">AOP优秀框架：AspectJ</h3> <ul> <li>产生原因：比原生AOP更容易使用</li> <li>两个核心概念：通知和切入点。前者解决何时切入；后者解决在哪切入</li> <li>几个术语：<br /> 1.切面aspect:公共部分，用时动态织入<br /> 2.连接点joinpoint；目标方法 ，链接业务功能与Buffer功能<br /> 3.切入点pointcut：由一个及以上个连接点构成，包，类，方法都可以是切入点，但是final方法不可以作为切入点！！<br /> 4.目标对象target：被加Buffer的对象，就是写主业务逻辑的有关对象，比如图书管理系统中，UsersServiceImpl就是一个target</li> </ul> <h4 id="所需依赖">所需依赖</h4> <pre><code>&lt;dependency&gt;       &lt;groupId&gt;org.springframework&lt;/groupId&gt;       &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;       &lt;version&gt;5.2.5.RELEASE&lt;/version&gt;     &lt;/dependency&gt; </code></pre> <h4 id="aspectj切入点表达式execution访问权限--方法返回值--方法的声明参数-异常类型">AspectJ切入点表达式:<code>execution（访问权限  方法返回值  方法的声明（参数） 异常类型）</code><br /> </h4> <ul> <li> <code>*</code>标识任意</li> <li> <code>..</code>标识所有<br /> -e.g.: <code>execution( * com.huijixu.service.impl..*(..))</code> 表示以任意访问权限任意返回值类型在com.huijixu.service.impl包下的任意class的任意方法名的任意参数的目标方法为切入点</li> </ul> <h4 id="aspectj通知advice">AspectJ通知:<code>advice</code><br /> </h4> <h5 id="前置通知before">前置通知<code>@Before</code><br /> </h5> <ul> <li>方法规范 <ul> <li>方法访问权限是public</li> <li>方法的返回值是void</li> <li>名称自定义</li> <li>方法没有参数,如果有也只能是JoinPoint类型</li> <li>必须使用@Before注解来声明切入的时机是前切功能和切入点</li> <li>参数:value  指定切入点表达式</li> </ul> </li> </ul> <h5 id="后置通知afterreturning">后置通知<code>@AfterReturning</code><br /> </h5> <ul> <li>方法规范 <ul> <li>访问权限是public</li> <li>2)方法没有返回值void</li> <li>3)方法名称自定义</li> <li>4)方法有参数(也可以没有参数,如果目标方法没有返回值,则可以写无参的方法,但一般会写有参,这样可以处理无参可以处理有参),这个切面方法的参数就是目标方法的返回值</li> <li>5)使用@AfterReturning注解表明是后置通知</li> </ul> </li> </ul> <h5 id="环绕通知around">环绕通知<code>@Around</code><br /> </h5> <ul> <li>方法规范 <ul> <li>访问权限是public</li> <li>切面方法有返回值,此返回值就是目标方法的返回值</li> <li>方法名称自定义</li> <li>方法有参数,此参数就是目标方法</li> <li>回避异常Throwable</li> <li>使用@Around注解声明是环绕通知</li> <li>参数: value:指定切入点表达式</li> </ul> </li> </ul> <h5 id="最终通知after">最终通知<code>@After</code><br /> </h5> <ul> <li>方法规范 <ul> <li>访问权限是public</li> <li>方法没有返回值</li> <li>方法名称自定义<br /> * 方法没有参数,如果有也只能是JoinPoint<br /> * 使用@After注解表明是最终通知<br /> * 参数: value:指定切入点表达式</li> </ul> </li> </ul> <h2 id="ssm整合的步骤">SSM整合的步骤</h2> <p>1)建表<br /> 2)新建项目,选择quickstart模板<br /> 3)修改目录<br /> 4)修改pom.xml文件,添加相关的依赖，spring依赖已经在前文贴出，下面是mybatis，mysql ,jdbc依赖</p> <details> <summary>点击查看代码</summary> <pre><code>&lt;!--jdbc --&gt; &lt;dependency&gt;       &lt;groupId&gt;org.springframework&lt;/groupId&gt;       &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;       &lt;version&gt;5.2.5.RELEASE&lt;/version&gt;     &lt;/dependency&gt; 	&lt;!--myBaits --&gt; &lt;dependency&gt;       &lt;groupId&gt;org.mybatis&lt;/groupId&gt;       &lt;artifactId&gt;mybatis&lt;/artifactId&gt;       &lt;version&gt;3.5.6&lt;/version&gt;     &lt;/dependency&gt; 	&lt;!--mysql驱动 --&gt; 	 &lt;dependency&gt;       &lt;groupId&gt;mysql&lt;/groupId&gt;       &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;       &lt;version&gt;8.0.28&lt;/version&gt;     &lt;/dependency&gt; 	 &lt;!--alibaba druid 连接池--&gt;     &lt;dependency&gt;       &lt;groupId&gt;com.alibaba&lt;/groupId&gt;       &lt;artifactId&gt;druid&lt;/artifactId&gt;       &lt;version&gt;1.1.12&lt;/version&gt;     &lt;/dependency&gt; 	&lt;!--mybatis集成spring --&gt; 	&lt;dependency&gt;       &lt;groupId&gt;org.mybatis&lt;/groupId&gt;       &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;       &lt;version&gt;1.3.1&lt;/version&gt;     &lt;/dependency&gt; </code></pre> </details> <p>5)添加MyBatis相应的模板，下面贴出自用的SqlMapperConfig.xml &amp; XXXMapper.xml模板供大家使用</p> <details> <summary>点击查看代码</summary> <p>```</p> <p><configuration></p> <pre><code>&lt;!--读取属性文件中数据库的配置--&gt; &lt;properties resource="db.properties"&gt;&lt;/properties&gt; &lt;!--设置日志输出语句,显示相应操作的sql语名--&gt; &lt;settings&gt;     &lt;setting name="logImpl" value="STDOUT_LOGGING"/&gt; &lt;/settings&gt; &lt;typeAliases&gt;     &lt;package name="com.bjpowernode.pojo"&gt;&lt;/package&gt; &lt;/typeAliases&gt; &lt;environments default="development"&gt;     &lt;environment id="development"&gt;         &lt;transactionManager type="JDBC"/&gt;         &lt;dataSource type="POOLED"&gt;             &lt;property name="driver" value="com.mysql.jdbc.Driver"/&gt;             &lt;property name="url"                       value="jdbc:mysql://localhost:3308/ssm?useSSL=false&amp;amp;serverTimezone=UTC&amp;amp;allowPublicKeyRetrieval=true"/&gt;             &lt;property name="username" value="root"/&gt;             &lt;property name="password" value="123456"/&gt;         &lt;/dataSource&gt;     &lt;/environment&gt; &lt;/environments&gt; &lt;mappers&gt;     &lt;package name="mapper文件所在的包名"&gt;&lt;/package&gt; &lt;/mappers&gt; </code></pre> <p></configuration><br /> ```<br /> </details> <details> <summary>点击查看代码</summary> <pre><code> &lt;!-- XXXMapper.xml模板--&gt; &lt;?xml version="1.0" encoding="UTF-8" ?&gt; &lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt; &lt;mapper namespace="com.xxxxx.mapper.interface"&gt;  &lt;!-- 就是接口的完全限定名，注意新手一定要右键 -&gt; copy reference -&gt; cv 防止不必要的错误--&gt;  &lt;/mapper&gt; </code></pre> </details> <p>6)添加MyBatis核心配置文件SqlMapConfig.xml,并拷贝jdbc.propertiest属性文件到resources目录下<br /> 同样给大家给书出。jdbc.properties,部分朋友可能会因为spring版本问题会报更新的错，虽然不影响使用但是影响美观哈哈，所以我的驱动加了'cj.'</p> <details> <summary>点击查看代码</summary> <p>```<br /> jdbc.driverClassName=com.mysql.cj.jdbc.Driver<br /> jdbc.url=jdbc:mysql://localhost:3306/ssm?useUnicode=true&amp;characterEncoding=utf8<br /> jdbc.username=yours mysql username<br /> jdbc.password= yours password<br /> ```<br /> </details> <p>7)添加applicationContext_mapper.xml<br /> 8)添加applicationContext_service.xml<br /> 9)添加实体类<br /> 10)添加mapper包,添加xxxMapper接口和xxxxMapper.xml文件并开发  (注意几个配套问题：文件名，方法名。。。)<br /> 11)添加service包,添加xxxService接口和xxxxServiceImpl实现类<br /> 12)添加测试类进行功能测试</p> <h2 id="事务">事务</h2> <p>大白话就是，我不成，你也别想成，两个关联动作同时失败或者成功。保证数据的唯一性，一致性，原子性，隔离性；</p> <h3 id="依赖">依赖</h3> <details> <summary>点击查看代码</summary> <pre><code> &lt;dependency&gt;       &lt;groupId&gt;org.springframework&lt;/groupId&gt;       &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;       &lt;version&gt;5.2.5.RELEASE&lt;/version&gt;     &lt;/dependency&gt; </code></pre> </details> <h4 id="记住一句话项目中的所有事务必须添加到业务逻辑层上">记住一句话，项目中的所有事务,必须添加到业务逻辑层上.</h4> <h3 id="事务隔离级别">事务隔离级别</h3> <ul> <li>mysql默认隔离级别为<code>REPETABLE_READ</code>：可重复读，这里简单提一嘴就是他可以解决脏读，不可重复读，但存在幻读</li> <li>未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据</li> <li>提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读)</li> <li>可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻象读，但是innoDB解决了幻读</li> <li>串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞</li> <li>使用数据库默认的隔离级别isolation = Isolation.DEFAULT</li> </ul> <h3 id="spring事务的传播特性">Spring事务的传播特性</h3> <h4 id="存在的意义">存在的意义</h4> <p>多个事务之间的合并,互斥等都可以通过设置事务的传播特性来解决</p> <h4 id="常用特性">常用特性</h4> <ul> <li>PAGATION_REQUIRED：必被包含事务(增删改必用)</li> <li>PAGATION_REQUIRES_NEW：自己新开事务，不管之前是否有事务</li> <li>OPAGATION_SUPPORTS：支持事务，如果加入的方法有事务，则支持事务，如果没有，不单开事务</li> <li>OPAGATION_NEVER：不能运行中事务中，如果包在事务中，抛异常</li> <li>OPAGATION_NOT_SUPPORTED：不支持事务，运行在非事务的环境</li> </ul> <h4 id="下面贴一张网上找的图总结的不错">下面贴一张网上找的图，总结的不错</h4> <p>其中B是嵌套在A中的事务<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220428/a6e3d756e197db7bfe2c584f1f4f4a39.jpg" alt="快速了解Spring，简明Spring使用流程 - FITA _在线工具"></p> <h3 id="事务声明方式">事务声明方式</h3> <h4 id="xml文件声明步骤">xml文件声明步骤</h4> <ul> <li>1)在applicationContext_service.xml文件中添加事务管理器<br /><code>ean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"&gt;     &lt;!--因为事务必须关联数据库处理,所以要配置数据源--&gt;     &lt;property name="dataSource" ref="dataSource"&gt;&lt;/property&gt;  &lt;/bean&gt;</code> </li> <li>2)在applicationContext_service.xml文件中添加事务的注解驱动<br /><code> &lt;tx:annotation-driven transaction-manager="transactionManager"&gt;&lt;/tx:annotation-driven&gt;</code> </li> <li>3)在业务逻辑的实现类上添加注解@Transactional(propagation = Propagation.REQUIRED)<br /> REQUIRED表示增删改操作时必须添加的事务传播特性</li> </ul> <p>下面以curd给出配置事物的代码</p> <details> <summary>点击查看代码</summary> <p>```</p> <p>    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSource"></property></bean></p> <pre><code>&lt;!--配置事务切面--&gt; &lt;tx:advice id="myadvice" transaction-manager="transactionManager"&gt;     &lt;tx:attributes&gt;         &lt;tx:method name="*select*" read-only="true"/&gt;         &lt;tx:method name="*find*" read-only="true"/&gt;         &lt;tx:method name="*search*" read-only="true"/&gt;         &lt;tx:method name="*get*" read-only="true"/&gt;         &lt;tx:method name="*insert*" propagation="REQUIRED" no-rollback-for="ArithmeticException"/&gt;         &lt;tx:method name="*add*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*save*" propagation="REQUIRED" no-rollback-for="ArithmeticException"/&gt;         &lt;tx:method name="*set*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*update*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*change*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*modify*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*delete*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*remove*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*drop*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*clear*" propagation="REQUIRED"/&gt;         &lt;tx:method name="*" propagation="SUPPORTS"/&gt;     &lt;/tx:attributes&gt; &lt;/tx:advice&gt; &lt;!--绑定切面和切入点--&gt; &lt;aop:config&gt;     &lt;aop:pointcut id="mycut" expression="execution(* com.bjpowernode.service.impl.*.*(..))"&gt;&lt;/aop:pointcut&gt;     &lt;aop:advisor  advice-ref="myadvice" pointcut-ref="mycut"&gt;&lt;/aop:advisor&gt; &lt;/aop:config&gt; </code></pre> </details> <p>```</p> <h4 id="注解-transactional">注解 <code>@Transactional</code><br /> </h4> <p>@Transactional(propagation = Propagation.REQUIRED,//事务的传播特性<br /> noRollbackForClassName = "ArithmeticException", //指定发生什么异常不回滚,使用的是异常的名称<br /> noRollbackFor = ArithmeticException.class,//指定发生什么异常不回滚,使用的是异常的类型<br /> rollbackForClassName = "",//指定发生什么异常必须回滚<br /> rollbackFor = ArithmeticException.class,//指定发生什么异常必须回滚<br /> timeout = -1, //连接超时设置,默认值是-1,表示永不超时<br /> readOnly = false, //默认是false,如果是查询操作,必须设置为true.<br /> isolation = Isolation.DEFAULT//使用数据库自已的隔离级别</p> <p>有写错的地方希望大佬们海涵指出！！</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47486.htm">500公斤饲料粉碎搅拌机视频讲解（五百公斤饲料粉碎搅拌机）</a></p>
+                                        <p>下一个：<a href="/news/article-47975.htm">动物防疫计划表（动物防疫实施方案）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31857.htm" title="vue中自定义右键菜单插件_vue.js_">vue中自定义右键菜单插件_vue.js_</a></li>
+                        <li class="py-2"><a href="/news/article-28989.htm" title="《动物诊疗机构管理办法》将于（动物诊疗机构管理办法所称的动物诊疗活动）">《动物诊疗机构管理办法》将于（动物诊疗机构管理办法所称的动物诊疗活动）</a></li>
+                        <li class="py-2"><a href="/news/article-29933.htm" title="西丽动物园宠物医院（西丽野生动物园宠物医院）">西丽动物园宠物医院（西丽野生动物园宠物医院）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="「10月18日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月18日」最高速度21.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35566.htm" title="idea配置本地maven仓库">idea配置本地maven仓库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-hiddify-next-node.htm" title="「1月15日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月15日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30411.htm" title="快手无货源店铺是怎么发货的（快手开店无货源怎么做?）">快手无货源店铺是怎么发货的（快手开店无货源怎么做?）</a></li>
+                        <li class="py-2"><a href="/news/article-38084.htm" title="动物医院名字有哪些呢英语翻译（动物医院 英文）">动物医院名字有哪些呢英语翻译（动物医院 英文）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-hiddify-next-windows.htm" title="「1月10日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月10日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-node-share.htm" title="「12月3日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月3日」最高速度21M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="footer-bottom py-3 text-center">
+        <div class="container-lg">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p class="m-0">
+                HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/plugins.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
