@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-21581.htm" />
@@ -11,12 +11,41 @@
     <title>MVVM中的数据的刷新</title>
         <meta name="description" content="在我们用MVVM框架做项目，在做到新增、删除等功能的时候，新增和删除成功后就会遇到一个问题，那就是数据的刷新。 怎样做到刷新的呢，其实刷新说白了就是重新查询下数据，只要我们调用一下查询的方法 就可以了" />
         <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-21581.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="MVVM中的数据的刷新" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/cc1ee2f455a109c5e29ee7c01a624b3c.webp" />
+        <meta property="og:release_date" content="2024-12-05T10:04:03" />
+    <meta property="og:updated_time" content="2024-12-05T10:04:03" />
+        <meta property="og:description" content="在我们用MVVM框架做项目，在做到新增、删除等功能的时候，新增和删除成功后就会遇到一个问题，那就是数据的刷新。 怎样做到刷新的呢，其实刷新说白了就是重新查询下数据，只要我们调用一下查询的方法 就可以了" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MVVM中的数据的刷新">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
 <!-- Google tag (gtag.js) -->
@@ -142,7 +171,7 @@
             </div>
         </nav>
     </header>
-    <section id="intro" class="scrollspy-section bg-light" style="background: url(__ADDON__/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
         <div class="container-lg py-5">
             <div class="row justify-content-center py-5">
                 <div class="col-lg-10 text-center">
@@ -174,16 +203,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-hiddify-next-windows.htm" title="「10月10日」最高速度21.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月10日」最高速度21.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-22-hiddify-next-node-share.htm" title="「9月22日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月22日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-hiddify-next-node.htm" title="「11月19日」最高速度18.7M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月19日」最高速度18.7M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-node-subscribe.htm" title="「12月9日」最高速度19.3M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月9日」最高速度19.3M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19752.htm" title="动物疫苗有没有毒素成份（动物疫苗打到人身上有事吗）">动物疫苗有没有毒素成份（动物疫苗打到人身上有事吗）</a></li>
-                        <li class="py-2"><a href="/news/article-30890.htm" title="宠物医院好评模板100字开头和结尾 宠物医院好评模板100字开头和结尾怎么写">宠物医院好评模板100字开头和结尾 宠物医院好评模板100字开头和结尾怎么写</a></li>
-                        <li class="py-2"><a href="/news/article-27127.htm" title="Azure Service Fabric 踩坑日志_在线工具">Azure Service Fabric 踩坑日志_在线工具</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-hiddify-next-node.htm" title="「11月26日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月26日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-22-latest-hiddify-next-node.htm" title="「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-hiddify-next-node.htm" title="「8月20日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月20日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-hiddify-next-node-github.htm" title="「1月2日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月2日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-48993.htm" title="动物接种注意事项（动物接种注意事项和要求）">动物接种注意事项（动物接种注意事项和要求）</a></li>
+                        <li class="py-2"><a href="/news/article-50002.htm" title="宠物美容店投资多少钱啊（宠物美容开店多少钱）">宠物美容店投资多少钱啊（宠物美容开店多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-35056.htm" title="在Vue项目里使用element ui在input框上使用v-model.trim导致输入空格失效">在Vue项目里使用element ui在input框上使用v-model.trim导致输入空格失效</a></li>
+                        <li class="py-2"><a href="/news/article-37584.htm" title="C ++ STL中的list_remove()和list remove_if()">C ++ STL中的list_remove()和list remove_if()</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-free-high-speed-nodes.htm" title="「11月14日」最高速度20.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月14日」最高速度20.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35057.htm" title="【定义+用法+区别+使用场景】escape(),encodeURI(),encodeURIComponent()">【定义+用法+区别+使用场景】escape(),encodeURI(),encodeURIComponent()</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-today-hiddify-next-node.htm" title="「2月1日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月1日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38084.htm" title="动物医院名字有哪些呢英语翻译（动物医院 英文）">动物医院名字有哪些呢英语翻译（动物医院 英文）</a></li>
+                        <li class="py-2"><a href="/news/article-43043.htm" title="宠物粮加工厂赚钱吗多少钱啊（宠物粮加工厂赚钱吗多少钱啊）">宠物粮加工厂赚钱吗多少钱啊（宠物粮加工厂赚钱吗多少钱啊）</a></li>
                     </ul>
     </div>
 </div>
@@ -195,22 +224,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

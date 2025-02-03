@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-20208.htm" />
@@ -11,12 +11,41 @@
     <title>基于docker部署Oracle 19c的详细记录_docker</title>
         <meta name="description" content="目录  一. 拉取Oracle 19c镜像 二. 查看镜像 三. 创建Oracle 19c镜像的容器  3.1创建目录 3.2 创建实例 3.3 查看日志  四、 修改密码  五、连接数据库  5.1" />
         <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-20208.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="基于docker部署Oracle 19c的详细记录_docker" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/357eb297871ec629e73fccf03a6022c7.webp" />
+        <meta property="og:release_date" content="2024-12-02T07:58:09" />
+    <meta property="og:updated_time" content="2024-12-02T07:58:09" />
+        <meta property="og:description" content="目录  一. 拉取Oracle 19c镜像 二. 查看镜像 三. 创建Oracle 19c镜像的容器  3.1创建目录 3.2 创建实例 3.3 查看日志  四、 修改密码  五、连接数据库  5.1" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="基于docker部署Oracle 19c的详细记录_docker">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
 <!-- Google tag (gtag.js) -->
@@ -142,7 +171,7 @@
             </div>
         </nav>
     </header>
-    <section id="intro" class="scrollspy-section bg-light" style="background: url(__ADDON__/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
         <div class="container-lg py-5">
             <div class="row justify-content-center py-5">
                 <div class="col-lg-10 text-center">
@@ -174,16 +203,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-25737.htm" title="canvas生成带有二维码的海报">canvas生成带有二维码的海报</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-node-subscribe-links.htm" title="「12月2日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月2日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24812.htm" title="【义乌宠物领养|义乌宠物赠送】 义乌宠物领养中心地址">【义乌宠物领养|义乌宠物赠送】 义乌宠物领养中心地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-9-hiddify-next-node.htm" title="「8月9日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月9日」最高速度19.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-25273.htm" title="kubeadm 搭建 K8s">kubeadm 搭建 K8s</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-high-speed-nodes.htm" title="「9月21日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月21日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-33749.htm" title="成都市宠物领养平台的电话号码是多少（成都市宠物领养平台的电话号码是多少号）">成都市宠物领养平台的电话号码是多少（成都市宠物领养平台的电话号码是多少号）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-23-latest-hiddify-next-node.htm" title="「8月23日」最高速度20.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月23日」最高速度20.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-25-latest-hiddify-next-node.htm" title="「8月25日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月25日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-26182.htm" title="Spring Cloud Gateway自定义路由断言工厂">Spring Cloud Gateway自定义路由断言工厂</a></li>
+                        <li class="py-2"><a href="/news/article-21128.htm" title="动物疫苗打一次管多长时间啊多少钱 动物疫苗打一次管多长时间啊多少钱啊">动物疫苗打一次管多长时间啊多少钱 动物疫苗打一次管多长时间啊多少钱啊</a></li>
+                        <li class="py-2"><a href="/news/article-24329.htm" title="动物医院好评模板图片高清下载大全（动物医院名片）">动物医院好评模板图片高清下载大全（动物医院名片）</a></li>
+                        <li class="py-2"><a href="/news/article-50003.htm" title="合肥猫猫领养网站官网（合肥猫咪领养网站）">合肥猫猫领养网站官网（合肥猫咪领养网站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-hiddify-next-github.htm" title="「1月1日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月1日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-node-subscribe.htm" title="「11月17日」最高速度19.9M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月17日」最高速度19.9M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-node-share-links.htm" title="「1月13日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月13日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-hiddify-next-windows.htm" title="「1月6日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月6日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19294.htm" title="宠物领养的软件有哪些免费（免费领养宠物app）">宠物领养的软件有哪些免费（免费领养宠物app）</a></li>
+                        <li class="py-2"><a href="/news/article-40560.htm" title="宠物粮的配方（宠物粮配方比例）">宠物粮的配方（宠物粮配方比例）</a></li>
+                        <li class="py-2"><a href="/news/article-21125.htm" title="动物疫苗行业排名榜前十 动物疫苗行业排名榜前十名">动物疫苗行业排名榜前十 动物疫苗行业排名榜前十名</a></li>
                     </ul>
     </div>
 </div>
@@ -195,22 +224,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

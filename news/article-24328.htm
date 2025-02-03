@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-24328.htm" />
@@ -11,12 +11,41 @@
     <title>Springboot2整合activemq</title>
         <meta name="description" content="小结 这两天过一下springboot中的一些东西，居然看到有结合队列的内容，顺便拿来学一下。但是感觉自己学+做之后，掌握还是不太到位，具体是哪里不到位，是流程吗，还是操作细节。MQ就是消息缓存中间件" />
         <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-24328.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="Springboot2整合activemq" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/1e8b04de8992a6b3b74b5c49b0d8919a.webp" />
+        <meta property="og:release_date" content="2024-12-11T09:53:51" />
+    <meta property="og:updated_time" content="2024-12-11T09:53:51" />
+        <meta property="og:description" content="小结 这两天过一下springboot中的一些东西，居然看到有结合队列的内容，顺便拿来学一下。但是感觉自己学+做之后，掌握还是不太到位，具体是哪里不到位，是流程吗，还是操作细节。MQ就是消息缓存中间件" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Springboot2整合activemq">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
     <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
 <!-- Google tag (gtag.js) -->
@@ -142,7 +171,7 @@
             </div>
         </nav>
     </header>
-    <section id="intro" class="scrollspy-section bg-light" style="background: url(__ADDON__/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
         <div class="container-lg py-5">
             <div class="row justify-content-center py-5">
                 <div class="col-lg-10 text-center">
@@ -174,16 +203,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-hiddify-next-node.htm" title="「8月20日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「8月20日」最高速度19.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-high-speed-nodes.htm" title="「10月23日」最高速度18.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月23日」最高速度18.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-9-hiddify-next-node-share.htm" title="「9月9日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「9月9日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-hiddify-next-node.htm" title="「10月31日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月31日」最高速度20.5M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-10-hiddify-next-node-github.htm" title="「12月10日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月10日」最高速度22.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-latest-hiddify-next-node.htm" title="「11月3日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月3日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-22-latest-hiddify-next-node.htm" title="「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月22日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-node-subscribe-links.htm" title="「12月27日」最高速度22.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月27日」最高速度22.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-high-speed-nodes.htm" title="「10月8日」最高速度20.6M/S，2024年HiddifyNext每天更新免费节点订阅链接">「10月8日」最高速度20.6M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22956.htm" title="宠物店卖逗猫棒吗知乎（宠物店买宠物玩具吗）">宠物店卖逗猫棒吗知乎（宠物店买宠物玩具吗）</a></li>
+                        <li class="py-2"><a href="/news/article-26663.htm" title="Springboot中整合knife4j接口文档">Springboot中整合knife4j接口文档</a></li>
+                        <li class="py-2"><a href="/news/article-35056.htm" title="在Vue项目里使用element ui在input框上使用v-model.trim导致输入空格失效">在Vue项目里使用element ui在input框上使用v-model.trim导致输入空格失效</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-hiddify-next-windows.htm" title="「12月25日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月25日」最高速度19.2M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-hiddify-next-node.htm" title="「12月21日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月21日」最高速度22.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-subscribe-node.htm" title="「12月29日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月29日」最高速度21.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-hiddify-next-node.htm" title="「11月8日」最高速度20.4M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月8日」最高速度20.4M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-40560.htm" title="宠物粮的配方（宠物粮配方比例）">宠物粮的配方（宠物粮配方比例）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe-links.htm" title="「11月28日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接">「11月28日」最高速度19.1M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27596.htm" title="益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）">益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）</a></li>
+                        <li class="py-2"><a href="/news/article-37585.htm" title="动物疫苗行业龙头股票排名 动物疫苗行业龙头股票排名前十">动物疫苗行业龙头股票排名 动物疫苗行业龙头股票排名前十</a></li>
                     </ul>
     </div>
 </div>
@@ -195,22 +224,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
