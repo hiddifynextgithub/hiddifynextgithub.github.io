@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-52637.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>SSM三大框架工作流程与原理详解</title>
+        <meta name="description" content="作者：网络笨猪 blog.csdn.net/lyfqyr/article/details/84552278   1、Spring的运行流程 第一步：加载配置文件ApplicationContext a" />
+        <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-52637.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="SSM三大框架工作流程与原理详解" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/cc1ee2f455a109c5e29ee7c01a624b3c.webp" />
+        <meta property="og:release_date" content="2025-02-07T07:19:44" />
+    <meta property="og:updated_time" content="2025-02-07T07:19:44" />
+        <meta property="og:description" content="作者：网络笨猪 blog.csdn.net/lyfqyr/article/details/84552278   1、Spring的运行流程 第一步：加载配置文件ApplicationContext a" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SSM三大框架工作流程与原理详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7EDWRR8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LL7EDWRR8Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+            <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+            <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M24.59 16.59L17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10l10-10l-1.41-1.41z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M160 96.039v32h304v63.345l-35.5 112.655H149.932L109.932 16H16v32h66.068l40 288.039h329.9L496 196.306V96.039H160zm16.984 272.305a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Zm224-96a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="balloon" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path d="M8 16.607c1.15.86 2.518 1.38 4 1.393c4.142.034 7.594-3.92 7.56-8.196C19.527 5.53 16.142 2.034 12 2c-4.142-.034-7.473 3.404-7.44 7.68A8.88 8.88 0 0 0 5.244 13" />
+                <path d="M15.5 9a3.035 3.035 0 0 0-3-3M12 20.35c.321 0 .482 0 .593-.022c.654-.128 1.051-.772.858-1.39c-.033-.105-.109-.242-.261-.515M12 20.35c-.321 0-.482 0-.593-.022c-.654-.128-1.051-.772-.858-1.39c.033-.105.109-.242.261-.515M12 20.35v2.15" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="bag-heart" viewBox="0 0 24 24">
+            <g fill="none">
+                <path fill="currentColor" d="m12 12.191l-.519.542a.75.75 0 0 0 1.038 0L12 12.191Zm-.957 3.675l-.444.604l.444-.604Zm1.914 0l-.444-.605l.444.605Zm-.957.462v.75v-.75Zm-.514-1.067c-.417-.307-.878-.69-1.227-1.093c-.368-.426-.509-.757-.509-.971h-1.5c0 .77.441 1.45.875 1.952c.453.525 1.014.984 1.474 1.321l.887-1.21ZM9.75 13.197c0-.576.263-.827.492-.907c.25-.088.714-.06 1.24.443l1.037-1.083c-.825-.79-1.861-1.096-2.773-.776c-.934.327-1.496 1.226-1.496 2.323h1.5Zm3.65 3.273c.46-.337 1.022-.796 1.475-1.32c.434-.502.875-1.183.875-1.953h-1.5c0 .214-.141.545-.51.971c-.348.403-.809.786-1.226 1.093l.887 1.21Zm2.35-3.273c0-1.097-.563-1.996-1.496-2.323c-.912-.32-1.948-.014-2.773.776l1.038 1.083c.525-.503.989-.531 1.24-.443c.228.08.491.33.491.907h1.5ZM10.6 16.47c.368.27.782.608 1.4.608v-1.5c-.024 0-.04 0-.094-.03a4 4 0 0 1-.42-.287l-.887 1.21Zm1.914-1.21a4 4 0 0 1-.42.289c-.054.029-.07.029-.094.029v1.5c.618 0 1.032-.337 1.4-.608l-.886-1.21Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 6V5a3 3 0 1 1 6 0v1m5.224 6.526c-.586-3.121-.878-4.682-1.99-5.604C17.125 6 15.537 6 12.36 6h-.72c-3.176 0-4.764 0-5.875.922c-1.11.922-1.403 2.483-1.989 5.604c-.823 4.389-1.234 6.583-.034 8.029C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445c.696-.84.85-1.93.696-3.555" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="handiplast" viewBox="0 0 24 24">
+            <g fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 7.642L9.071 3.213a4.142 4.142 0 0 0-5.858 5.858L14.93 20.787a4.142 4.142 0 0 0 5.858-5.858l-4.358-4.358" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m12 17.858l-2.929 2.929A4.142 4.142 0 0 1 2.596 20m3.546-8l-2.929 2.929c-.322.322-.58.685-.774 1.071M12 6.142l2.929-2.929a4.142 4.142 0 1 1 5.858 5.858L17.857 12" />
+                <path fill="currentColor" d="M15.841 12.871a.788.788 0 1 1-1.114 1.114a.788.788 0 0 1 1.114-1.114Zm-3.712-3.712a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Zm4.641 6.497a.787.787 0 1 1-1.114 1.114a.787.787 0 0 1 1.114-1.114ZM9.345 8.23A.788.788 0 1 0 8.23 9.346A.788.788 0 0 0 9.345 8.23Zm3.712 3.713a.787.787 0 1 1-1.113 1.114a.787.787 0 0 1 1.113-1.114Zm.928 2.785a.788.788 0 1 1-1.114 1.113a.788.788 0 0 1 1.114-1.113Zm-3.712-3.713a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Z" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28ZM8 6.69v18.62L24.925 16Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="call-chat" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 2.75a4.25 4.25 0 0 0-3.807 6.142c.16.32.225.71.12 1.102l-.253.946l.946-.253a1.567 1.567 0 0 1 1.102.12A4.25 4.25 0 1 0 17 2.75ZM11.25 7a5.75 5.75 0 1 1 3.19 5.15a.126.126 0 0 0-.04-.013h-.007l-1.112.297a1.4 1.4 0 0 1-1.715-1.714l.298-1.113V9.6a.126.126 0 0 0-.014-.04a5.73 5.73 0 0 1-.6-2.56ZM3.718 4.092c1.226-1.29 3.254-1.049 4.268.385l1.26 1.783c.811 1.147.743 2.74-.225 3.76l-.245.257c0 .002 0 .004-.002.006c-.013.037-.045.152-.013.372c.067.456.418 1.381 1.846 2.884c1.432 1.508 2.3 1.864 2.703 1.929a.608.608 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.718c-4.134-4.352-4.919-8.137-5.018-9.986c-.049-.914.358-1.697.894-2.261l.544.516l-.544-.516l1.57-1.653Zm3.043 1.25c-.512-.724-1.433-.767-1.956-.217l-1.57 1.653c-.33.349-.505.748-.483 1.148c.08 1.51.731 4.952 4.607 9.033c4.064 4.279 7.809 4.4 9.244 4.258c.283-.028.575-.186.854-.48l1.42-1.495c.614-.645.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.455.48l-.544-.517c.543.517.543.517.542.518l-.001.002l-.003.003l-.007.006l-.014.014a1.003 1.003 0 0 1-.136.112c-.08.057-.186.12-.321.172c-.276.11-.64.168-1.091.095c-.878-.143-2.028-.773-3.55-2.377c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.592 1.592 0 0 1 .23-.427l.03-.037l.014-.015l.006-.006l.003-.003l.002-.002s.001-.001.545.515l-.544-.516l.287-.302c.445-.47.51-1.264.088-1.86L6.76 5.342Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="mail" viewBox="0 0 21 21">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 6.5v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2z" />
+                <path d="m5.5 7.5l5 3l5-3" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="location" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M5.25 7.7c0-3.598 3.059-6.45 6.75-6.45c3.608 0 6.612 2.725 6.745 6.208l.478.16c.463.153.87.289 1.191.439c.348.162.667.37.911.709c.244.338.341.707.385 1.088c.04.353.04.78.04 1.269v5.748c0 .61 0 1.13-.047 1.547c-.05.438-.161.87-.463 1.237a2.25 2.25 0 0 1-.62.525c-.412.237-.855.276-1.296.253c-.42-.022-.933-.107-1.534-.208l-.041-.007c-1.293-.215-1.814-.296-2.322-.254a4.3 4.3 0 0 0-.552.083c-.498.109-.976.342-2.159.933l-.122.061c-1.383.692-2.234 1.118-3.154 1.251c-.276.04-.555.06-.835.06c-.928-.002-1.825-.301-3.28-.786a73.75 73.75 0 0 1-.127-.043l-.384-.128l-.037-.012c-.463-.154-.87-.29-1.191-.44c-.348-.162-.667-.37-.911-.709c-.244-.338-.341-.707-.385-1.088c-.04-.353-.04-.78-.04-1.269v-5.02c0-.786 0-1.448.067-1.967c.07-.542.23-1.072.666-1.47a2.25 2.25 0 0 1 .42-.304c.517-.287 1.07-.27 1.605-.166c.11.021.223.047.342.078c-.066-.446-.1-.89-.1-1.328Zm.499 3.01a9.414 9.414 0 0 0-1.028-.288c-.395-.077-.525-.03-.586.004a.747.747 0 0 0-.14.101c-.053.048-.138.156-.19.556c-.053.41-.055.974-.055 1.825v4.93c0 .539.001.88.03 1.138c.028.238.072.327.112.381c.039.055.109.125.326.226c.236.11.56.219 1.07.39l.384.127c1.624.541 2.279.75 2.936.752c.207 0 .413-.015.617-.044c.65-.094 1.276-.397 2.82-1.17l.093-.046c1.06-.53 1.714-.857 2.417-1.01c.246-.054.496-.092.747-.113c.717-.06 1.432.06 2.593.253l.1.017c.655.109 1.083.18 1.407.196c.312.016.419-.025.471-.055a.749.749 0 0 0 .207-.175c.039-.047.097-.146.132-.456c.037-.323.038-.757.038-1.42v-5.667c0-.539-.001-.88-.03-1.138c-.028-.238-.072-.327-.112-.381c-.039-.055-.109-.125-.326-.226c-.236-.11-.56-.219-1.07-.39l-.06-.019a10.701 10.701 0 0 1-1.335 3.788c-.912 1.568-2.247 2.934-3.92 3.663a3.505 3.505 0 0 1-2.794 0c-1.673-.73-3.008-2.095-3.92-3.663a10.856 10.856 0 0 1-.934-2.087ZM12 2.75c-2.936 0-5.25 2.252-5.25 4.95c0 1.418.437 2.98 1.23 4.341c.791 1.362 1.908 2.47 3.223 3.044c.505.22 1.089.22 1.594 0c1.316-.574 2.432-1.682 3.224-3.044c.792-1.36 1.229-2.923 1.229-4.34c0-2.699-2.314-4.951-5.25-4.951Zm0 4a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5ZM9.25 8a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0Z" clip-rule="evenodd" />
+        </symbol>
+    </svg>
+    <header id="header" class="site-header position-fixed z-2 w-100 border-bottom mb-5">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container-lg">
+                <a class="navbar-brand pb-4" href="/">
+                                <span>Hiddify Next Github</span>
+                                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon" width="50" height="50">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/news/">新闻资讯</a>
+                            </li>
+                                                        
+                            <span class="scrollspy-indicator"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+        <div class="container-lg py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">SSM三大框架工作流程与原理详解</h1>
+                    <nav class="breadcrumb justify-content-center">
+                        <a class="breadcrumb-item" href="/">首页</a>
+                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="scrollspy-section py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="js_content"> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/b649992a49a747db54c4ff85469d6dcf.jpg" alt="SSM三大框架工作流程与原理详解"/></p> <blockquote> <p>作者：网络笨猪</p> <p>blog.csdn.net/lyfqyr/article/details/84552278</p> </blockquote> </h1> <h2>1、Spring的运行流程</h2> <p>第一步：加载配置文件<code>ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");</code>，ApplicationContext接口，它由BeanFactory接口派生而来，因而提供了BeanFactory所有的功能。配置文件中的bean的信息是被加载在HashMap中的，一个bean通常包括，id，class，property等，bean的id对应HashMap中的key，value呢就是bean</p> <p>具体如何加载？源码如下:</p> <pre class="has"><code class="language-go">if&nbsp;(beanProperty.element("map")&nbsp;!=&nbsp;null){&nbsp;&nbsp; Map&lt;String,&nbsp;Object&gt;&nbsp;propertiesMap&nbsp;=&nbsp;new&nbsp;HashMap&lt;String,&nbsp;Object&gt;();&nbsp;&nbsp; Element&nbsp;propertiesListMap&nbsp;=&nbsp;(Element)beanProperty.elements().get(0);&nbsp;&nbsp; Iterator&lt;?&gt;&nbsp;propertiesIterator&nbsp;=&nbsp;propertiesListMap&nbsp;.elements().iterator();&nbsp;&nbsp; while&nbsp;(propertiesIterator.hasNext())&nbsp;{&nbsp;&nbsp; &nbsp;Element&nbsp;vet&nbsp;=&nbsp;(Element)&nbsp;propertiesIterator.next();&nbsp;&nbsp; &nbsp;if(vet.getName().equals("entry"))&nbsp;{&nbsp;&nbsp; &nbsp;&nbsp;String&nbsp;key&nbsp;=&nbsp;vet.attributeValue("key");&nbsp;&nbsp; &nbsp;&nbsp;Iterator&lt;?&gt;&nbsp;valuesIterator&nbsp;=&nbsp;vet.elements()&nbsp;&nbsp;.iterator();&nbsp;&nbsp; &nbsp;&nbsp;while&nbsp;(valuesIterator.hasNext())&nbsp;{&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Element&nbsp;value&nbsp;=&nbsp;(Element)&nbsp;valuesIterator.next();&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if&nbsp;(value.getName().equals("value")){&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;propertiesMap.put(key,&nbsp;value.getText());&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if&nbsp;(value.getName().equals("ref"))&nbsp;{&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;propertiesMap.put(key,&nbsp;new&nbsp;String[]{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value.attributeValue("bean")&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;}&nbsp;&nbsp; &nbsp;&nbsp;}&nbsp;&nbsp; &nbsp;}&nbsp;&nbsp; }&nbsp;&nbsp; bean.getProperties().put(name,&nbsp;propertiesMap);&nbsp;&nbsp; //看完反正我是默默放弃了。。。 }&nbsp; 12345678910111213141516171819202122232425</code></pre> <p>第二步：调用getBean方法，getBean是用来获取applicationContext.xml文件里bean的，（）写的是bean的id。一般情况都会强转成我们对应的业务层（接口）。例如<code>SpringService springService =(SpringService)ac.getBean("Service");</code></p> <p>第三步：这样我们就可以调用业务层(接口实现)的方法。</p> <p>具体如下：<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/b3bc883ec56930a32c2ee3c00ca60a4c.jpg" alt="SSM三大框架工作流程与原理详解"/>Java反射博大精深，我也不很懂，具体请查看Java基础之—反射</p> <p>那么bean中的东西到底是怎么注入进去的？**简单来讲，就是在实例化一个bean时，实际上就实例化了类，它通过**反射调用类中set方法将事先保存在HashMap中的类属性注入到类中。这样就回到了我们Java最原始的地方，对象.方法，对象.属性</p> <h2>2、Spring的原理</h2> <ul> <li> <p>什么是spring？spring是一个容器框架，它可以接管web层，业务层，dao层，持久层的各个组件，并且可以配置各种bean， 并可以维护bean与bean的关系，当我们需要使用某个bean的时候，我们可以直接getBean(id)，使用即可</p> </li> <li> <p>Spring目的：就是让对象与对象（模块与模块）之间的关系没有通过代码来关联，都是通过配置类说明管理的（Spring根据这些配置 内部通过反射去动态的组装对象） ，Spring是一个容器，凡是在容器里的对象才会有Spring所提供的这些服务和功能。</p> </li> <li> <p>层次框架图：<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/777ec91f6863facd6971d52a15eec535.jpg" alt="SSM三大框架工作流程与原理详解"/>说明：web层： struts充当web层，接管jsp，action，表单，主要体现出mvc的数据输入，数据的处理，数据的显示分离。<br />model层： model层在概念上可以理解为包含了业务层，dao层，持久层，需要注意的是，一个项目中，不一定每一个层次都有。<br />持久层： 体现oop，主要解决关系模型和对象模型之间的*<em>阻抗</em>*</p> </li> </ul> <h2>3、Spring的核心技术</h2> <ul> <li> <p>IOC</p> </li> </ul> <p>ioc（inverse of control）控制反转： 所谓反转就是把创建对象（bean）和维护对象（bean）之间的关系的权利从程序转移到spring的容器（spring-config.xml）<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/274a9dc7232250b2df2940f735205391.jpg" alt="SSM三大框架工作流程与原理详解"/>说明：<code>&lt;bean&gt;&lt;/bean&gt;</code>这对标签元素的作用：当我们加载spring框架时，spring就会自动创建一个bean对象，并放入内存相当于我们常规的new一个对象，而<code>&lt;property&gt;&lt;/property&gt;</code>中的value则是实现了“对象.set方法”，这里也体现了注入了概念</p> <ul> <li> <p>DI</p> </li> </ul> <p>di（dependency injection）依赖注入： 实际上di和ioc是同一个概念，spring的设计者，认为di更准确的表示spring的核心</p> <p>spring提倡接口编程，在配合di技术就可以达到层与层解耦的目的，为什么呢？因为层与层之间的关联，由框架帮我们做了，这样代码之间的耦合度降低，代码的复用性提高</p> <p>接口编程的好处请访问(https://blog.csdn.net/Song_JiangTao/article/details/82389905)</p> <ul> <li> <p>AOPaspect oriented programming（面向切面编程）</p> <p>核心：在不增加代码的基础上，还增加新功能</p> <p>理解：面向切面：其实是，把一些公共的“东西”拿出来，比如说，事务，安全，日志，这些方面，如果你用的到，你就引入。也就是说：当你需要在执行一个操作（方法）之前想做一些事情（比如，开启事务，记录日志等等），那你就用before，如果想在操作之后做点事情（比如，关闭一些连接等等），那你就用after。其他类似</p> </li> </ul> <h2>4、Spring整体架构图</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/c1c86e840ed0c0a0549a76dc05d57fbf.jpg" alt="SSM三大框架工作流程与原理详解"/>1、core container（核心容器）</p> <p>核心容器包含了core，beans，context和expression language四个模块，core和beans模块是框架的基础部分，提供IOC和依赖注入特性。这里的基础概念是BeanFactory，它提供对Factory模式的经典实现来消除对程序性单例模式的需要，并真正地允许你从程序逻辑中分离出依赖关系和配置。</p> <ul> <li> <p>core模块主要包含了spring框架基本的黑犀牛工具类，spring的其他组建都要用到这个包里的类，core模块是其他组件的基本核心。当然你也可以在自己应用系统中使用这些工具类。</p> </li> <li> <p>beans模块是所有应用都要用到的，它包含访问配置文件，创建和管理bean以及进行ioc，di操作相关的所有类</p> </li> <li> <p>context模块构建与core和beans模块基础之上，提供了一种类似于JNDI注册器的框架式的对象访问方法。context模块继承了beans的特性，为spring核心提供了大量扩展，添加了对国际化（例如资源绑定）、事件传播、资源加载和对context的透明创建的支持。context模块同事也支持j2ee的一些特性，例如EJB，JMX和基础的远程处理，applicationContext接口是context模块的关键。</p> </li> <li> <p>ExpressionLanguage模块提供了强大的表达式语言，用于在运行时查询和操纵对象。他是jsp2.1规范中定义的unifed expression language的扩展。该语言支持设置/获取属性的值，属性的分配，方法的调用 ，访问数组上下文，容器和索引器，逻辑和算数运算符，命名变量以及从spring的ioc容器中根据名称检索对象。它也支持list投影，选择和一般的list聚合</p> </li> </ul> <p>2、Date Access/Integration</p> <p>Date Access/Integration层包含JDBC，ORM，OXM,JMS和Transaction模块</p> <ul> <li> <p>jdbc模块提供了一个jdbc抽象层，他可以消除冗长的jdbc编码和解析数据厂商特有的错误代码。这个模块包含了spring对jdbc数据访问进行封装的所有类。</p> </li> <li> <p>orm模块为流行的对象-关系映射API，如JPA，JDO，Hibernate，iBatis等，提供了一个交互层。利用ORM封装包，可以混合使用所有spring提供的特性进行O/R映射，如前边提到的简单声明性事务管理。spring框架插入了若干个ORM框架 ，从而提供了ORM的对象关系工具，其中包括JDO，hibernate和iBatisSQl Map。所有这些都遵从spring的通用事务和DAO异常层次结构。</p> </li> <li> <p>OXM模块提供了一个对Object/XML映射实现的抽象层，Object/XML映射实现包括JAXB，Castor，XMLBeans，JiBX和XStream。</p> </li> <li> <p>JMS（java massage service）模块主要包含了一些制造和消费消息的特性</p> </li> <li> <p>Transaction模块支持编程和声明性的事务管理，这些事务类必须实现特地的接口。并且对多有的POJO都适用</p> </li> </ul> <p>3、web</p> <p>web上下文模块建立在应用程序上下文模块之上，为基于web的应用程序提供了上下文。所以，spring框架支持与Jakarta struts的集成。web模块还简化了处理大部分请求以及将请求参数绑定到域对象的工作。web层包含了web，web-servlet，web-Struts 和web-porlet</p> <ul> <li> <p>web模块，提供了基础的面向web的集成特性。例如：多文件上传，使用servlet listeners初始化 Ioc容器已经一个面向web的应用上下文。它还包含spring远程支持中的web的相关部分。</p> </li> <li> <p>web-servlet模块web.servlet.jar：该模块包含spring的model-view-controller（mvc）实现。spring的mbc框架使得模型范围内的代码和webforms之间能够清楚地分离出来。并与spring框架的其他特性集成在一起。</p> </li> <li> <p>web-Struts模块，该模块提供了对struts的支持，使得类在spring应用中能够与一个典型的struts web层集成在一起。注意，该支持在spring3.0中已被弃用。</p> </li> <li> <p>web-portlet模块，提供了用于portlet环境和web-servlet模块的MVC的实现。</p> </li> </ul> <p>4、AOP</p> <p>aop模块提供了一个符合aop联盟标准的面向切面编程的实现，它让你可以定义例如方法拦截器和切点，从而将逻辑代码分开，降低它们之间的耦合性。利用source-level的元数据功能，还可以将各种行为信息合并到你的代码中，这有点像.Net技术中的attribute概念</p> <p>通过配置管理特性，springAop模块直接将面向界面的编程功能集成到了spring框架中，所以可以很容易地使用spring框架管理的任何对象支持aop，springAop模块为基于spring的应用程序中的对象提供了事务管理服务。通过使用springAop，不用历来EJB组件，就可以将声明性事务管理集成到应用程序中。</p> <ul> <li> <p>Aspects模块提供了AspectJ的集成支持。</p> </li> <li> <p>Instrumentation模块提供了class Instrumentation支持和classloader实现，使用可以再特定的应用服务器上使用。</p> </li> </ul> <p>5、Test</p> <p>test模块支持使用JUnit和TestNG对spring组件进行测试。</p> </h1> <h2>1、Spring MVC的运行流程</h2> <ul> <li> <p>springMVC框架</p> <p>框架执行流程（面试必问）</p> </li> <li> <ul> <li> <p>1、用户发送请求至前端控制器DispatcherServlet</p> </li> <li> <p>2、DispatcherServlet收到请求调用HandlerMapping处理器映射器。</p> </li> <li> <p>3、处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</p> </li> <li> <p>4、DispatcherServlet通过HandlerAdapter处理器适配器调用处理器</p> </li> <li> <p>5、执行处理器(Controller，也叫后端控制器)。</p> </li> <li> <p>6、Controller执行完成返回ModelAndView</p> </li> <li> <p>7、HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet</p> </li> <li> <p>8、DispatcherServlet将ModelAndView传给ViewResolver视图解析器</p> </li> <li> <p>9、ViewResolver解析后返回具体View</p> </li> <li> <p>10、DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。</p> </li> <li> <p>11、DispatcherServlet响应用户</p> </li> </ul> </li> </ul> <h2>2、Spring MVC的原理</h2> <ul> <li> <p>1、什么是SpringMVC？</p> </li> <li> <p>springmvc是spring框架的一个模块，springmvc和spring无需通过中间整合层进行整合。</p> </li> <li> <p>springmvc是一个基于mvc的web框架。<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/f7a9c8e674ce8a7501bdaaede9376cd4.jpg" alt="SSM三大框架工作流程与原理详解"/></p> </li> <li> <p>mvc</p> </li> <li> <ul> <li> <p>View是一个接口，实现类支持不同的View类型（jsp、freemarker、pdf…）</p> </li> <li> <p>作用：进行视图解析，根据逻辑视图名解析成真正的视图（view）</p> </li> <li> <p>注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler</p> </li> <li> <p>作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler</p> </li> <li> <p>作用：根据请求的url查找Handler</p> </li> <li> <p>作用接收请求，响应结果，相当于转发器，中央处理器。有了DispatcherServlet减少了其它组件之间的耦合度。</p> </li> <li> <p>mvc在b/s系统 下的应用：<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/54a697600b07ab93280ceae35f2af55f.jpg" alt="SSM三大框架工作流程与原理详解"/></p> </li> <li> <p>前端控制器DispatcherServlet（不需要程序员开发）</p> </li> <li> <p>处理器映射器HandlerMapping(不需要程序员开发)</p> </li> <li> <p>处理器适配器HandlerAdapter</p> </li> <li> <p>处理器Handler</p> <p>(需要程序员开发)</p> </li> <li> <p>视图解析器View resolver(不需要程序员开发)</p> </li> <li> <p>视图View</p> <p>(需要程序员开发)</p> </li> </ul> </li> <li> <p>struts2与springMVC的区别？</p> </li> </ul> <p>1、Struts2是类级别的拦截，一个类对应一个request 上下文, SpringMVC是方法级别的拦截,一个方法对应一个request上下文,而方法同时又跟一个url对应，,所以说从架构本身上SpringMVC就容易实现restful url,而struts2的架构实现起来要费劲,因为Struts2中Action的一个方法可以对应一个url ,而其类属性却被所有方法共享，这也就无法用注解或其他方式标识其所属方法了。</p> <p>2、由上边原因, SpringMVC的方法之间基本上独立的,**独享request response数据,*<em>请求数据通过参数获取,处理结果通过ModelMap交回给框架,方法之间不共享变量,而Struts2搞的就比较乱,虽然方法之间也是独立的,但其*<em>所有Action变量是共享的</em></em>,这不会影响程序运行,却给我们编码读程序时带来麻烦,每次来了请求就创建一个Action ,一个Action对象对应一个request 上下文。</p> <p>3、由于Struts2需要针对每个request进行封装,把request , session等servlet生命周期的变量封装成一个一 个Map ,供给每个Action使用,并保证线程安全,所以在原则上,是比较耗费内存的。</p> <p>4、拦截器实现机制上， Struts2有以自己的interceptor机制, SpringMVC用的是独立的AOP方式,这样导致Struts2的配置文件量还是比SpringMVC大。</p> <p>5、SpringMVC的入口是servlet ,而Struts2是filter (这里要指出, filter和servlet是不同的。以前认为filter是servlet的一种特殊),这就导致 了二者的机制不同,这里就牵涉到servlet和filter的区别了。</p> <p>6、SpringMVC集成了Ajax ,使用非常方便，只需一个注解@ResponseBody就可以实现，然后直接返回响应文本即可,而Struts2拦截器集成了Ajax ,在Action中处理时一般必须安装插件或者自己写代码集成进去,使用起来也相对不方便。</p> <p>7、**SpringMVC验证支持JSR303 ,*<em>处理起来相对更加灵活方便,而*<em>Struts2验证比较繁琐,感觉太烦乱。</em></em></p> <p>8、Spring MVC和Spring是无缝的。从这个项目的管理和安全上也比Struts2高(当然Struts2也可以通过不同的目录结构和相关配置做到SpringMVC-样的效果,但是需要xml配置的地方不少)。</p> <p>9、设计思想上, Struts2更加符合0OP的编程思想，SpringMVC就比较谨慎,在servlet上扩展。</p> <p>10、SpringMVC开发效率和性能高于Struts2。</p> <p>11、SpringMVC可以认为已经100%零配置。</p> <h2>3、Spring MVC的核心技术</h2> <ul> <li> <p>注解开发（@Controller,@RequestMapping,@ResponseBody。。。。）还有Spring的诸多注解，这两者是不需要整合的~</p> </li> <li> <p>传参，接参（request）</p> </li> <li> <p>基本配置</p> </li> <li> <p>文件上传与下载。Spring MVC中文件上传需要添加Apache Commons FileUpload相关的jar包;基于该jar, Spring中提供了MultipartResolver实现类: CommonsMultipartResolver.</p> </li> <li> <p>拦截器其实最核心的还是SpringMVC的执行流程，各个点的作用得搞清楚。</p> </li> </ul> <hr/> </h1> <h2>1、Mybatis的运行流程</h2> <ul> <li> <p>Mybatis运行流程图：<img decoding="async" src="http://img.555519.xyz/uploads3/20220905/f3ee5a41224f6ccb4dcb379cbefb8fec.jpg" alt="SSM三大框架工作流程与原理详解"/></p> </li> </ul> <p>第一步：配置文件mybatis.xml，大体如下，</p> <pre class="has"><code class="language-go">&lt;?xml&nbsp;version="1.0"&nbsp;encoding="UTF-8"?&gt; &lt;!DOCTYPE&nbsp;configuration&nbsp;PUBLIC&nbsp;"-//mybatis.org//DTD&nbsp;Config&nbsp;3.0//EN" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt; &lt;configuration&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;引入外部文件 &nbsp;&nbsp;resource:引入项目中配置文件 &nbsp;&nbsp;url:引入网络中或者路径文件 &nbsp;--&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;properties&nbsp;resource="jdbc.properties"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;settings&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&lt;setting&nbsp;name="mapUnderscoreToCamelCase"&nbsp;value="true"&nbsp;/&gt;--&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setting&nbsp;name="lazyLoadingEnabled"&nbsp;value="true"&nbsp;/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setting&nbsp;name="aggressiveLazyLoading"&nbsp;&nbsp;value="false"&nbsp;/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setting&nbsp;name="cacheEnabled"&nbsp;value="true"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/settings&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;typeAliases&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;package&nbsp;name="com.nuc.entity"&gt;&lt;/package&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/typeAliases&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;数据库环境配置-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;--&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;environments&nbsp;default="environments"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;environment&nbsp;id="environments"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;transactionManager&nbsp;type="JDBC"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dataSource&nbsp;type="POOLED"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="driver"&nbsp;value="${jdbc.driverClass}"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="url"&nbsp;value="${jdbc.jdbcUrl}"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="username"&nbsp;value="${jdbc.user}"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name="password"&nbsp;value="${jdbc.password}"/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dataSource&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/environment&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/environments&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-映射文件路径-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;--&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;mappers&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--自动扫描包下的映射文件，要求：同名，同目录--&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;package&nbsp;name="com.nuc.mapper"&nbsp;/&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mappers&gt; &lt;/configuration&gt;</code></pre> <p>第二步：加载我们的xml文件 第三步：创建SqlSessionFactoryBuilder 第四步：创建SqlSessionFactory 第五步：调用openSession()，开启sqlSession 第六步：getMapper()来获取我们的mapper（接口），mapper对应的映射文件，在加载mybatis.xml时就会加载 第七步：使用我们自己的mapper和它对应的xml来完成我们和数据库交互。即增删改查。第八步：提交session，关闭session。</p> <p>代码如下：</p> <pre class="has"><code class="language-go">String&nbsp;resource&nbsp;=&nbsp;"mybatis-config.xml"; SqlSession&nbsp;sqlSession&nbsp;=&nbsp;null; InputStream&nbsp;inputStream&nbsp;=&nbsp;Resources.getResourceAsStream(resource);//读取mybatis配置文件 //SqlSessionFactoryBuilder这个类的作用就是为了创建SqlSessionFactory的 SqlSessionFactoryBuilder&nbsp;builder&nbsp;=&nbsp;new&nbsp;SqlSessionFactoryBuilder(); SqlSessionFactory&nbsp;factory&nbsp;=&nbsp;builder.build(inputStream); /** &nbsp;*&nbsp;&nbsp;factory.openSession();&nbsp;//需手动提交事务 &nbsp;*&nbsp;&nbsp;&nbsp;factory.openSession(true);&nbsp;//系统自动提交事务 &nbsp;*/ sqlSession&nbsp;=&nbsp;factory.openSession(); CustomerMapper&nbsp;mapper&nbsp;=&nbsp;sqlSession.getMapper(CustomerMapper.class); //增删改查的操作 sqlSession.commit();//如果没有提交，数据库的数据不会改变 sqlSession.close(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12345678910111213141516</code></pre> <p>需要注意的是，sqlSession也自带一些数据交互的操作</p> <h2>2、Mybatis的原理</h2> <ul> <li> <p>什么是Mybatis？</p> </li> <li> <ul> <li> <p>mybatis专注sql本身，需要程序员自己编写sql语句，sql修改、优化比较方便。mybatis是一个不完全 的ORM框架，虽然程序员自己写sql，mybatis 也可以实现映射（输入映射、输出映射）。</p> </li> <li> <p>mybatis是一个持久层的框架，是apache下的顶级项目。</p> </li> <li> <p>mybatis托管到goolecode下，后来托管到github下:mybatis Github地址</p> </li> <li> <p>mybatis让程序将主要精力放在sql上，通过mybatis提供的映射方式，自由灵活生成（半自动化，大部分需要程序员编写sql）满足需要sql语句。</p> </li> <li> <p>mybatis可以将向 preparedStatement中的输入参数自动进行输入映射，将查询结果集灵活映射成java对象。（输出映射）</p> </li> </ul> </li> <li> <p>mybatis底层实现</p> </li> <li> <ul> <li> <p>mybatis底层还是采用原生jdbc来对数据库进行操作的，只是通过 SqlSessionFactory，SqlSession Executor,StatementHandler，ParameterHandler,ResultHandler和TypeHandler等几个处理器封装了这些过程</p> </li> </ul> </li> <li> <p>对原生态jdbc程序（单独使用jdbc开发）问题总结：</p> <p>解决：使用数据库连接池管理数据库连接</p> <p>解决：将sql语句设置在xml配置文件中，即使sql变化，也无需重新编译</p> <p>解决：将sql语句及占位符，参数全部配置在xml文件中</p> <p>解决：将查询的结果集，自动映射成java对象</p> </li> <li> <ul> <li> <p>4、从resutSet中遍历结果集数据时，存在硬编码，将获取表的字段进行硬编码，不利于系统维护。</p> </li> <li> <p>3、向preparedStatement中设置参数，对占位符位置和设置参数值，硬编码到Java文件中，不利于系统维护</p> </li> <li> <p>2、将sql 语句硬编码到Java代码中，如果sql语句修改，需要对java代码重新编译，不利于系统维护</p> </li> <li> <p>1、数据库连接，使用时创建，不使用就关闭，对数据库进行频繁连接开启和关闭，造成数据库资源的浪费</p> </li> </ul> </li> <li> <p>mybatis工作原理</p> </li> <li> <ul> <li> <p>mybatis通过配置文件创建sqlsessionFactory，sqlsessionFactory根据配置文件，配置文件来源于两个方面:一个是xml，一个是Java中的注解，获取sqlSession。SQLSession包含了执行sql语句的所有方法，可以通过SQLSession直接运行映射的sql语句，完成对数据的增删改查和事物的提交工作，用完之后关闭SQLSession。</p> </li> </ul> </li> </ul> <h2>3、Mybatis的核心技术</h2> <ul> <li> <p>Mybatis输入映射</p> </li> <li> <ul> <li> <p>通过parameterType指定输入参数的类型，类型可以是简单类型、hashmap、pojo的包装类型</p> </li> </ul> </li> <li> <p>Mybatis输出映射</p> </li> <li> <ul> <li> <p>使用association和collection完成一对一和一对多高级映射（对结果有特殊的映射要求）。</p> </li> <li> <p>association：</p> </li> <li> <p>collection：</p> </li> <li> <p>作用：将关联查询信息映射到一个pojo对象中。</p> </li> <li> <p>场合：为了方便查询关联信息可以使用association将关联订单信息映射为用户对象的pojo属性中，比如：查询订单及关联用户信息。</p> </li> <li> <p>使用resultType无法将查询结果映射到pojo对象的pojo属性中，根据对结果集查询遍历的需要选择使用resultType还是resultMap。</p> </li> <li> <p>作用：将关联查询信息映射到一个list集合中。</p> </li> <li> <p>场合：为了方便查询遍历关联信息可以使用collection将关联信息映射到list集合中，比如：查询用户权限范围模块及模块下的菜单，可使用collection将模块映射到模块list中，将菜单列表映射到模块对象的菜单list属性中，这样的作的目的也是方便对查询结果集进行遍历查询。如果使用resultType无法将查询结果映射到list集合中。</p> </li> <li> <p>作用:将查询结果按照sql列名pojo属性名一致性映射到pojo中。</p> </li> <li> <p>使用resultType进行输出映射，只有查询出来的列名和pojo中的属性名一致，该列才可以映射成功。</p> </li> <li> <p>如果查询出来的列名和pojo中的属性名全部不一致，则不会创建pojo对象。</p> </li> <li> <p>只要查询出来的列名和pojo中的属性有一个一致，就会创建pojo对象</p> </li> <li> <p>如果查询出来的列名和pojo的属性名不一致，通过定义一个resultMap对列名和pojo属性名之间作一个映射关系。</p> </li> <li> <p>1、resultType</p> </li> <li> <p>2、resultMap**</p> </li> </ul> </li> <li> <p>Mybatis的动态sql</p> </li> <li> <p>什么是动态sql？</p> </li> <li> <ul> <li> <p>mybatis核心 对sql语句进行灵活操作，通过表达式进行判断，对sql进行灵活拼接、组装。</p> </li> <li> <p>包括， where ，if，foreach，choose，when，otherwise，set，trim等标签的使用</p> </li> </ul> </li> <li> <p>数据模型分析思路</p> </li> <li> <ul> <li> <p>非空字段、外键字段</p> </li> <li> <p>分模块对每张表记录的内容进行熟悉，相当 于你学习系统 需求（功能）的过程</p> </li> <li> <p>1、每张表记录的数据内容</p> </li> <li> <p>2、每张表重要的字段设置</p> </li> </ul> </li> <li> <p>3、数据库级别表与表之间的关系</p> </li> <li> <ul> <li> <p>外键关系</p> </li> </ul> </li> <li> <p>4、表与表之间的业务关系</p> </li> <li> <ul> <li> <p>在分析表与表之间的业务关系时一定要建立 在 某 个 业 务 意 义 基 础 上 去 分 析 。\color{red}{在某个业务意义基础上去分析。}在某个业务意义基础上去分析。</p> </li> </ul> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/136aa20ba059cf582ba3d943c7427be5.jpg" alt="SSM三大框架工作流程与原理详解"/></p> <ul> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=974112d9a0369bcfc514834e10d6faa224ab93b4a6acabd87bf6d9363136e0ebe950dd0595ed&amp;idx=1&amp;mid=2247497266&amp;scene=21&amp;sn=e059aa1a42ccbc9e48607d5565e628d4#wechat_redirect"  rel="nofollow">面试官：String长度有限制吗？是多少？还好我看过</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=97411019a036990fa1feeb79036a18253ee489d3de0ba96188ec03eb120c1defd982b2b16775&amp;idx=1&amp;mid=2247496946&amp;scene=21&amp;sn=f3e58c7c17794952b66e18454deae047#wechat_redirect"  rel="nofollow">SpringBoot 的jar包为什么可以直接运行？</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=974111c9a03698df1c840a7d053d364a42c4db21421a3366a01c18a4175f9927614bf35bbe58&amp;idx=1&amp;mid=2247496994&amp;scene=21&amp;sn=5f47a802e6d64e133ec995b156a43692#wechat_redirect"  rel="nofollow">一份 Spring Boot 项目搭建模板</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=97410a1ea0368308d1e5e7512d032bfb99577893ce962fe455d0475b9f4961066b342d2e1292&amp;idx=1&amp;mid=2247495413&amp;scene=21&amp;sn=25b9feef5ad4e69db208886f098fba63#wechat_redirect"  rel="nofollow">Maven虐我千百遍，我待Maven如初恋！</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=97410a36a036832048c693734e6f9c66f75dd8517751cf6fcd56472c65fc46a30f98d1e2e155&amp;idx=1&amp;mid=2247495389&amp;scene=21&amp;sn=abb1d1df2b8366fdde4d9bf2dd93f050#wechat_redirect"  rel="nofollow">MySQL面试高频100问（工程师方向）</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=97410afba03683ed88381a9343f7053d0ef915dae7588310809de47ba8da06e8e5ea1e03da6e&amp;idx=1&amp;mid=2247495184&amp;scene=21&amp;sn=bddaa74ec057891477273777c0150f4a#wechat_redirect"  rel="nofollow">亲身经历：一次sql缺少where条件的惨案…</a></p> </li> <li> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzIxMjU5NjEwMA%3D%3D&amp;chksm=9741090ca036801a2e330a1e5a8a5fccd3f224c08737ccd5e8d31bedc4d27c8ca8a8994c610c&amp;idx=1&amp;mid=2247495143&amp;scene=21&amp;sn=c913e9b8dc73fb2439930048fb28ad14#wechat_redirect"  rel="nofollow">基于netty手写Tomcat</a></p> </li> </ul> </h1> </h1> </div> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52105.htm">动物疫苗市场开放了吗（动物疫苗价格查询）</a></p>
+                                        <p>下一个：<a href="/news/article-52638.htm">宠物医院医疗许可证（宠物医疗许可证多少钱）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-49481.htm" title="宠物粮食批发进货渠道有哪些呢视频播放（宠物粮市场销售渠道）">宠物粮食批发进货渠道有哪些呢视频播放（宠物粮市场销售渠道）</a></li>
+                        <li class="py-2"><a href="/news/article-35566.htm" title="idea配置本地maven仓库">idea配置本地maven仓库</a></li>
+                        <li class="py-2"><a href="/news/article-24329.htm" title="动物医院好评模板图片高清下载大全（动物医院名片）">动物医院好评模板图片高清下载大全（动物医院名片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-hiddify-next-windows.htm" title="「2月8日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月8日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28525.htm" title="蓝氏乳鸽猫粮是被实锤了吗（蓝氏猫粮是毒猫粮吗）">蓝氏乳鸽猫粮是被实锤了吗（蓝氏猫粮是毒猫粮吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28992.htm" title="动物疫苗工艺流程图片高清（动物疫苗的种类和制备原理）">动物疫苗工艺流程图片高清（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-24812.htm" title="【义乌宠物领养|义乌宠物赠送】 义乌宠物领养中心地址">【义乌宠物领养|义乌宠物赠送】 义乌宠物领养中心地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-node-subscribe-links.htm" title="「12月26日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接">「12月26日」最高速度21.8M/S，2024年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29931.htm" title="动物预防接种计划表（动物接种要点）">动物预防接种计划表（动物接种要点）</a></li>
+                        <li class="py-2"><a href="/news/article-53166.htm" title="开个宠物食品店需要什么证 开个宠物食品店需要什么证件">开个宠物食品店需要什么证 开个宠物食品店需要什么证件</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="footer-bottom py-3 text-center">
+        <div class="container-lg">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p class="m-0">
+                HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/plugins.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
