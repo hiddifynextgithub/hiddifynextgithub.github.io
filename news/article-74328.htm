@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-74328.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>浅尝Spring注解开发_Bean生命周期及执行过程_在线工具</title>
+        <meta name="description" content="浅尝Spring注解开发，基于Spring 4.3.12包含Bean生命周期、自定义初始化方法、Debug BeanPostProcessor执行过程及在Spring底层中的应用  浅尝Spring注" />
+        <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-74328.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/3acf9873b34dc8612385098b4cef1f9c.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:20:33" />
+    <meta property="og:updated_time" content="2025-03-15T07:20:33" />
+        <meta property="og:description" content="浅尝Spring注解开发，基于Spring 4.3.12包含Bean生命周期、自定义初始化方法、Debug BeanPostProcessor执行过程及在Spring底层中的应用  浅尝Spring注" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7EDWRR8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LL7EDWRR8Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+            <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+            <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M24.59 16.59L17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10l10-10l-1.41-1.41z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M160 96.039v32h304v63.345l-35.5 112.655H149.932L109.932 16H16v32h66.068l40 288.039h329.9L496 196.306V96.039H160zm16.984 272.305a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Zm224-96a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="balloon" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path d="M8 16.607c1.15.86 2.518 1.38 4 1.393c4.142.034 7.594-3.92 7.56-8.196C19.527 5.53 16.142 2.034 12 2c-4.142-.034-7.473 3.404-7.44 7.68A8.88 8.88 0 0 0 5.244 13" />
+                <path d="M15.5 9a3.035 3.035 0 0 0-3-3M12 20.35c.321 0 .482 0 .593-.022c.654-.128 1.051-.772.858-1.39c-.033-.105-.109-.242-.261-.515M12 20.35c-.321 0-.482 0-.593-.022c-.654-.128-1.051-.772-.858-1.39c.033-.105.109-.242.261-.515M12 20.35v2.15" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="bag-heart" viewBox="0 0 24 24">
+            <g fill="none">
+                <path fill="currentColor" d="m12 12.191l-.519.542a.75.75 0 0 0 1.038 0L12 12.191Zm-.957 3.675l-.444.604l.444-.604Zm1.914 0l-.444-.605l.444.605Zm-.957.462v.75v-.75Zm-.514-1.067c-.417-.307-.878-.69-1.227-1.093c-.368-.426-.509-.757-.509-.971h-1.5c0 .77.441 1.45.875 1.952c.453.525 1.014.984 1.474 1.321l.887-1.21ZM9.75 13.197c0-.576.263-.827.492-.907c.25-.088.714-.06 1.24.443l1.037-1.083c-.825-.79-1.861-1.096-2.773-.776c-.934.327-1.496 1.226-1.496 2.323h1.5Zm3.65 3.273c.46-.337 1.022-.796 1.475-1.32c.434-.502.875-1.183.875-1.953h-1.5c0 .214-.141.545-.51.971c-.348.403-.809.786-1.226 1.093l.887 1.21Zm2.35-3.273c0-1.097-.563-1.996-1.496-2.323c-.912-.32-1.948-.014-2.773.776l1.038 1.083c.525-.503.989-.531 1.24-.443c.228.08.491.33.491.907h1.5ZM10.6 16.47c.368.27.782.608 1.4.608v-1.5c-.024 0-.04 0-.094-.03a4 4 0 0 1-.42-.287l-.887 1.21Zm1.914-1.21a4 4 0 0 1-.42.289c-.054.029-.07.029-.094.029v1.5c.618 0 1.032-.337 1.4-.608l-.886-1.21Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 6V5a3 3 0 1 1 6 0v1m5.224 6.526c-.586-3.121-.878-4.682-1.99-5.604C17.125 6 15.537 6 12.36 6h-.72c-3.176 0-4.764 0-5.875.922c-1.11.922-1.403 2.483-1.989 5.604c-.823 4.389-1.234 6.583-.034 8.029C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445c.696-.84.85-1.93.696-3.555" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="handiplast" viewBox="0 0 24 24">
+            <g fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 7.642L9.071 3.213a4.142 4.142 0 0 0-5.858 5.858L14.93 20.787a4.142 4.142 0 0 0 5.858-5.858l-4.358-4.358" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m12 17.858l-2.929 2.929A4.142 4.142 0 0 1 2.596 20m3.546-8l-2.929 2.929c-.322.322-.58.685-.774 1.071M12 6.142l2.929-2.929a4.142 4.142 0 1 1 5.858 5.858L17.857 12" />
+                <path fill="currentColor" d="M15.841 12.871a.788.788 0 1 1-1.114 1.114a.788.788 0 0 1 1.114-1.114Zm-3.712-3.712a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Zm4.641 6.497a.787.787 0 1 1-1.114 1.114a.787.787 0 0 1 1.114-1.114ZM9.345 8.23A.788.788 0 1 0 8.23 9.346A.788.788 0 0 0 9.345 8.23Zm3.712 3.713a.787.787 0 1 1-1.113 1.114a.787.787 0 0 1 1.113-1.114Zm.928 2.785a.788.788 0 1 1-1.114 1.113a.788.788 0 0 1 1.114-1.113Zm-3.712-3.713a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Z" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28ZM8 6.69v18.62L24.925 16Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="call-chat" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 2.75a4.25 4.25 0 0 0-3.807 6.142c.16.32.225.71.12 1.102l-.253.946l.946-.253a1.567 1.567 0 0 1 1.102.12A4.25 4.25 0 1 0 17 2.75ZM11.25 7a5.75 5.75 0 1 1 3.19 5.15a.126.126 0 0 0-.04-.013h-.007l-1.112.297a1.4 1.4 0 0 1-1.715-1.714l.298-1.113V9.6a.126.126 0 0 0-.014-.04a5.73 5.73 0 0 1-.6-2.56ZM3.718 4.092c1.226-1.29 3.254-1.049 4.268.385l1.26 1.783c.811 1.147.743 2.74-.225 3.76l-.245.257c0 .002 0 .004-.002.006c-.013.037-.045.152-.013.372c.067.456.418 1.381 1.846 2.884c1.432 1.508 2.3 1.864 2.703 1.929a.608.608 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.718c-4.134-4.352-4.919-8.137-5.018-9.986c-.049-.914.358-1.697.894-2.261l.544.516l-.544-.516l1.57-1.653Zm3.043 1.25c-.512-.724-1.433-.767-1.956-.217l-1.57 1.653c-.33.349-.505.748-.483 1.148c.08 1.51.731 4.952 4.607 9.033c4.064 4.279 7.809 4.4 9.244 4.258c.283-.028.575-.186.854-.48l1.42-1.495c.614-.645.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.455.48l-.544-.517c.543.517.543.517.542.518l-.001.002l-.003.003l-.007.006l-.014.014a1.003 1.003 0 0 1-.136.112c-.08.057-.186.12-.321.172c-.276.11-.64.168-1.091.095c-.878-.143-2.028-.773-3.55-2.377c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.592 1.592 0 0 1 .23-.427l.03-.037l.014-.015l.006-.006l.003-.003l.002-.002s.001-.001.545.515l-.544-.516l.287-.302c.445-.47.51-1.264.088-1.86L6.76 5.342Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="mail" viewBox="0 0 21 21">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 6.5v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2z" />
+                <path d="m5.5 7.5l5 3l5-3" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="location" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M5.25 7.7c0-3.598 3.059-6.45 6.75-6.45c3.608 0 6.612 2.725 6.745 6.208l.478.16c.463.153.87.289 1.191.439c.348.162.667.37.911.709c.244.338.341.707.385 1.088c.04.353.04.78.04 1.269v5.748c0 .61 0 1.13-.047 1.547c-.05.438-.161.87-.463 1.237a2.25 2.25 0 0 1-.62.525c-.412.237-.855.276-1.296.253c-.42-.022-.933-.107-1.534-.208l-.041-.007c-1.293-.215-1.814-.296-2.322-.254a4.3 4.3 0 0 0-.552.083c-.498.109-.976.342-2.159.933l-.122.061c-1.383.692-2.234 1.118-3.154 1.251c-.276.04-.555.06-.835.06c-.928-.002-1.825-.301-3.28-.786a73.75 73.75 0 0 1-.127-.043l-.384-.128l-.037-.012c-.463-.154-.87-.29-1.191-.44c-.348-.162-.667-.37-.911-.709c-.244-.338-.341-.707-.385-1.088c-.04-.353-.04-.78-.04-1.269v-5.02c0-.786 0-1.448.067-1.967c.07-.542.23-1.072.666-1.47a2.25 2.25 0 0 1 .42-.304c.517-.287 1.07-.27 1.605-.166c.11.021.223.047.342.078c-.066-.446-.1-.89-.1-1.328Zm.499 3.01a9.414 9.414 0 0 0-1.028-.288c-.395-.077-.525-.03-.586.004a.747.747 0 0 0-.14.101c-.053.048-.138.156-.19.556c-.053.41-.055.974-.055 1.825v4.93c0 .539.001.88.03 1.138c.028.238.072.327.112.381c.039.055.109.125.326.226c.236.11.56.219 1.07.39l.384.127c1.624.541 2.279.75 2.936.752c.207 0 .413-.015.617-.044c.65-.094 1.276-.397 2.82-1.17l.093-.046c1.06-.53 1.714-.857 2.417-1.01c.246-.054.496-.092.747-.113c.717-.06 1.432.06 2.593.253l.1.017c.655.109 1.083.18 1.407.196c.312.016.419-.025.471-.055a.749.749 0 0 0 .207-.175c.039-.047.097-.146.132-.456c.037-.323.038-.757.038-1.42v-5.667c0-.539-.001-.88-.03-1.138c-.028-.238-.072-.327-.112-.381c-.039-.055-.109-.125-.326-.226c-.236-.11-.56-.219-1.07-.39l-.06-.019a10.701 10.701 0 0 1-1.335 3.788c-.912 1.568-2.247 2.934-3.92 3.663a3.505 3.505 0 0 1-2.794 0c-1.673-.73-3.008-2.095-3.92-3.663a10.856 10.856 0 0 1-.934-2.087ZM12 2.75c-2.936 0-5.25 2.252-5.25 4.95c0 1.418.437 2.98 1.23 4.341c.791 1.362 1.908 2.47 3.223 3.044c.505.22 1.089.22 1.594 0c1.316-.574 2.432-1.682 3.224-3.044c.792-1.36 1.229-2.923 1.229-4.34c0-2.699-2.314-4.951-5.25-4.951Zm0 4a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5ZM9.25 8a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0Z" clip-rule="evenodd" />
+        </symbol>
+    </svg>
+    <header id="header" class="site-header position-fixed z-2 w-100 border-bottom mb-5">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container-lg">
+                <a class="navbar-brand pb-4" href="/">
+                                <span>Hiddify Next Github</span>
+                                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon" width="50" height="50">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/news/">新闻资讯</a>
+                            </li>
+                                                        
+                            <span class="scrollspy-indicator"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+        <div class="container-lg py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">浅尝Spring注解开发_Bean生命周期及执行过程_在线工具</h1>
+                    <nav class="breadcrumb justify-content-center">
+                        <a class="breadcrumb-item" href="/">首页</a>
+                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="scrollspy-section py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <blockquote> <p>浅尝Spring注解开发，基于Spring 4.3.12<br /><font color="red">包含Bean生命周期、自定义初始化方法、Debug BeanPostProcessor执行过程及在Spring底层中的应用</font></p> </blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/wei-ran/p/16203112.html"  title="浅尝Spring注解开发_自定义注册组件、属性赋值、自动装配" target="_blank"  rel="nofollow">浅尝Spring注解开发_自定义注册组件、属性赋值、自动装配</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/wei-ran/p/16207148.html"  title="浅尝Spring注解开发_Bean生命周期及执行过程" target="_blank"  rel="nofollow">浅尝Spring注解开发_Bean生命周期及执行过程</a></p> <h2 id="bean生命周期">Bean生命周期</h2> <blockquote> <p>了解Bean的生命周期，就可以在Bean声明周期的不同阶段进行自定义的操作，满足更复杂的需求。简单的将Bean生命周期分为三个阶段：Bean创建、初始化、销毁</p> <ul> <li>对象创建：单实例在容器启动的时候创建对象，多实例在每次获取的时候创建对象 <ul> <li>初始化之前：BeanPostProcessor.postProcessBeforeInitialization()</li> </ul> </li> <li>初始化：对象创建完成，并赋值好，调用初始化方法 <ul> <li>初始化之后：BeanPostProcessor.postProcessAfterInitialization()</li> </ul> </li> <li>[容器创建完成]</li> <li>销毁：单实例在容器关闭的时候销毁，多实例<strong>容器不会管理这个bean，容器不会调用销毁方法</strong> </li> </ul> <p>现在可以通过下面方法在初始化和销毁时<strong>自定义初始化方法</strong>来干涉Bean创建过程。</p> <ol> <li>@Bean()注解参数</li> <li>InitializingBean、DisposableBean接口</li> <li>@PostConstruct、@PreDestroy注解</li> <li>BeanPostProcessor接口</li> </ol> </blockquote> <h3 id="1bean生命周期">1.@Bean生命周期</h3> <p>通过@Bean指定init-method和destroy-method的初始化方法</p> <ul> <li> <p>先自定义Bean初始化和销毁方法</p> <pre><code class="language-java">@Component public class Car { 	 	public Car(){ 		System.out.println("car constructor..."); 	} 	//现在只是普通方法 	public void init(){ 		System.out.println("car ... init..."); 	} 	//现在只是普通方法 	public void detory(){ 		System.out.println("car ... destory..."); 	}  } </code></pre> </li> <li> <p>配置进容器</p> <ul> <li>通过@Bean注解，在@Bean注册进容器时指定自定义方法</li> </ul> <pre><code class="language-java">@Configuration public class MainConfigOfLifeCycle { 	 	//@Scope("prototype")多实例，不管销毁 	//指定用于初始化和销毁的方法 	@Bean(initMethod="init",destroyMethod="destory") 	public Car car(){ 		return new Car(); 	}  } </code></pre> </li> <li> <p>测试</p> <pre><code class="language-java">public class IOCTest_LifeCycle { 	 	@Test 	public void test01(){ 		//1、创建ioc容器 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class); 		System.out.println("容器创建完成..."); 		 		//applicationContext.getBean("car"); 		//关闭容器 		applicationContext.close(); 	}  } </code></pre> <p>输出</p> <pre><code class="language-java">//先创建对象 car constructor... //再自定义初始化方法 car ... init... //创建完成 容器创建完成... //关闭时自定义销毁方法 car ... destory... </code></pre> </li> </ul> <h3 id="2initializingbeandisposablebean生命周期">2.InitializingBean，DisposableBean生命周期</h3> <p>接口，需实现，通过让Bean实现InitializingBean（定义初始化逻辑），DisposableBean（定义销毁逻辑）;</p> <ul> <li> <p>实现接口，自定义初始化Bean</p> <pre><code class="language-java">public class Cat implements InitializingBean,DisposableBean { 	 	public Cat(){ 		System.out.println("cat constructor..."); 	}  	//定义销毁逻辑 	@Override 	public void destroy() throws Exception { 		// TODO Auto-generated method stub 		System.out.println("cat...destroy..."); 	}  	//定义初始化逻辑 	@Override 	public void afterPropertiesSet() throws Exception { 		// TODO Auto-generated method stub 		System.out.println("cat...afterPropertiesSet..."); 	}  } </code></pre> </li> <li> <p>配置进容器</p> <ul> <li>在@Configuration配置类中使用@Bean</li> <li>或在Bean类上使用@Component然后再配置类上使用@ComponentScan</li> </ul> <pre><code class="language-java">//配置组件 @Component public class Cat implements InitializingBean,DisposableBean { 	//... } </code></pre> <pre><code class="language-java">//扫描进容器 @ComponentScan("com.xxx.bean") @Configuration public class MainConfigOfLifeCycle { 	//... } </code></pre> </li> <li> <p>测试</p> <pre><code class="language-java">public class IOCTest_LifeCycle { 	 	@Test 	public void test01(){ 		//1、创建ioc容器 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class); 		System.out.println("容器创建完成..."); 		 		//applicationContext.getBean("car"); 		//关闭容器 		applicationContext.close(); 	} } </code></pre> <p>输出</p> <pre><code class="language-java">//注意顺序，每个Bean先构造并初始化，然后才进行下一个Bean，关闭时从内向外 （猫）cat constructor... （猫）cat...afterPropertiesSet... （车）car constructor... （车）car ... init... //创建完成  容器创建完成... //关闭时销毁 （车）car ... destory... （猫）cat...destroy... </code></pre> </li> </ul> <h3 id="3postconstruct生命周期">3.@PostConstruct生命周期</h3> <p>可以使用JSR250；</p> <ul> <li> <p>@PostConstruct：在bean创建完成并且属性赋值完成之后，来执行初始化方法</p> </li> <li> <p>@PreDestroy：在容器销毁bean之前通知我们进行清理工作</p> </li> <li> <p>标注注解，自定义初始化Bean</p> <pre><code class="language-java">public class Dog {  	public Dog(){ 		System.out.println("dog constructor..."); 	} 	 	//对象创建并赋值之后调用 	@PostConstruct 	public void init(){ 		System.out.println("Dog....@PostConstruct..."); 	} 	 	//容器移除对象之前 	@PreDestroy 	public void detory(){ 		System.out.println("Dog....@PreDestroy..."); 	} } </code></pre> </li> <li> <p>配置进容器</p> <ul> <li>在@Configuration配置类中使用@Bean</li> <li>或在Bean类上使用@Component然后再配置类上使用@ComponentScan</li> </ul> <pre><code class="language-java">@Component public class Dog { 	//... } </code></pre> <pre><code class="language-java">//扫描进容器 @ComponentScan("com.xxx.bean") @Configuration public class MainConfigOfLifeCycle { 	//... } </code></pre> </li> <li> <p>测试</p> <pre><code class="language-java">public class IOCTest_LifeCycle { 	 	@Test 	public void test01(){ 		//1、创建ioc容器 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class); 		System.out.println("容器创建完成..."); 		 		//applicationContext.getBean("car"); 		//关闭容器 		applicationContext.close(); 	}  } </code></pre> <p>输出</p> <pre><code class="language-java">//注意顺序，每个Bean先构造并初始化，然后才进行下一个Bean，关闭时从内向外 （猫）cat constructor... （猫）cat...afterPropertiesSet... （狗）dog constructor... （狗）Dog....@PostConstruct... （车）car constructor... （车）car ... init... //创建完成 容器创建完成... //关闭时销毁 （车）car ... destory... （狗）Dog....@PreDestroy... （猫）cat...destroy... </code></pre> </li> </ul> <h3 id="4beanpostprocessor">4.BeanPostProcessor</h3> <blockquote> <p>postProcessBeforeInitialization：在创建Bean实例之后，在自定义初始化之前进行调用</p> <p>postProcessAfterInitialization：在自定义初始化之后进行调用</p> </blockquote> <p>BeanPostProcessor接口：bean的后置处理器，需实现，在bean初始化前后进行一些处理工作</p> <ul> <li> <p>postProcessBeforeInitialization：<font color="red">在<strong>（自定义初始化，如InitializingBean[afterPropertiesSet]、init-method等，就是上面那些自定义初始化方法）</strong>初始化之前工作<strong>（创建Bean实例之后，在自定义初始化之前）</strong></font></p> </li> <li> <p>postProcessAfterInitialization：<font color="red">在（自定义）初始化之后工作</font></p> </li> <li> <p>实现后置处理器接口</p> <pre><code class="language-java">public class MyBeanPostProcessor implements BeanPostProcessor {  	//初始化前置方法 	//bean：新创建的实例，还未初始化 	//beanName：未初始化的Bean名字 	@Override 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException { 		// TODO Auto-generated method stub 		System.out.println("postProcessBeforeInitialization..."+beanName+"=&gt;"+bean); 		return bean; 	} 	//初始化后置方法 	@Override 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException { 		// TODO Auto-generated method stub 		System.out.println("postProcessAfterInitialization..."+beanName+"=&gt;"+bean); 		return bean; 	}      } </code></pre> </li> <li> <p>配置进容器</p> <ul> <li>在@Configuration配置类中使用@Bean</li> <li>或在Bean类上使用@Component然后再配置类上使用@ComponentScan</li> </ul> <pre><code class="language-java">@Component public class MyBeanPostProcessor implements BeanPostProcessor {      //... } </code></pre> <pre><code class="language-java">//扫描进容器 @ComponentScan("com.xxx.bean") @Configuration public class MainConfigOfLifeCycle { 	//... } </code></pre> </li> <li> <p>测试</p> <ul> <li>这次没有新增的Bean，只配置了一个后置处理器，</li> <li>这个后置处理器会对容器中的Bean起作用，包括上面三种自定义初始化Bean</li> </ul> <pre><code class="language-java">public class IOCTest_LifeCycle { 	 	@Test 	public void test01(){ 		//1、创建ioc容器 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class); 		System.out.println("容器创建完成..."); 		 		//applicationContext.getBean("car"); 		//关闭容器 		applicationContext.close(); 	}  } </code></pre> <p>输出</p> <pre><code class="language-java">//对于每一个Bean都要执行一遍 //1.创建 //2.BeanPostProcessor.postProcessBeforeInitialization() //3.初始化：对象创建完成，并赋值好，调用初始化方法... //4.BeanPostProcessor.postProcessAfterInitialization() //5.销毁   //以其中一个Bean为例： //构造对象 cat constructor... //初始化之前 postProcessBeforeInitialization...cat=&gt;com.xxx.bean.Cat@7d68ef40 //使用InitializingBean自定义初始化逻辑 cat...afterPropertiesSet... //初始化之后 postProcessAfterInitialization...cat=&gt;com.xxx.bean.Cat@7d68ef40 //创建完成 容器创建完成... //关闭时销毁 cat ... destroy... </code></pre> </li> </ul> <h3 id="beanpostprocessor原理">⭐BeanPostProcessor原理</h3> <blockquote> <p>bean赋值，注入其他组件，@Autowired，生命周期注解功能，@Async，xxxBeanPostProcessor都通过BeanPostProcessor实现</p> <p>详细视频 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.bilibili.com/video/BV1gW411W7wy?p=16"  target="_blank"  rel="nofollow">https://www.bilibili.com/video/BV1gW411W7wy?p=16</a></p> </blockquote> <p>主要方法</p> <pre><code class="language-java">populateBean(beanName, mbd, instanceWrapper)：给bean进行属性赋值 initializeBean：初始化Bean {     applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);初始化前应用后置处理器     invokeInitMethods(beanName, wrappedBean, mbd);执行自定义初始化     applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);初始化后应用后置处理器 } 遍历得到容器中所有的BeanPostProcessor；挨个执行beforeInitialization， 一但返回null，跳出for循环 </code></pre> <h4 id="执行过程">执行过程</h4> <p>了解BeanPostProcessor的执行过程，从AnnotationConfigApplicationContext开始Debug</p> <pre><code class="language-java">public class IOCTest_LifeCycle { 	 	@Test 	public void test01(){ 		//1、创建ioc容器 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfLifeCycle.class); 		System.out.println("容器创建完成..."); 		 		//applicationContext.getBean("car"); 		//关闭容器 		applicationContext.close(); 	} } </code></pre> <ol> <li>先从创建ioc容器开始，进入<code>AnnotationConfigApplicationContext()</code>构造方法，执行里面的<code>refresh()</code>方法刷新容器 <ol> <li> <code>refresh()</code>方法里面有一个<code>finishBeanFactoryInitialization(beanFactory)</code>初始化所有剩余的单实例对象，进入这个方法</li> </ol> </li> <li>这个方法最后一步有一个<code>beanFactory.preInstantiateSingletons()</code>初始化所有单实例Bean，进入这个方法 <ol> <li>触发所有非惰性单例bean的初始化</li> <li>里面调用<code>getBean(beanName)</code>，</li> <li>进入<code>getBean(beanName)</code>里面再调用<code>doGetBean(name,null,null,false)</code> </li> <li>进入<code>doGetBean(name,null,null,false)</code>里面有<code>getSingleton(beanName,new ObjectFactory(){singletonFactory.getObject()})</code>通过匿名内部类调用<code>getObject()</code> </li> </ol> </li> <li>此时通过匿名类<code>getObject()</code>进入下一个调用栈<code>AbstractBeanFactory$1.getObject()</code>，如果是单例，调用<code>createBean(beanName,mbd,args)</code> </li> <li>进入<code>createBean(beanName,mbd,args)</code>调用<code>doCreateBean(beanName,mbd,args)</code>创建一个实例，过程如下 <ol> <li>进入<code>doCreateBean(beanName,mbd,args)</code>，里面调用一个<font color="red"><code>initializeBean(beanName,exposedObject,mbd)</code>初始化方法，这个方法里面就是调用的后置处理器</font> </li> <li>在这个方法上面有<font color="red"><code>populateBean(beanName，mbd,instanceWrapper)</code>方法，这个方法为Bean属性赋值</font> </li> <li> <font color="red">进入<code>initializeBean(beanName,exposedObject,mbd)</code>，下面有一个<code>invokeInitMethods(beanName,wrappedBean,mbd)</code>执行初始化方法</font>（就是上面的自定义初始化InitializingBean[afterPropertiesSet]、init-method）</li> <li><font color="red">在<code>invokeInitMethods(beanName,wrappedBean,mbd)[在初始化之前应用 BeanPost 处理器]</code>上面有一个<code>applyBeanPostProcessorsBeforeInitialization(wrappedBean,beanName)</code>下面有一个<code>applyBeanPostProcessorsAfterInitialization(wrappedBean,beanName)[在初始化之后应用 BeanPost 处理器]</code>，作用是在初始化之前应用所有的<code>BeanPostProcessors</code>在初始化之后应用所有的<code>BeanPostProcessors</code></font></li> </ol> </li> <li>进入<code>applyBeanPostProcessorsBeforeInitialization(wrappedBean,beanName)</code> <ol> <li>里面有<code>getBeanPostProcessors()</code>找到所有<code>BeanPostProcessors</code>遍历，包括Spring系统的<code>BeanPostProcessor</code>如<code>ApplicationContextAwareProcessor</code>、<code>ConfigurationClassPostProcessor</code>等，<font color="red">然后才是自定义的<code>MyBeanPostProcessor</code></font>，依次执行<code>beanProcessor.postProcessBeforeInitialization()</code> </li> <li>如果有执行返回null，就结束遍历，返回null，后面的处理器就不执行了（不应用后续的<code>BeanPostProcessors</code>了）</li> </ol> </li> </ol> <h4 id="调用栈">调用栈</h4> <ul> <li> <p>获取单例</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/f95f346405b885dea8ad4962f0a40d5e.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> </li> <li> <p>创建实例Bean</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/5f72dfb567cc71a2bf74332230a00475.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> </li> <li> <p>给Bean属性赋值和初始化Bean</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/f9bdfd65760db6faf09d0abded9f8189.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> </li> </ul> <h4 id="完整流程">完整流程</h4> <p>Spring底层对 BeanPostProcessor 的使用；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/46cbd5a6059a2d26f8ed99d76fea6ac1.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> <ol> <li>由上图可以看到，Spring中的BeanPostProcessor在实例化过程处于的位置，BeanPostProcessor接口有两个方法需要实现：postProcessBeforeInitialization和postProcessAfterInitialization</li> <li>前者在实例化及依赖注入完成后、在任何初始化代码（比如配置文件中的init-method）调用之前调用；后者在初始化代码调用之后调用。</li> </ol> <h3 id="beanpostprocessor在spring底层的使用">⭐BeanPostProcessor在Spring底层的使用</h3> <blockquote> <p><strong>许多注解底层都是基于BeanPostProcessor</strong></p> </blockquote> <p>BeanPostProcessor接口实现类</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/108382081456bc55a3933638992e898a.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> <h4 id="向组件中注入ioc容器">向组件中注入IoC容器</h4> <blockquote> <p>在Bean创建过程中，初始化之前，判断是否实现了某Aware接口，如果实现了，就向Bean中注入ApplicationContext容器</p> </blockquote> <ul> <li> <p>向Bean中注入IoC容器</p> <ul> <li> <p>实现ApplicationContextAware接口，声明属性，赋值，就可以在组件中使用Ioc容器</p> <pre><code class="language-java">@Component public class Dog implements ApplicationContextAware { 	 	//声明IoC容器 	private ApplicationContext applicationContext; 	 	public Dog(){ 		System.out.println("dog constructor..."); 	} 	 	//对象创建并赋值之后调用 	@PostConstruct 	public void init(){ 		System.out.println("Dog....@PostConstruct..."); 	} 	 	//容器移除对象之前 	@PreDestroy 	public void detory(){ 		System.out.println("Dog....@PreDestroy..."); 	}  	//把applicationContext IoC容器赋值给属性 	@Override 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException { 		// TODO Auto-generated method stub 		this.applicationContext = applicationContext; 	} } </code></pre> </li> </ul> </li> <li> <p>原理是通过<code>ApplicationContextAwareProcessor</code>实现</p> <ul> <li> <p><code>ApplicationContextAwareProcessor</code>实现了<code>BeanPostProcessor</code>接口</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/700d4c18c7e3420e86f64c46526990b2.jpg" alt="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具"></p> </li> <li> <p>在<code>postProcessBeforeInitialization()</code>方法中</p> <ol> <li>在Bean初始化之前，判断Bean是否实现了<code>ApplicationContextAware</code>接口，或其他Aware接口</li> <li>如果实现了，就调用<code>invokeAwareInterfaces(bean)</code>给Bean注入值</li> <li>判断Bean是什么类型Aware，将Bean转成对应类型调用<code>((ApplicationContextAware)bean).setApplicationContext(this.applicationContext)</code>注入IoC容器</li> <li>于是就到了上面实现的接口的未实现方法中</li> </ol> </li> </ul> </li> </ul> <h4 id="数据校验">数据校验</h4> <ul> <li> <code>BeanValidationPostProcessor</code>也实现了<code>BeanPostProcessor</code>接口</li> <li>在Bean创建完赋值后，同样调用<code>postProcessBeforeInitialization()</code>方法，进行数据校验 <ul> <li><code>postProcessBeforeInitialization(){doValidate(bean)}</code></li> <li><code>postProcessAfterInitialization(){doValidate(bean)}</code></li> </ul> </li> </ul> <h4 id="自定义初始化注解">自定义初始化注解</h4> <ul> <li>Bean初始化有一种方法是使用<code>@PostConstruct</code>注解，也是通过<code>BeanPostProcessor</code>实现</li> <li> <code>InitDestroyAnnotationBeanPostProcessor</code>处理<code>@PostConstruct</code>和<code>@PreDestroy</code>注解</p> <ul> <li>在<code>postProcessBeforeInitialization()</code>中找到Bean的生命周期注解所标注的方法，如<code>initMethods、destroyMethods</code> </li> <li>找到之后就执行注解标注的初始化方法<code>metatata.invokeInitMethods(bean,beanName)</code>和<code>element.invoke(target)</code>，利用反射执行。</li> </ul> </li> </ul> <h4 id="自动注入注解autowired">自动注入注解@Autowired</h4> <ul> <li>为什么@Autowired能够自动注入值，是通过这个<code>AutowiredAnnotationBeanPostProcessor</code>实现<code>BeanPostProcessors</code>接口</li> <li>在对象创建完之后，处理标注<code>@Autowired</code>标注的所有属性进行注入值</li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73659.htm">武汉哪家宠物医院收费合理些（武汉良心的宠物医院）</a></p>
+                                        <p>下一个：<a href="/news/article-74329.htm">领养宠物需要给钱吗 领养宠物需要给钱吗现在</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-hiddify-next-windows.htm" title="「2月23日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月23日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-hiddify-next-windows.htm" title="「1月10日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月10日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-high-speed-nodes.htm" title="「3月2日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月2日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-52105.htm" title="动物疫苗市场开放了吗（动物疫苗价格查询）">动物疫苗市场开放了吗（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-hiddify-next-node-share.htm" title="「2月15日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月15日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45031.htm" title="Istio实践流量控制及服务间调用">Istio实践流量控制及服务间调用</a></li>
+                        <li class="py-2"><a href="/news/article-58762.htm" title="ES的searchAfter使用详解">ES的searchAfter使用详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-today-hiddify-next-node.htm" title="「2月2日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月2日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-61039.htm" title="宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些">宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-40560.htm" title="宠物粮的配方（宠物粮配方比例）">宠物粮的配方（宠物粮配方比例）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="footer-bottom py-3 text-center">
+        <div class="container-lg">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p class="m-0">
+                HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/plugins.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
