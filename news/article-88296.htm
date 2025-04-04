@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-88296.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>JVM内存管理面试常见问题全解</title>
+        <meta name="description" content="目录  一、什么是JVM  1、jvm的三个组成部分   二、类加载系统    1、类的加载过程 2、类加载器     三、双亲委派机制    1、双亲委派机制介绍 2、为什么要双亲委派机制 3、双亲" />
+        <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-88296.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="JVM内存管理面试常见问题全解" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/fb9b9d3bf9f6fe3052768d922859c076.webp" />
+        <meta property="og:release_date" content="2025-04-04T09:09:20" />
+    <meta property="og:updated_time" content="2025-04-04T09:09:20" />
+        <meta property="og:description" content="目录  一、什么是JVM  1、jvm的三个组成部分   二、类加载系统    1、类的加载过程 2、类加载器     三、双亲委派机制    1、双亲委派机制介绍 2、为什么要双亲委派机制 3、双亲" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JVM内存管理面试常见问题全解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7EDWRR8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LL7EDWRR8Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+            <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+            <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M24.59 16.59L17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10l10-10l-1.41-1.41z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M160 96.039v32h304v63.345l-35.5 112.655H149.932L109.932 16H16v32h66.068l40 288.039h329.9L496 196.306V96.039H160zm16.984 272.305a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Zm224-96a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="balloon" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path d="M8 16.607c1.15.86 2.518 1.38 4 1.393c4.142.034 7.594-3.92 7.56-8.196C19.527 5.53 16.142 2.034 12 2c-4.142-.034-7.473 3.404-7.44 7.68A8.88 8.88 0 0 0 5.244 13" />
+                <path d="M15.5 9a3.035 3.035 0 0 0-3-3M12 20.35c.321 0 .482 0 .593-.022c.654-.128 1.051-.772.858-1.39c-.033-.105-.109-.242-.261-.515M12 20.35c-.321 0-.482 0-.593-.022c-.654-.128-1.051-.772-.858-1.39c.033-.105.109-.242.261-.515M12 20.35v2.15" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="bag-heart" viewBox="0 0 24 24">
+            <g fill="none">
+                <path fill="currentColor" d="m12 12.191l-.519.542a.75.75 0 0 0 1.038 0L12 12.191Zm-.957 3.675l-.444.604l.444-.604Zm1.914 0l-.444-.605l.444.605Zm-.957.462v.75v-.75Zm-.514-1.067c-.417-.307-.878-.69-1.227-1.093c-.368-.426-.509-.757-.509-.971h-1.5c0 .77.441 1.45.875 1.952c.453.525 1.014.984 1.474 1.321l.887-1.21ZM9.75 13.197c0-.576.263-.827.492-.907c.25-.088.714-.06 1.24.443l1.037-1.083c-.825-.79-1.861-1.096-2.773-.776c-.934.327-1.496 1.226-1.496 2.323h1.5Zm3.65 3.273c.46-.337 1.022-.796 1.475-1.32c.434-.502.875-1.183.875-1.953h-1.5c0 .214-.141.545-.51.971c-.348.403-.809.786-1.226 1.093l.887 1.21Zm2.35-3.273c0-1.097-.563-1.996-1.496-2.323c-.912-.32-1.948-.014-2.773.776l1.038 1.083c.525-.503.989-.531 1.24-.443c.228.08.491.33.491.907h1.5ZM10.6 16.47c.368.27.782.608 1.4.608v-1.5c-.024 0-.04 0-.094-.03a4 4 0 0 1-.42-.287l-.887 1.21Zm1.914-1.21a4 4 0 0 1-.42.289c-.054.029-.07.029-.094.029v1.5c.618 0 1.032-.337 1.4-.608l-.886-1.21Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 6V5a3 3 0 1 1 6 0v1m5.224 6.526c-.586-3.121-.878-4.682-1.99-5.604C17.125 6 15.537 6 12.36 6h-.72c-3.176 0-4.764 0-5.875.922c-1.11.922-1.403 2.483-1.989 5.604c-.823 4.389-1.234 6.583-.034 8.029C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445c.696-.84.85-1.93.696-3.555" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="handiplast" viewBox="0 0 24 24">
+            <g fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 7.642L9.071 3.213a4.142 4.142 0 0 0-5.858 5.858L14.93 20.787a4.142 4.142 0 0 0 5.858-5.858l-4.358-4.358" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m12 17.858l-2.929 2.929A4.142 4.142 0 0 1 2.596 20m3.546-8l-2.929 2.929c-.322.322-.58.685-.774 1.071M12 6.142l2.929-2.929a4.142 4.142 0 1 1 5.858 5.858L17.857 12" />
+                <path fill="currentColor" d="M15.841 12.871a.788.788 0 1 1-1.114 1.114a.788.788 0 0 1 1.114-1.114Zm-3.712-3.712a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Zm4.641 6.497a.787.787 0 1 1-1.114 1.114a.787.787 0 0 1 1.114-1.114ZM9.345 8.23A.788.788 0 1 0 8.23 9.346A.788.788 0 0 0 9.345 8.23Zm3.712 3.713a.787.787 0 1 1-1.113 1.114a.787.787 0 0 1 1.113-1.114Zm.928 2.785a.788.788 0 1 1-1.114 1.113a.788.788 0 0 1 1.114-1.113Zm-3.712-3.713a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Z" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28ZM8 6.69v18.62L24.925 16Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="call-chat" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 2.75a4.25 4.25 0 0 0-3.807 6.142c.16.32.225.71.12 1.102l-.253.946l.946-.253a1.567 1.567 0 0 1 1.102.12A4.25 4.25 0 1 0 17 2.75ZM11.25 7a5.75 5.75 0 1 1 3.19 5.15a.126.126 0 0 0-.04-.013h-.007l-1.112.297a1.4 1.4 0 0 1-1.715-1.714l.298-1.113V9.6a.126.126 0 0 0-.014-.04a5.73 5.73 0 0 1-.6-2.56ZM3.718 4.092c1.226-1.29 3.254-1.049 4.268.385l1.26 1.783c.811 1.147.743 2.74-.225 3.76l-.245.257c0 .002 0 .004-.002.006c-.013.037-.045.152-.013.372c.067.456.418 1.381 1.846 2.884c1.432 1.508 2.3 1.864 2.703 1.929a.608.608 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.718c-4.134-4.352-4.919-8.137-5.018-9.986c-.049-.914.358-1.697.894-2.261l.544.516l-.544-.516l1.57-1.653Zm3.043 1.25c-.512-.724-1.433-.767-1.956-.217l-1.57 1.653c-.33.349-.505.748-.483 1.148c.08 1.51.731 4.952 4.607 9.033c4.064 4.279 7.809 4.4 9.244 4.258c.283-.028.575-.186.854-.48l1.42-1.495c.614-.645.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.455.48l-.544-.517c.543.517.543.517.542.518l-.001.002l-.003.003l-.007.006l-.014.014a1.003 1.003 0 0 1-.136.112c-.08.057-.186.12-.321.172c-.276.11-.64.168-1.091.095c-.878-.143-2.028-.773-3.55-2.377c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.592 1.592 0 0 1 .23-.427l.03-.037l.014-.015l.006-.006l.003-.003l.002-.002s.001-.001.545.515l-.544-.516l.287-.302c.445-.47.51-1.264.088-1.86L6.76 5.342Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="mail" viewBox="0 0 21 21">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 6.5v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2z" />
+                <path d="m5.5 7.5l5 3l5-3" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="location" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M5.25 7.7c0-3.598 3.059-6.45 6.75-6.45c3.608 0 6.612 2.725 6.745 6.208l.478.16c.463.153.87.289 1.191.439c.348.162.667.37.911.709c.244.338.341.707.385 1.088c.04.353.04.78.04 1.269v5.748c0 .61 0 1.13-.047 1.547c-.05.438-.161.87-.463 1.237a2.25 2.25 0 0 1-.62.525c-.412.237-.855.276-1.296.253c-.42-.022-.933-.107-1.534-.208l-.041-.007c-1.293-.215-1.814-.296-2.322-.254a4.3 4.3 0 0 0-.552.083c-.498.109-.976.342-2.159.933l-.122.061c-1.383.692-2.234 1.118-3.154 1.251c-.276.04-.555.06-.835.06c-.928-.002-1.825-.301-3.28-.786a73.75 73.75 0 0 1-.127-.043l-.384-.128l-.037-.012c-.463-.154-.87-.29-1.191-.44c-.348-.162-.667-.37-.911-.709c-.244-.338-.341-.707-.385-1.088c-.04-.353-.04-.78-.04-1.269v-5.02c0-.786 0-1.448.067-1.967c.07-.542.23-1.072.666-1.47a2.25 2.25 0 0 1 .42-.304c.517-.287 1.07-.27 1.605-.166c.11.021.223.047.342.078c-.066-.446-.1-.89-.1-1.328Zm.499 3.01a9.414 9.414 0 0 0-1.028-.288c-.395-.077-.525-.03-.586.004a.747.747 0 0 0-.14.101c-.053.048-.138.156-.19.556c-.053.41-.055.974-.055 1.825v4.93c0 .539.001.88.03 1.138c.028.238.072.327.112.381c.039.055.109.125.326.226c.236.11.56.219 1.07.39l.384.127c1.624.541 2.279.75 2.936.752c.207 0 .413-.015.617-.044c.65-.094 1.276-.397 2.82-1.17l.093-.046c1.06-.53 1.714-.857 2.417-1.01c.246-.054.496-.092.747-.113c.717-.06 1.432.06 2.593.253l.1.017c.655.109 1.083.18 1.407.196c.312.016.419-.025.471-.055a.749.749 0 0 0 .207-.175c.039-.047.097-.146.132-.456c.037-.323.038-.757.038-1.42v-5.667c0-.539-.001-.88-.03-1.138c-.028-.238-.072-.327-.112-.381c-.039-.055-.109-.125-.326-.226c-.236-.11-.56-.219-1.07-.39l-.06-.019a10.701 10.701 0 0 1-1.335 3.788c-.912 1.568-2.247 2.934-3.92 3.663a3.505 3.505 0 0 1-2.794 0c-1.673-.73-3.008-2.095-3.92-3.663a10.856 10.856 0 0 1-.934-2.087ZM12 2.75c-2.936 0-5.25 2.252-5.25 4.95c0 1.418.437 2.98 1.23 4.341c.791 1.362 1.908 2.47 3.223 3.044c.505.22 1.089.22 1.594 0c1.316-.574 2.432-1.682 3.224-3.044c.792-1.36 1.229-2.923 1.229-4.34c0-2.699-2.314-4.951-5.25-4.951Zm0 4a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5ZM9.25 8a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0Z" clip-rule="evenodd" />
+        </symbol>
+    </svg>
+    <header id="header" class="site-header position-fixed z-2 w-100 border-bottom mb-5">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container-lg">
+                <a class="navbar-brand pb-4" href="/">
+                                <span>Hiddify Next Github</span>
+                                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon" width="50" height="50">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/news/">新闻资讯</a>
+                            </li>
+                                                        
+                            <span class="scrollspy-indicator"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+        <div class="container-lg py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">JVM内存管理面试常见问题全解</h1>
+                    <nav class="breadcrumb justify-content-center">
+                        <a class="breadcrumb-item" href="/">首页</a>
+                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="scrollspy-section py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AFjvm" rel="nofollow">一、什么是JVM</a> <ul> <li><a href="#1jvm%E7%9A%84%E4%B8%89%E4%B8%AA%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86" rel="nofollow">1、jvm的三个组成部分</a></li> </ul> </li> <li><a href="#%E4%BA%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%B3%BB%E7%BB%9F" rel="nofollow">二、类加载系统</a> <ul> <li> <ul> <li><a href="#1%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B" rel="nofollow">1、类的加载过程</a></li> <li><a href="#2%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8" rel="nofollow">2、类加载器</a></li> </ul> </li> </ul> </li> <li><a href="#%E4%B8%89%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6" rel="nofollow">三、双亲委派机制</a> <ul> <li> <ul> <li><a href="#1%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="nofollow">1、双亲委派机制介绍</a></li> <li><a href="#2%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6" rel="nofollow">2、为什么要双亲委派机制</a></li> <li><a href="#3%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E7%9A%84%E6%A0%B8%E5%BF%83%E6%BA%90%E7%A0%81" rel="nofollow">3、双亲委派机制的核心源码</a></li> <li><a href="#4%E5%85%A8%E7%9B%98%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6" rel="nofollow">4、全盘委托机制</a></li> <li><a href="#5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6" rel="nofollow">5、自定义加载器实现双亲委托机制</a></li> <li><a href="#6%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%89%93%E7%A0%B4%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6" rel="nofollow">6、自定义加载器打破双亲委派机制</a></li> </ul> </li> </ul> </li> <li><a href="#%E5%9B%9B%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA" rel="nofollow">四、运行时数据区</a> <ul> <li> <ul> <li><a href="#1%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B9%9F%E5%8F%ABjvm%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-jmm%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F" rel="nofollow">1、运行时数据区的介绍（也叫JVM的内存模型 JMM、内存区域）</a></li> <li><a href="#2%E7%A8%8B%E5%BA%8F%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%97%B6%E8%BF%90%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E5%86%85%E5%AD%98%E5%8F%98%E5%8C%96" rel="nofollow">2、程序在执行时运行数据区的内存变化</a></li> </ul> </li> </ul> </li> <li><a href="#%E4%BA%94%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B" rel="nofollow">五、对象的创建流程</a> <ul> <li> <ul> <li><a href="#1%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B" rel="nofollow">1、对象创建流程</a></li> <li><a href="#3%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D" rel="nofollow">3、内存分配</a></li> <li><a href="#4%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%80%BC" rel="nofollow">4、设置初值</a></li> <li><a href="#5%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%A4%B4" rel="nofollow">5、设置对象头</a></li> <li><a href="#6%E6%89%A7%E8%A1%8Cinit%E6%96%B9%E6%B3%95" rel="nofollow">6、执行init方法</a></li> </ul> </li> </ul> </li> <li><a href="#%E5%85%AD%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6" rel="nofollow">六、垃圾回收</a> <ul> <li> <ul> <li><a href="#1%E5%AF%B9%E8%B1%A1%E6%88%90%E4%B8%BA%E5%9E%83%E5%9C%BE%E7%9A%84%E5%88%A4%E6%96%AD%E4%BE%9D%E6%8D%AE" rel="nofollow">1、对象成为垃圾的判断依据</a></li> <li><a href="#2-%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84finalize%E6%96%B9%E6%B3%95" rel="nofollow">2、 对象中的finalize方法</a></li> <li><a href="#3%E5%AF%B9%E8%B1%A1%E9%80%83%E9%80%B8" rel="nofollow">3、对象逃逸</a></li> </ul> </li> </ul> </li> <li><a href="#%E4%B8%83%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95" rel="nofollow">七、垃圾回收算法</a> <ul> <li> <ul> <li><a href="#1%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6%E6%B3%95" rel="nofollow">1、标记清除算法、复制算法、标记整理算法、分代回收法</a></li> <li><a href="#2%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95" rel="nofollow">2、分代回收算法</a></li> <li><a href="#3%E5%AF%B9%E8%B1%A1%E8%BF%9B%E5%88%B0%E5%B9%B4%E4%BB%A3%E7%9A%84%E6%9D%A1%E4%BB%B6" rel="nofollow">3、对象进⼊到⽼年代的条件</a></li> </ul> </li> </ul> </li> <li><a href="#%E5%85%AB%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8" rel="nofollow">八、垃圾回收器</a> <ul> <li> <ul> <li><a href="#1serial%E6%94%B6%E9%9B%86%E5%99%A8" rel="nofollow">1.Serial收集器</a></li> <li><a href="#2parallel%E6%94%B6%E9%9B%86%E5%99%A8" rel="nofollow">2、Parallel收集器</a></li> <li><a href="#3parnew%E6%94%B6%E9%9B%86%E5%99%A8" rel="nofollow">3、ParNew收集器</a></li> <li><a href="#4cms%E6%94%B6%E9%9B%86%E5%99%A8" rel="nofollow">4、CMS收集器</a></li> <li><a href="#5%E4%B8%89%E6%A0%87%E8%AE%B0%E7%AE%97%E6%B3%95" rel="nofollow">5、三⾊标记算法</a></li> <li><a href="#6%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%BB%84%E5%90%88%E6%A1%88" rel="nofollow">6、垃圾收集器组合⽅案</a></li> </ul> </li> </ul> </li> <li><a href="#%E4%B9%9Djvm%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98" rel="nofollow">九、JVM调优实战</a> <ul> <li> <ul> <li><a href="#1jvm%E8%B0%83%E4%BC%98%E7%9A%84%E6%A0%B8%E5%8F%82%E6%95%B0" rel="nofollow">1.JVM调优的核⼼参数</a></li> <li><a href="#2jvm%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98" rel="nofollow">2.JVM调优实战</a></li> <li><a href="#3%E8%B0%83%E4%BC%98%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9" rel="nofollow">3、调优的关键点</a></li> <li><a href="#4%E7%BB%93%E5%90%88%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5" rel="nofollow">4、结合垃圾收集器的调优策略</a></li> </ul> </li> </ul> </li> <li><a href="#%E5%8D%81jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E7%9A%84%E5%8E%9F%E5%88%99%E6%9C%89%E5%93%AA%E4%BA%9B" rel="nofollow">十、JVM性能调优的原则有哪些？</a></li> <li><a href="#%E5%8D%81%E4%B8%80%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E9%9C%80%E8%A6%81jvm%E8%B0%83%E4%BC%98" rel="nofollow">十一、什么情况下需要JVM调优？</a></li> <li><a href="#%E5%8D%81%E4%BA%8C%E8%81%8A%E8%81%8Ajava%E7%9A%84gc%E6%9C%BA%E5%88%B6" rel="nofollow">十二、聊聊Java的GC机制</a> <ul> <li><a href="#%E5%8D%81%E4%B8%89cms-%E5%92%8Cg1-%E7%9A%84%E5%8C%BA%E5%88%AB" rel="nofollow"><strong>十三、CMS 和G1 的区别</strong></a></li> <li><a href="#1%E4%BD%BF%E7%94%A8%E8%8C%83%E5%9B%B4%E4%B8%8D%E4%B8%80%E6%A0%B7" rel="nofollow">1、使用范围不一样</a></li> <li><a href="#2stw%E7%9A%84%E6%97%B6%E9%97%B4%E4%B8%8D%E4%B8%80%E6%A0%B7" rel="nofollow">2、STW的时间不一样</a></li> <li><a href="#3%E5%9E%83%E5%9C%BE%E7%A2%8E%E7%89%87" rel="nofollow">3、垃圾碎片</a></li> <li><a href="#4%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8D%E4%B8%80%E6%A0%B7" rel="nofollow">4、回收算法不一样</a></li> <li><a href="#5%E5%A4%A7%E5%AF%B9%E8%B1%A1%E5%A4%84%E7%90%86%E4%B8%8D%E4%B8%80%E6%A0%B7" rel="nofollow">5、大对象处理不一样</a></li> <li><a href="#6%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B%E4%B8%8D%E4%B8%80%E6%A0%B7" rel="nofollow">6、回收过程不一样</a> <ul> <li><a href="#cms%E5%9B%9E%E6%94%B6%E5%9E%83%E5%9C%BE%E7%9A%844%E4%B8%AA%E9%98%B6%E6%AE%B5" rel="nofollow"><strong>CMS回收垃圾的4个阶段</strong></a></li> <li><a href="#g1%E5%9B%9E%E6%94%B6%E5%9E%83%E5%9C%BE%E7%9A%844%E4%B8%AA%E9%98%B6%E6%AE%B5" rel="nofollow"><strong>G1回收垃圾的4个阶段</strong></a></li> </ul> </li> </ul> </li> </ul> </div> </h1> <blockquote> <p>Java Virtual Machine（Java虚拟机）是java程序实现跨平台的⼀个重要的⼯具（部件）。</p> </blockquote> <blockquote> <p>HotSpot VM，相信所有Java程序员都知道，它是Sun JDK和OpenJDK中所带的虚拟机，也是⽬前使⽤范围最⼴的Java虚拟机。</p> </blockquote> <blockquote> <p>只要装有JVM的平台，都可以运⾏java程序。那么Java程序在JVM上是怎么被运⾏的？</p> </blockquote> <blockquote> <p>通过介绍以下JVM的三个组成部分，就可以了解到JVM内部的⼯作机制</p> </blockquote> <ul> <li> <blockquote> <p>类加载系统：负责完成类的加载</p> </blockquote> </li> <li> <blockquote> <p>运⾏时数据区：在运⾏Java程序的时候会产⽣的各种数据会保存在运⾏时数据区</p> </blockquote> </li> <li> <blockquote> <p>执⾏引擎：执⾏具体的指令（代码）<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/88d2c22ac867012426d171fe38c4d769.jpg" alt="JVM内存管理面试常见问题全解"></p> </blockquote> </li> </ul> <h2 id="1jvm的三个组成部分">1、jvm的三个组成部分</h2> <ul> <li> <p>类加载系统</p> </li> <li> <p>运行时数据区</p> </li> <li> <p>执行引擎</p> </li> </ul> </h1> <h3 id="1类的加载过程">1、类的加载过程</h3> <p>⼀个类被加载进JVM中要经历哪⼏个过程</p> <ul> <li> <blockquote> <p>加载： 通过io流的⽅式把字节码⽂件读⼊到jvm中（⽅法区）</p> </blockquote> </li> <li> <blockquote> <p>校验：通过校验字节码⽂件的头8位的16进制是否是java魔数cafebabe</p> </blockquote> </li> <li> <blockquote> <p>准备：为类中的静态部分开辟空间并赋初始化值</p> </blockquote> </li> <li> <blockquote> <p>解析：将符号引⽤转换成直接引⽤。——静态链接</p> </blockquote> </li> <li> <blockquote> <p>初始化：为类中的静态部分赋指定值并执⾏静态代码块。</p> </blockquote> </li> </ul> <p>类被加载后，类中的类型信息、⽅法信息、属性信息、运⾏时常量池、类加载器的引⽤等信息会被加载到元空间中。</p> <h3 id="2类加载器">2、类加载器</h3> <ol> <li>类是谁来负载加载的？——类加载器</li> <li>Bootstrap ClassLoader 启动类加载器：负载加载jre/lib下的核⼼类库中的类，⽐如rt.jar、charsets.jar</li> </ol> <ul> <li>ExtClassLoader 扩展类加载器：负载加载jre/lib下的ext⽬录内的类</li> </ul> <p>ext 加载路径：System.getProperty("java.ext.dirs");</p> <ul> <li>AppClassLoader 应⽤类加载器：负载加载⽤户⾃⼰写的类</li> </ul> <p>app 加载路径：System.getProperty("java.class.path");</p> <ul> <li>⾃定义类加载器：⾃⼰定义的类加载器，可以打破双亲委派机制。<br /><img decoding="async" src="https://img2022.cnblogs.com/blog/2420764/202204/2420764-20220416214540943-1307878933.png" alt="JVM内存管理面试常见问题全解"></li> </ul> </h1> <h3 id="1双亲委派机制介绍">1、双亲委派机制介绍</h3> <p>当类加载进⾏加载类的时候，类的加载需要向上委托给上⼀级的类加载器，上⼀级继续向上委托，直到启动类加载器。启动类加载器去核⼼类库中找，如果没有该类则向下委派，由下⼀级扩展类加载器去扩展类库中，如果也没有继续向下委派，直到找不到为⽌，则报类找不到的异常。</p> <pre><code>应⽤类加载器怎么加载Student和String呢？需要通过双亲委派机制</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5343abf652d7130203d5ca931f8be98d.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="2为什么要双亲委派机制">2、为什么要双亲委派机制</h3> <p>防⽌核⼼类库中的类被随意篡改</p> <p>防⽌类的重复加载</p> <h3 id="3双亲委派机制的核心源码">3、双亲委派机制的核心源码</h3> <ul> <li>ClassLoader.class</li> </ul> <h3 id="4全盘委托机制">4、全盘委托机制</h3> <p>当⼀个类被当前的ClassLoader加载时，该类中的其他类也会被当前该ClassLoader加载。除⾮指明其他由其他类加载器加载。</p> <h3 id="5自定义加载器实现双亲委托机制">5、自定义加载器实现双亲委托机制</h3> <h3 id="6自定义加载器打破双亲委派机制">6、自定义加载器打破双亲委派机制</h3> </h1> <h3 id="1运行时数据区的介绍也叫jvm的内存模型-jmm内存区域">1、运行时数据区的介绍（也叫JVM的内存模型 JMM、内存区域）</h3> <p>JMM分成了这么⼏个部分</p> <ol> <li>堆空间（线程共享）：存放new出来的对象</li> <li>元空间（线程共享）：存放类元信息、类的模版、常量池、静态部分</li> <li>线程栈（线程独享）：⽅法的栈帧</li> <li>本地⽅法区（线程独享）：本地⽅法产⽣的数据</li> <li>程序计数器（线程独享）：配合执⾏引擎来执⾏指令<br /><img decoding="async" src="https://img2022.cnblogs.com/blog/2420764/202204/2420764-20220416214540965-944828529.png" alt="JVM内存管理面试常见问题全解"></li> </ol> <h3 id="2程序在执行时运行数据区的内存变化">2、程序在执行时运行数据区的内存变化</h3> <p>线程栈：执⾏⼀个⽅法就会在线程栈中创建⼀个栈帧。</p> <p>栈帧包含如下四个内容：</p> <p>局部变量表：存放⽅法中的局部变量</p> <p>操作数栈：⽤来存放⽅法中要操作的数据</p> <p>动态链接：存放⽅法名和⽅法内容的映射关系，通过⽅法名找到⽅法内容</p> <p>⽅法出⼝：记录⽅法执⾏完后调⽤次⽅法的位置。</p> </h1> <h3 id="1对象创建流程">1、对象创建流程</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c4af8006274e03f0b620364fcd03fd97.jpg" alt="JVM内存管理面试常见问题全解"></p> <p>2、<strong>类加载校验</strong></p> <p>校验该类是否已被加载。主要是检查常量池中是否存在该类的类元信息。如果没有，则需要进⾏加载。</p> <h3 id="3内存分配">3、内存分配</h3> <p><strong>为对象分配内存。具体的分配策略如下：</strong></p> <ul> <li> <p>Bump the Pointer（指针碰撞）：如果内存空间的分配是绝对规整的，则JVM记录当前剩余内存的指针，在已⽤内存分配</p> </li> <li> <p>Free List（空闲列表）：如果内存空间的分配不规整，那么JVM会维护⼀个可⽤内存空间的列表⽤于分配。</p> </li> </ul> <p><strong>对象并发分配存在的问题：</strong></p> <ul> <li> <p>Compare And Swap： ⾃旋分配，如果并发分配失败则重试分配之后的地址</p> </li> <li> <p>Thread Local Allocation Buffer（TLAB）：本地线程分配缓冲，JVM被每个线程分配⼀空间，每个线程在⾃⼰的空间中创建对象（jdk8默认使⽤，之前版本需要通过-XX:+UseTLAB开启）</p> </li> </ul> <h3 id="4设置初值">4、设置初值</h3> <p>根据数据类型，为对象空间初始化赋值</p> <h3 id="5设置对象头">5、设置对象头</h3> <p>为对象设置对象头信息，对象头信息包含以下内瑞：类元信息、对象哈希码、对象年龄、锁状态标志等</p> <ul> <li>对象头中的Mark Work 字段（32位）</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/52d22ad096e14fc905620e4a1f1d2400.jpg" alt="JVM内存管理面试常见问题全解"></p> <ul> <li>对象头中的类型指针</li> </ul> <p>类型指针是用来指向元空间当前类的类元信息。⽐如调⽤类中的⽅法，通过类型指针找到元空间中的该类，再找到相应的⽅法。</p> <p>开启指针压缩后，类型指针只⽤4个字节 储，否则需要8个字节存储</p> <blockquote> <p>过⼤的对象地址，会占⽤更⼤的带宽和增加GC的压⼒。</p> </blockquote> <blockquote> <p>对象中指向其他对象所使⽤的指针：8字节被压缩成4字节。 最早的机器是32位，最⼤⽀持内存 2的32次⽅=4G。现在是64位，2的64次⽅可以表示N个T的内存。内存32G即等于2的35次⽅。如果内存是32G的话，⽤35位表示内存地址，这样过于浪费。如果把35位的数据，根据算法，压缩成32位的数据（也就是4个字节）。在保存时⽤4个字节，再使⽤时使⽤8个字节。之前⽤35位保存内存地址，就可以⽤32位保存。这样8个字节的对象，实际上使⽤32位来保存，这样64位就能表示2个对象。如果内存⼤于32G，指针压缩会失效，会强制使⽤64位来表示对象地址。因此jvm堆内存最好不要⼤于32G。</p> </blockquote> <h3 id="6执行init方法">6、执行init方法</h3> <p>为对象中的属性赋值和执⾏构造⽅法。</p> </h1> <h3 id="1对象成为垃圾的判断依据">1、对象成为垃圾的判断依据</h3> <p>在堆空间和元空间中，GC这条守护线程会对这些空间开展垃圾回收⼯作，那么GC如何判断这些空间的对象是否是垃圾，有两种算法：</p> <ul> <li>引⽤计数法：</li> </ul> <p>对象被引⽤，则计数器+1，如果计数器是0，那么对象将被判定为是垃圾，于是被回收。但是这种算法没有办法解决循环依赖的对象。因此JVM⽬前的主流⼚商Hotspot没有使⽤这种算法。</p> <ul> <li> <p>可达性分析算法</p> <p>：GC Roots根</p> <ul> <li>gc roots根节点： 在对象的引⽤中，会有这么⼏种对象的变量：来⾃于线程栈中的局部变量表中的变量、静态变量、本地⽅法栈中的变量，这些变量都被称为gc roots根节点</li> </ul> </li> <li> <p>判断依据：gc在扫描堆空间中的某个节点时，向上遍历，看看能不能遍历到gc roots根节点，如果不能，那么意味着这个对象是垃圾。</p> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3b14ff82faf1cfffdae267c1997fb7c1.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="2-对象中的finalize方法">2、 对象中的finalize方法</h3> <blockquote> <p>Object类中有⼀个finalize⽅法，也就是说任何⼀个对象都有finalize⽅法。这个⽅法是对象被回收之前的最后⼀根救命稻草。</p> </blockquote> <ul> <li> <blockquote> <p>GC在垃圾对象回收之前，先标记垃圾对象，被标记的对象的finalize⽅法将被调⽤</p> </blockquote> </li> <li> <blockquote> <p>调⽤finalize⽅法如果对象被引⽤，那么第⼆次标记该对象，被标记的对象将移除出即将被回收的集合，继续存活</p> </blockquote> </li> <li> <blockquote> <p>调⽤finalize⽅法如果对象没有被引⽤，那么将会被回收</p> </blockquote> </li> <li> <blockquote> <p>注意，finalize⽅法只会被调⽤⼀次。</p> </blockquote> </li> </ul> <h3 id="3对象逃逸">3、对象逃逸</h3> <p>在jdk1.7之前，对象的创建都是在堆空间中创建，但是会有个问题，⽅法中的未被外部访问的对象这种对象没有被外部访问，且在堆空间上频繁创建，当⽅法结束，需要被gc，浪费了性能。所以在1.7之后，就会进⾏⼀次逃逸分析（默认开启），于是这样的对象就直接在栈上创建，随着⽅法的出栈⽽被销毁，不需要进⾏gc。</p> <p><strong>在栈上分配内存的时候</strong>：会把<code>聚合量</code>替换成标量，来减少栈空间的开销，也为了防⽌栈上没</p> <p>有⾜够连续的空间直接存放对象。</p> <p><code>标量</code>：java中的基本数据类型（不可再分）</p> <p><code>聚合量</code>：引⽤数据类型。</p> </h1> <h3 id="1标记清除算法复制算法标记整理算法分代回收法">1、标记清除算法、复制算法、标记整理算法、分代回收法</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4e5947dd2493adc62ef10c140f283b32.jpg" alt="JVM内存管理面试常见问题全解"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9df23a5d4ece341995f7a7502930520d.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="2分代回收算法">2、分代回收算法</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a5938758b4268b125185d3c76c55961e.jpg" alt="JVM内存管理面试常见问题全解"></p> <ol> <li>堆空间被分成了新⽣代（1/3）和⽼年代（2/3），新⽣代中被分成了eden（8/10）、survivor1(1/10)、survivor2(1/10)</li> <li>对象的创建在eden，如果放不下则触发minor gc</li> <li>对象经过⼀次minorgc 后存活的对象会被放⼊到survivor区，并且年龄+1</li> <li>survivor区执⾏的复制算法，当对象年龄到达15.进⼊到⽼年代。</li> <li>如果⽼年代放满。就会触发Full GC</li> </ol> <h3 id="3对象进到年代的条件">3、对象进⼊到⽼年代的条件</h3> <ul> <li>⼤对象直接进⼊到⽼年代：⼤对象可以通过参数设置⼤⼩，多⼤的对象被认为是⼤对象。</li> </ul> <p><strong>-XX:PretenureSizeThreshold</strong></p> <ul> <li>当对象的年龄到达15岁时将进⼊到⽼年代，这个年龄可以通过这个参数设置：</li> </ul> <p><strong>XX:MaxTenuringThreshold</strong></p> <ul> <li>根据对象动态年龄判断，如果s区中的对象总和超过了s区中的50%，那么下⼀次做复制的时候，把年龄⼤于等于这次最⼤年龄的对象都⼀次性全部放⼊到⽼年代。</li> <li>⽼年代空间分配担保机制 ：在minor gc时，检查⽼年代剩余可⽤空间是否⼤于年轻代⾥现有的所有对象（包含垃圾）。如果⼤于等于，则做minor gc。如果⼩于，看下是否配置了担保参数的配置：-XX: -HandlePromotionFailure ，如果配置了，那么判断⽼年代剩余的空间是否⼩于历史每次minor gc 后进⼊⽼年代的对象的平均⼤⼩。如果是，则直接full gc，减少⼀次minor gc。如果不是，执⾏minor gc。如果没有担保机制，直接full gc。<br /><img decoding="async" src="https://img2022.cnblogs.com/blog/2420764/202204/2420764-20220416214540978-49569460.png" alt="JVM内存管理面试常见问题全解"></li> </ul> </h1> <h3 id="1serial收集器">1.Serial收集器</h3> <p>-XX:+UseSerialGC -</p> <p>XX:+UseSerialOldGC</p> <p>单线程执⾏垃圾收集，收集过程中会有较⻓的STW（stop the world），在GC时⼯作线程不能⼯作。虽然STW较⻓，但简单、直接。</p> <p>新⽣代采⽤复制算法，⽼年代采⽤标记-整理算法。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c8cbf899ba798538333563e8cc5d6d10.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="2parallel收集器">2、Parallel收集器</h3> <p>-XX:+UseParallelGC</p> <p>-XX:+UseParallelOldGC</p> <p>使⽤多线程进⾏GC，会充分利⽤cpu，但是依然会有stw，这是jdk8默认使⽤的新⽣代和⽼年代的垃圾收集器。充分利⽤CPU资源，吞吐量⾼。</p> <p>新⽣代采⽤复制算法，⽼年代采⽤标记-整理算法。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/440bf4fa2d84630aa6d478c0b1b253e4.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="3parnew收集器">3、ParNew收集器</h3> <p>-XX:+UseParNewGC</p> <p>⼯作原理和Parallel收集器⼀样，都是使⽤多线程进⾏GC，但是区别在于ParNew收集器可以和CMS收集器配合⼯作。主流的⽅案：</p> <p>ParNew收集器负责收集新⽣代。CMS负责收集⽼年代。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5de4466ba5af8fd9764f4388baa4226b.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="4cms收集器">4、CMS收集器</h3> <p>-XX:+UseConcMarkSweepGC</p> <p>⽬标：尽量减少stw的时间，提升⽤户的体验。真正做到gc线程和⽤户线程⼏乎同时⼯作。CMS采⽤标记-清除算法</p> <ul> <li> <p>初始标记： 暂停所有的其他线程(STW)，并记录gc roots直接能引⽤的对象。</p> </li> <li> <p>并发标记：从GC Roots的直接关联对象开始遍历整个对象图的过程， 这个过程耗时较⻓但是不需要STW，可以与垃圾收集线程⼀起并发运⾏。这个过程中，⽤户线程和GC线程并发，可能会有导致已经标记过的对象状态发⽣改变。</p> </li> <li> <p>重新标记：为了修正并发标记期间因为⽤户程序继续运⾏⽽导致标记产⽣变动的那⼀部分对象的标记记录，这个阶段的停顿时间⼀般会⽐初始标记阶段的时间稍⻓，远远⽐并发标记阶段时间短。主要⽤到三⾊标记⾥的算法做重新标记。</p> </li> <li> <p>并发清理：开启⽤户线程，同时GC线程开始对未标记的区域做清扫。这个阶段如果有新增对象会被标记为⿊⾊不做任何处理。</p> </li> <li> <p>并发重置：重置本次GC过程中的标记数据。</p> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9212e83bf2470c514210d3ddd4446c66.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="5三标记算法">5、三⾊标记算法</h3> <ul> <li> <p>在并发标记阶段，对象的状态可能发⽣改变，GC在进⾏可达性分析算法分析对象时，⽤三⾊来标识对象的状态</p> </li> <li> <p>灰⾊：这个对象被GC Roots遍历过但其部分的引⽤没有被GC Roots遍历。在重新标记时重新遍历灰⾊对象。</p> </li> <li> <p>⽩⾊：这个对象没有被GC Roots遍历过。在重新标记时该对象如果是⽩⾊的话，那么将会被回收。</p> </li> </ul> <h3 id="6垃圾收集器组合案">6、垃圾收集器组合⽅案</h3> <p>不同的垃圾收集器可以组合使⽤，在使⽤时选择适合当前业务场景的组合。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/39fe781fd8f2c0a55f303703bc4ea567.jpg" alt="JVM内存管理面试常见问题全解"></p> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/69490ce06bfe54802ce02b5655328cc4.jpg" alt="JVM内存管理面试常见问题全解"></p> <h3 id="1jvm调优的核参数">1.JVM调优的核⼼参数</h3> <ul> <li>-Xss：每个线程的栈⼤⼩。设置越⼩，说明⼀个线程栈⾥能分配的栈帧就越少，但是对JVM整体来说能开启的线程数会更多。</li> <li>-Xms：设置堆的初始可⽤⼤⼩，默认物理内存的1/64</li> <li>-Xmx：设置堆的最⼤可⽤⼤⼩，默认物理内存的1/4</li> <li>-Xmn：新⽣代⼤⼩</li> <li>-XX:NewRatio：默认2表示新⽣代占年⽼代的1/2，占整个堆内存的1/3。</li> <li>-XX:SurvivorRatio：默认8表示⼀个survivor区占⽤1/8的Eden内存，即1/10的新⽣代内存。以下两个参数设置元空间⼤⼩建议值相同，且写死，防⽌在程序启动时因为需要元空间的空间不够⽽频繁full gc。</li> <li>-XX:MaxMetaspaceSize：最⼤元空间⼤⼩</li> <li>XX:MetaspaceSize：元空间⼤⼩，默认是21M，达到该值后会触发Full GC，同时会按100%进⾏动态调整，为了减少⼤数据量占满元空间，频繁触发Full GC，建议在初始化时设置为MaxMetaspaceSize相同的值。</li> </ul> <h3 id="2jvm调优实战">2.JVM调优实战</h3> <ul> <li>设置JVM的参数</li> </ul> <blockquote> <p>‐Xms3072M ‐Xmx3072M ‐Xss1M ‐XX:MetaspaceSize=256M</p> </blockquote> <blockquote> <p>‐XX:MaxMetaspaceSize=256M ‐XX:SurvivorRatio=8<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a3de243184fb7f6908590884b9716e3a.jpg" alt="JVM内存管理面试常见问题全解"></p> </blockquote> <ul> <li>调整VM参数</li> </ul> <blockquote> <p>‐Xms3072M ‐Xmx3072M ‐Xmn2048M ‐Xss1M ‐XX:MetaspaceSize=256M</p> </blockquote> <blockquote> <p>‐XX:MaxMetaspaceSize=256M ‐XX:SurvivorRatio=8<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cdade6433c0a86330aa9e1c28994ac7b.jpg" alt="JVM内存管理面试常见问题全解"></p> </blockquote> <h3 id="3调优的关键点">3、调优的关键点</h3> <ul> <li> <p>设置元空间⼤⼩，最⼤值和初始化值相同</p> </li> <li> <p>根据业务场景计算出每秒产⽣多少的对象。这些对象间隔多⻓时间会成为垃圾（⼀般根据接⼝响应时间来判断）</p> </li> <li> <p>计算出堆中新⽣代中eden、survivor所需要的⼤⼩：根据上⼀条每条产⽣的对象和多少时间成为垃圾来计算出，依据是尽量减少full gc。</p> </li> </ul> <h3 id="4结合垃圾收集器的调优策略">4、结合垃圾收集器的调优策略</h3> <p>结合垃圾收集器：<strong>PraNew+CMS</strong>，对于CMS的垃圾收集器，还需要加上相关的配置：</p> <ul> <li>对于⼀些年龄较⼤的bean，⽐如缓存对象、spring相关的容器对象，配置相关的对象，这些对象需要尽快的进⼊到⽼年代，因此需要配置：-XX:MaxTenuringThreshold=5</li> <li>⼤对象直接进⼊到⽼年代：-XX:PretenureSizeThreshold=1M</li> <li>CMS垃圾收集器会有并发模式失败的⻛险（转换为使⽤serialOld垃圾收集器），如何避免这种⻛险：将full gc的触发点调低：</li> </ul> <p>-XX:CMSInitiatingOccupancyFraction=85 （默认是92），相当于⽼年代使⽤率达到85%就触发full gc，于是还剩15%的空间允许在cms进⾏gc的过程中产⽣新的对象。</p> <ul> <li>CMS垃圾收集器收集完后会产⽣碎⽚，碎⽚需要整理，但不是每次收集完就整理，设置做了3次Full GC之后整理⼀次碎⽚：</li> </ul> <pre><code>-XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=3</code></pre> <ul> <li>PraNew+CMS的具体JVM参数配置：</li> </ul> <blockquote> <p>java -Xms3072M -Xmx3072M -Xmn2048M -Xss1M -XX:MetaspaceSize=256M -</p> </blockquote> <blockquote> <p>XX:MaxMetaspaceSize=256M -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=5 -XX:PretenureSizeThreshold=1M -</p> </blockquote> <blockquote> <p>XX:+UseParNewGC -XX:+UseConcMarkSweepGC</p> </blockquote> <blockquote> <p>-XX:CMSInitiatingOccupancyFraction=85 -XX:+UseCMSCompactAtFullCollection</p> </blockquote> <blockquote> <p>-XX:CMSFullGCsBeforeCompaction=3 -jar device-service.jar</p> </blockquote> <p><strong>重点作业：</strong></p> <ul> <li> <blockquote> <p>清晰的掌握类加载过程及双亲委派机制</p> </blockquote> </li> <li> <blockquote> <p>掌握程序在运⾏时 JVM的运⾏时数据区中发⽣了怎样的变化</p> </blockquote> </li> <li> <blockquote> <p>对象的创建的流程</p> </blockquote> </li> <li> <blockquote> <p>对象成为垃圾的判断依据</p> </blockquote> </li> <li> <blockquote> <p>垃圾回收算法有哪些</p> </blockquote> </li> <li> <blockquote> <p>JVM空间内存分配及垃圾回收器的常⽤参数配置</p> </blockquote> </li> </ul> </h1> <ol> <li>多数的Java应用不需要在服务器上进行GC优化，虚拟机内部已有很多优化来保证应用的稳定运行，所以不要为了调优而调优，不当的调优可能适得其反</li> <li>在应用上线之前，先考虑将机器的JVM参数设置到最优（适合）</li> <li>在进行GC优化之前，需要确认项目的架构和代码等已经没有优化空间。我们不能指望一个系统架构有缺陷或者代码层次优化没有穷尽的应用，通过GC优化令其性能达到一个质的飞跃</li> <li>GC优化是一个系统而复杂的工作，没有万能的调优策略可以满足所有的性能指标。GC优化必须建立在我们深入理解各种垃圾回收器的基础上，才能有事半功倍的效果</li> <li>处理吞吐量和延迟问题时，垃圾处理器能使用的内存越大，即java堆空间越大垃圾收集效果越好，应用运行也越流畅。这称之为GC内存最大化原则</li> <li>在这三个属性（吞吐量、延迟、内存）中选择其中两个进行jvm调优，称之为GC调优3选2</li> </ol> </h1> <ul> <li> <p>Heap内存（老年代）持续上涨达到设置的最大内存值</p> </li> <li> <p>Full GC 次数频繁</p> </li> <li> <p>GC 停顿（Stop World）时间过长（超过1秒，具体值按应用场景而定）</p> </li> <li> <p>应用出现OutOfMemory 等内存异常</p> </li> <li> <p>应用出现OutOfDirectMemoryError等内存异常（ failed to allocate 16777216 byte(s) of direct memory (used: 1056964615, max: 1073741824)）</p> </li> <li> <p>应用中有使用本地缓存且占用大量内存空间</p> </li> <li> <p>系统吞吐量与响应性能不高或下降</p> </li> <li> <p>应用的CPU占用过高不下或内存占用过高不下</p> </li> </ul> </h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/u010010664/article/details/81002142?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_utm_term~default-0.pc_relevant_paycolumn_v3&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3"  target="_blank" rel="nofollow">细节可见此博客链接：点我跳转</a></p> <p>GC：垃圾回收（Garbage Collection），在计算机领域就是指当一个计算机上的动态存储器（内存空间）不再需要时，就应该予以释放，以让出存储器，便于他用。这种存储器的资源管理，称为垃圾回收。</p> <p>这三个问题将分别对应接下来的3节一一解答</p> <ul> <li> <blockquote> <p>JVM清理的是哪一块的对象？判断垃圾方法</p> </blockquote> </li> <li> <blockquote> <p>哪些对象会被清理，为什么清理A而不清理B？</p> </blockquote> </li> <li> <blockquote> <p>JVM又是如何清理的？回收算法</p> </blockquote> </li> </ul> <h2 id="十三cms-和g1-的区别"><strong>十三、CMS 和G1 的区别</strong></h2> <h2 id="1使用范围不一样">1、使用范围不一样</h2> <ul> <li> <blockquote> <p>CMS收集器是老年代的收集器，可以配合新生代的Serial和ParNew收集器一起使用</p> </blockquote> </li> <li> <blockquote> <p>G1收集器收集范围是老年代和新生代。不需要结合其他收集器使用</p> </blockquote> </li> </ul> <h2 id="2stw的时间不一样">2、STW的时间不一样</h2> <ul> <li> <blockquote> <p>CMS收集器以最小的停顿时间为目标的收集器。</p> </blockquote> </li> <li> <blockquote> <p>G1收集器可预测垃圾回收的停顿时间（建立可预测的停顿时间模型）</p> </blockquote> </li> </ul> <h2 id="3垃圾碎片">3、垃圾碎片</h2> <ul> <li> <blockquote> <p>CMS收集器是使用“标记-清除”算法进行的垃圾回收，容易产生内存碎片</p> </blockquote> </li> <li> <blockquote> <p>G1收集器使用的是“标记-整理”算法，进行了空间整合，降低了内存空间碎片。</p> </blockquote> </li> </ul> <h2 id="4回收算法不一样">4、回收算法不一样</h2> <ul> <li> <blockquote> <p>CMS :标记-清除”</p> </blockquote> </li> <li> <blockquote> <p>G1:标记-整理</p> </blockquote> </li> </ul> <h2 id="5大对象处理不一样">5、大对象处理不一样</h2> <ul> <li> <blockquote> <p>在CMS内存中，如果一个对象过大，进入S1、S2区域的时候大于改分配的区域，对象会直接进入老年代。</p> </blockquote> </li> <li> <blockquote> <p>G1处理大对象时会判断对象是否大于一个Region大小的50%，如果大于50%就会横跨多个Region进行存放回收过程不一样</p> </blockquote> </li> </ul> <h2 id="6回收过程不一样">6、回收过程不一样</h2> <h3 id="cms回收垃圾的4个阶段"><strong>CMS回收垃圾的4个阶段</strong></h3> <ul> <li> <blockquote> <p>初始标记</p> </blockquote> </li> <li> <blockquote> <p>并发标记</p> </blockquote> </li> <li> <blockquote> <p>重新标记</p> </blockquote> </li> <li> <blockquote> <p>并发清理</p> </blockquote> </li> <li> <blockquote> <p>并发重置</p> </blockquote> </li> </ul> <h3 id="g1回收垃圾的4个阶段"><strong>G1回收垃圾的4个阶段</strong></h3> <ul> <li> <blockquote> <p>初始标记</p> </blockquote> </li> <li> <blockquote> <p>并发标记</p> </blockquote> </li> <li> <blockquote> <p>最终标记</p> </blockquote> </li> <li> <blockquote> <p>筛选回收</p> </blockquote> </li> </ul> <ol> <li> <blockquote> <p><strong>初始标记：</strong>标记GC Roots 可以直接关联的对象，该阶段需要线程停顿但是耗时短</p> </blockquote> </li> <li> <blockquote> <p><strong>并发标记：</strong>寻找存活的对象，可以与其他程序并发执行，耗时较长</p> </blockquote> </li> <li> <blockquote> <p><strong>最终标记：</strong>并发标记期间用户程序会导致标记记录产生变动（好比一个阿姨一边清理垃圾，另一个人一边扔垃圾）虚拟机会将这段时间的变化记录在Remembered Set Logs 中。最终标记阶段会向Remembered Set合并并发标记阶段的变化。这个阶段需要线程停顿，也可以并发执行</p> </blockquote> </li> <li> <blockquote> <p><strong>筛选回收：</strong>对每个Region的回收成本进行排序，按照用户自定义的回收时间来制定回收计划</p> </blockquote> </li> </ol> <p>初始标记和并发标记和CMS的过程是差不多的，最后的筛选回收会首先对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来制定回收计划</p> <p>因为采用的标记——整理的算法，所以不会产生内存碎片，最终的回收是STW的，所以也不会有浮动垃圾，Region的区域大小是固定的，所以回收Region的时间也是可控的</p> <p>同时G1 使用了Remembered Set来避免全堆扫描，G1中每个Region都有一个与之对应的RememberedSet ，在各个 Region 上记录自家的对象被外面对象引用的情况。当进行内存回收时，在GC根节点的枚举范围中加入RememberedSet 即可保证不对全堆扫描也不会有遗漏。</p> <p>以上就是CMS和G1的对比过程</p> <p><strong>这是本人今年春招找实习工作准备总结，记录在此，如有需要的老铁可以看看，如有问题可以留言指导</strong></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-88295.htm">ssm框架整合</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-hiddify-next-windows.htm" title="「3月4日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月4日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-72999.htm" title="动物疫苗检测找哪个部门（动物疫苗检测站）">动物疫苗检测找哪个部门（动物疫苗检测站）</a></li>
+                        <li class="py-2"><a href="/news/article-74328.htm" title="浅尝Spring注解开发_Bean生命周期及执行过程_在线工具">浅尝Spring注解开发_Bean生命周期及执行过程_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-free-node-subscribe.htm" title="「3月5日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月5日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-77059.htm" title="基于JDK的动态代理原理分析">基于JDK的动态代理原理分析</a></li>
+                        <li class="py-2"><a href="/news/article-71673.htm" title="免费领养狗狗正规网站平台有哪些好的（免费领养狗狗正规网站平台有哪些好的）">免费领养狗狗正规网站平台有哪些好的（免费领养狗狗正规网站平台有哪些好的）</a></li>
+                        <li class="py-2"><a href="/news/article-86145.htm" title="做狗粮卖钱可行吗（卖狗粮的利润大吗）">做狗粮卖钱可行吗（卖狗粮的利润大吗）</a></li>
+                        <li class="py-2"><a href="/news/article-88295.htm" title="ssm框架整合">ssm框架整合</a></li>
+                        <li class="py-2"><a href="/news/article-66484.htm" title="宠物美容月薪多少（宠物美容工资高吗）">宠物美容月薪多少（宠物美容工资高吗）</a></li>
+                        <li class="py-2"><a href="/news/article-84696.htm" title="芭比堂宠物店电话（芭比堂宠物医院前台怎么样）">芭比堂宠物店电话（芭比堂宠物医院前台怎么样）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="footer-bottom py-3 text-center">
+        <div class="container-lg">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p class="m-0">
+                HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/plugins.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
