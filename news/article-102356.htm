@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddifynextgithub.github.io/news/article-102356.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）</title>
+        <meta name="description" content="上图显示的是MySQL的时态类型，其中CC、YY、MM、DD、hh、mm和ss分别代表世纪、年、月、日、时、分、秒。 对于时态值，MySQL提供的类型有：日期和时间（合并或分开表示）、时间戳（一种专门" />
+        <link rel="icon" href="/assets/website/img/hiddifynextgithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextGithub免费节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddifynextgithub.github.io/news/article-102356.htm" />
+    <meta property="og:site_name" content="HiddifyNextGithub免费节点官网" />
+    <meta property="og:title" content="MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）" />
+    <meta property="og:image" content="https://hiddifynextgithub.github.io/uploads/20240808-2/a078b706463e61308eb65e9facf0ff7b.webp" />
+        <meta property="og:release_date" content="2025-04-23T08:43:26" />
+    <meta property="og:updated_time" content="2025-04-23T08:43:26" />
+        <meta property="og:description" content="上图显示的是MySQL的时态类型，其中CC、YY、MM、DD、hh、mm和ss分别代表世纪、年、月、日、时、分、秒。 对于时态值，MySQL提供的类型有：日期和时间（合并或分开表示）、时间戳（一种专门" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://cdn.bootcdn.net">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/hiddifynextgithub/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7EDWRR8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LL7EDWRR8Q');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+            <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+            <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-down" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M24.59 16.59L17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10l10-10l-1.41-1.41z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M160 96.039v32h304v63.345l-35.5 112.655H149.932L109.932 16H16v32h66.068l40 288.039h329.9L496 196.306V96.039H160zm16.984 272.305a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Zm224-96a64.073 64.073 0 0 0-64 64a64 64 0 0 0 128 0a64.072 64.072 0 0 0-64-64Zm0 96a32 32 0 1 1 32-32a32.038 32.038 0 0 1-32 32Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="balloon" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                <path d="M8 16.607c1.15.86 2.518 1.38 4 1.393c4.142.034 7.594-3.92 7.56-8.196C19.527 5.53 16.142 2.034 12 2c-4.142-.034-7.473 3.404-7.44 7.68A8.88 8.88 0 0 0 5.244 13" />
+                <path d="M15.5 9a3.035 3.035 0 0 0-3-3M12 20.35c.321 0 .482 0 .593-.022c.654-.128 1.051-.772.858-1.39c-.033-.105-.109-.242-.261-.515M12 20.35c-.321 0-.482 0-.593-.022c-.654-.128-1.051-.772-.858-1.39c.033-.105.109-.242.261-.515M12 20.35v2.15" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="bag-heart" viewBox="0 0 24 24">
+            <g fill="none">
+                <path fill="currentColor" d="m12 12.191l-.519.542a.75.75 0 0 0 1.038 0L12 12.191Zm-.957 3.675l-.444.604l.444-.604Zm1.914 0l-.444-.605l.444.605Zm-.957.462v.75v-.75Zm-.514-1.067c-.417-.307-.878-.69-1.227-1.093c-.368-.426-.509-.757-.509-.971h-1.5c0 .77.441 1.45.875 1.952c.453.525 1.014.984 1.474 1.321l.887-1.21ZM9.75 13.197c0-.576.263-.827.492-.907c.25-.088.714-.06 1.24.443l1.037-1.083c-.825-.79-1.861-1.096-2.773-.776c-.934.327-1.496 1.226-1.496 2.323h1.5Zm3.65 3.273c.46-.337 1.022-.796 1.475-1.32c.434-.502.875-1.183.875-1.953h-1.5c0 .214-.141.545-.51.971c-.348.403-.809.786-1.226 1.093l.887 1.21Zm2.35-3.273c0-1.097-.563-1.996-1.496-2.323c-.912-.32-1.948-.014-2.773.776l1.038 1.083c.525-.503.989-.531 1.24-.443c.228.08.491.33.491.907h1.5ZM10.6 16.47c.368.27.782.608 1.4.608v-1.5c-.024 0-.04 0-.094-.03a4 4 0 0 1-.42-.287l-.887 1.21Zm1.914-1.21a4 4 0 0 1-.42.289c-.054.029-.07.029-.094.029v1.5c.618 0 1.032-.337 1.4-.608l-.886-1.21Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 6V5a3 3 0 1 1 6 0v1m5.224 6.526c-.586-3.121-.878-4.682-1.99-5.604C17.125 6 15.537 6 12.36 6h-.72c-3.176 0-4.764 0-5.875.922c-1.11.922-1.403 2.483-1.989 5.604c-.823 4.389-1.234 6.583-.034 8.029C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445c.696-.84.85-1.93.696-3.555" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="handiplast" viewBox="0 0 24 24">
+            <g fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M13.5 7.642L9.071 3.213a4.142 4.142 0 0 0-5.858 5.858L14.93 20.787a4.142 4.142 0 0 0 5.858-5.858l-4.358-4.358" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m12 17.858l-2.929 2.929A4.142 4.142 0 0 1 2.596 20m3.546-8l-2.929 2.929c-.322.322-.58.685-.774 1.071M12 6.142l2.929-2.929a4.142 4.142 0 1 1 5.858 5.858L17.857 12" />
+                <path fill="currentColor" d="M15.841 12.871a.788.788 0 1 1-1.114 1.114a.788.788 0 0 1 1.114-1.114Zm-3.712-3.712a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Zm4.641 6.497a.787.787 0 1 1-1.114 1.114a.787.787 0 0 1 1.114-1.114ZM9.345 8.23A.788.788 0 1 0 8.23 9.346A.788.788 0 0 0 9.345 8.23Zm3.712 3.713a.787.787 0 1 1-1.113 1.114a.787.787 0 0 1 1.113-1.114Zm.928 2.785a.788.788 0 1 1-1.114 1.113a.788.788 0 0 1 1.114-1.113Zm-3.712-3.713a.787.787 0 1 0-1.114 1.114a.787.787 0 0 0 1.114-1.114Z" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 32 32">
+            <path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28ZM8 6.69v18.62L24.925 16Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="call-chat" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 2.75a4.25 4.25 0 0 0-3.807 6.142c.16.32.225.71.12 1.102l-.253.946l.946-.253a1.567 1.567 0 0 1 1.102.12A4.25 4.25 0 1 0 17 2.75ZM11.25 7a5.75 5.75 0 1 1 3.19 5.15a.126.126 0 0 0-.04-.013h-.007l-1.112.297a1.4 1.4 0 0 1-1.715-1.714l.298-1.113V9.6a.126.126 0 0 0-.014-.04a5.73 5.73 0 0 1-.6-2.56ZM3.718 4.092c1.226-1.29 3.254-1.049 4.268.385l1.26 1.783c.811 1.147.743 2.74-.225 3.76l-.245.257c0 .002 0 .004-.002.006c-.013.037-.045.152-.013.372c.067.456.418 1.381 1.846 2.884c1.432 1.508 2.3 1.864 2.703 1.929a.608.608 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.718c-4.134-4.352-4.919-8.137-5.018-9.986c-.049-.914.358-1.697.894-2.261l.544.516l-.544-.516l1.57-1.653Zm3.043 1.25c-.512-.724-1.433-.767-1.956-.217l-1.57 1.653c-.33.349-.505.748-.483 1.148c.08 1.51.731 4.952 4.607 9.033c4.064 4.279 7.809 4.4 9.244 4.258c.283-.028.575-.186.854-.48l1.42-1.495c.614-.645.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.455.48l-.544-.517c.543.517.543.517.542.518l-.001.002l-.003.003l-.007.006l-.014.014a1.003 1.003 0 0 1-.136.112c-.08.057-.186.12-.321.172c-.276.11-.64.168-1.091.095c-.878-.143-2.028-.773-3.55-2.377c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.592 1.592 0 0 1 .23-.427l.03-.037l.014-.015l.006-.006l.003-.003l.002-.002s.001-.001.545.515l-.544-.516l.287-.302c.445-.47.51-1.264.088-1.86L6.76 5.342Z" clip-rule="evenodd" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="mail" viewBox="0 0 21 21">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.5 6.5v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2z" />
+                <path d="m5.5 7.5l5 3l5-3" />
+            </g>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="location" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M5.25 7.7c0-3.598 3.059-6.45 6.75-6.45c3.608 0 6.612 2.725 6.745 6.208l.478.16c.463.153.87.289 1.191.439c.348.162.667.37.911.709c.244.338.341.707.385 1.088c.04.353.04.78.04 1.269v5.748c0 .61 0 1.13-.047 1.547c-.05.438-.161.87-.463 1.237a2.25 2.25 0 0 1-.62.525c-.412.237-.855.276-1.296.253c-.42-.022-.933-.107-1.534-.208l-.041-.007c-1.293-.215-1.814-.296-2.322-.254a4.3 4.3 0 0 0-.552.083c-.498.109-.976.342-2.159.933l-.122.061c-1.383.692-2.234 1.118-3.154 1.251c-.276.04-.555.06-.835.06c-.928-.002-1.825-.301-3.28-.786a73.75 73.75 0 0 1-.127-.043l-.384-.128l-.037-.012c-.463-.154-.87-.29-1.191-.44c-.348-.162-.667-.37-.911-.709c-.244-.338-.341-.707-.385-1.088c-.04-.353-.04-.78-.04-1.269v-5.02c0-.786 0-1.448.067-1.967c.07-.542.23-1.072.666-1.47a2.25 2.25 0 0 1 .42-.304c.517-.287 1.07-.27 1.605-.166c.11.021.223.047.342.078c-.066-.446-.1-.89-.1-1.328Zm.499 3.01a9.414 9.414 0 0 0-1.028-.288c-.395-.077-.525-.03-.586.004a.747.747 0 0 0-.14.101c-.053.048-.138.156-.19.556c-.053.41-.055.974-.055 1.825v4.93c0 .539.001.88.03 1.138c.028.238.072.327.112.381c.039.055.109.125.326.226c.236.11.56.219 1.07.39l.384.127c1.624.541 2.279.75 2.936.752c.207 0 .413-.015.617-.044c.65-.094 1.276-.397 2.82-1.17l.093-.046c1.06-.53 1.714-.857 2.417-1.01c.246-.054.496-.092.747-.113c.717-.06 1.432.06 2.593.253l.1.017c.655.109 1.083.18 1.407.196c.312.016.419-.025.471-.055a.749.749 0 0 0 .207-.175c.039-.047.097-.146.132-.456c.037-.323.038-.757.038-1.42v-5.667c0-.539-.001-.88-.03-1.138c-.028-.238-.072-.327-.112-.381c-.039-.055-.109-.125-.326-.226c-.236-.11-.56-.219-1.07-.39l-.06-.019a10.701 10.701 0 0 1-1.335 3.788c-.912 1.568-2.247 2.934-3.92 3.663a3.505 3.505 0 0 1-2.794 0c-1.673-.73-3.008-2.095-3.92-3.663a10.856 10.856 0 0 1-.934-2.087ZM12 2.75c-2.936 0-5.25 2.252-5.25 4.95c0 1.418.437 2.98 1.23 4.341c.791 1.362 1.908 2.47 3.223 3.044c.505.22 1.089.22 1.594 0c1.316-.574 2.432-1.682 3.224-3.044c.792-1.36 1.229-2.923 1.229-4.34c0-2.699-2.314-4.951-5.25-4.951Zm0 4a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5ZM9.25 8a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0Z" clip-rule="evenodd" />
+        </symbol>
+    </svg>
+    <header id="header" class="site-header position-fixed z-2 w-100 border-bottom mb-5">
+        <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+            <div class="container-lg">
+                <a class="navbar-brand pb-4" href="/">
+                                <span>Hiddify Next Github</span>
+                                </a>
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon" width="50" height="50">
+                        <use xlink:href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/">首页</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/free-nodes/">免费节点</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/paid-subscribe/">推荐机场</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/client.htm">客户端</a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link text-dark" href="/news/">新闻资讯</a>
+                            </li>
+                                                        
+                            <span class="scrollspy-indicator"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="intro" class="scrollspy-section bg-light" style="background: url(/assets/website/img/hiddifynextgithub/bg-pattern.png) no-repeat;background-size: cover;">
+        <div class="container-lg py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 fw-bold mt-5 pt-5">MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）</h1>
+                    <nav class="breadcrumb justify-content-center">
+                        <a class="breadcrumb-item" href="/">首页</a>
+                        <a class="breadcrumb-item" href="/news/">新闻资讯</a>
+                        <span class="breadcrumb-item active" aria-current="page">正文</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="scrollspy-section py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> </h1> <p><img fetchpriority="high" decoding="async" alt="" height="157" src="http://img.555519.xyz/uploads3/20220602/5abcd89c5c7dc2b6264fb25ac724150b.jpg"></p> <ul> <li>上图显示的是MySQL的<span style="color:#3399ea;"><strong>时态类型</strong></span>，其中CC、YY、MM、DD、hh、mm和ss分别代表世纪、年、月、日、时、分、秒。</li> <li>对于时态值，MySQL提供的<span style="color:#3399ea;"><strong>类型有：</strong></span>日期和时间（合并或分开表示）、时间戳（一种专门用来记载某个行最近一次修改时间的类型）。</li> <li>此外，在不需要完整日期时，还可以使用专用于<strong><span style="color:#3399ea;">表示年的类型</span></strong>。</li> </ul> </h1> <ul> <li>MySQL提供了多种存储时态 (与时间相关的)值的类型。在MySQL 5.6版本里，对这些类型进行了<span style="color:#3399ea;"><strong>多项重要的改进：</strong></span> <ul> <li>对于数据类型TIME、DATETIME和TIMESTAMP，MySQL 5.6.4增加了对<span style="color:#e579b6;"><strong>小数秒的支持</strong></span>。 这 些类型现在允许的可选小数部分多达6位(微秒)精度。</li> <li>MySQL 5.6.5引入了扩展支持：<strong><span style="color:#e579b6;">自动把当前时间戳作为初始值并进行更新</span></strong>。在以前的版本里，这些属性只能用于表里的大部分单个TIMESTAMP列。现在，它们可以用于任何 TIMESTAMP列，并且也可用于DATETIME列。</li> <li>MySQL 5.6.6丢弃了对<span style="color:#e579b6;"><strong>YEAR(2)</strong></span>的支持，取而代之的是允许创建像YEAR(4)那样的列。</li> </ul> </li> <li>下图列出了这些时态<strong><span style="color:#3399ea;">数据类型，以及每种类型的合法取值范围</span></strong>。这些范围同时也反映出了在MySQL 5.6.4里对小数秒的额外支持。(对于5.6.4之前的版本，可以将小数秒部分忽略掉。)</li> </ul> <p><img decoding="async" alt="" height="129" src="http://img.555519.xyz/uploads3/20220602/1b2ede6b1ddecdd7e4f081615069e093.jpg"></p> <ul> <li> <p>如果要声明包含<span style="color:#3399ea;"><strong>小数秒部分</strong></span>的时态类型列，则需要把定义写成type_name(fsp)，其中，type_name为TIME、DATETIME或TIMESTAMP，fsp为小数秒精度。例如，下面的TIME列允许 的小数位数分别为3位和6位：</p> </li> </ul> <pre><code class="language-sql">t1 TIME(3) t2 TIME(6)</code></pre> <ul> <li>fsp值的<span style="color:#3399ea;"><strong>取值范围必须为0~6</strong></span>。如果未给定，则默认为0。更多相关信息在下面会介绍。</li> <li>下图展示的是每一种时态数据类型的<strong><span style="color:#3399ea;">存储空间要求：</span></strong></li> </ul> <p><img decoding="async" alt="" height="139" src="http://img.555519.xyz/uploads3/20220602/d8b4fafb9306071554dda604f3cc397a.jpg"></p> <ul> <li>下图展示的是那些声明中<span style="color:#3399ea;"><strong>带有小数秒部分</strong></span>的类型所具有的额外存储空间要求：</li> </ul> <p><img loading="lazy" decoding="async" alt="" height="143" src="http://img.555519.xyz/uploads3/20220602/6baf45682f9db0a208ed6934a80ae659.jpg"></p> <blockquote> <h3><strong><span style="color:#3399ea;">“零”值</span></strong></h3> <ul> <li>当为某种日期/时间类型插入<span style="color:#e579b6;"><strong>非法值时</strong></span>，该类型会把它存储为一个<span style="color:#e579b6;"><strong>“零”值</strong></span>。</li> <li>下图列出了各种日期/时 间类型的零值情况：</li> </ul> <p><img loading="lazy" decoding="async" alt="" height="143" src="http://img.555519.xyz/uploads3/20220602/b294998d9f6daf31fe5ae320778a7ee3.jpg"></p> <ul> <li>如果想要把非法值处理为错误，并拒绝接受，则需要设置相应的SQL模式，更多相关信息请 参考后面"处理无效值"相关文章&nbsp;。</li> <li>“零”值也是那些声明时带有<strong><span style="color:#e579b6;">NOT NULL属性</span></strong>的日期/时间类型列的默认值。</li> </ul> </blockquote> <ul> <li>遵照标准SQL和ISO 8601规范的要求，MySQL的日期表示顺序为<strong><span style="color:#3399ea;">“年-月-日”</span></strong>。例如，2015年12月3日将被表示为'2015-12-03'。为满足检索显示要求，可以使用<span style="color:#3399ea;"><strong>DATE_FORMAT()函数和TIME_FORMAT()函数</strong></span>来显示各种格式的日期和时间 。</li> <li>在输入日期方面，MySQL的处理方式则<span style="color:#3399ea;"><strong>比较灵活</strong></span>。例如，它可以把两位数的年份转换为四位数的年份 ，并且对于小于10的月和日，不用提供前导数字0。不过 ，这些值的<strong><span style="color:#3399ea;">顺序必须为“年 -月-日”</span></strong>。对于平时已习惯性的一些格式，如'12-3-99'或'3-12-99’，解释情况有可能与你想象的样子有所不同。此时 ，可以借助于<span style="color:#3399ea;"><strong>STR_TO_DATE()函数</strong></span>，把非ISO格式的字符串转换为ISO格式的日期值 。例如，mytbl表拥有一个日期列date_col，你可以像下面那样插入各个值：</li> </ul> <pre><code class="language-sql">INSERT INTO mytbl(date_col) VALUES(STR_TODATE('12-3-99','%m-%d-%Y')); SELECT * FROM mytbl;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="100" src="http://img.555519.xyz/uploads3/20220602/74834fe4ef6d91dad3f33b8fc39c097e.jpg"></p> <ul> <li>在下面，会进一步讨论MySQL所使用的<span style="color:#3399ea;"><strong>日期解释规则</strong></span>。</li> </ul> </h1> <ul> <li>DATE、TIME类型分别用于保存<strong><span style="color:#3399ea;">日期值和时间值</span></strong>，而DATETIME类型则用于保存日期和时间的<strong><span style="color:#3399ea;">组合值</span></strong>。</li> <li>这3种类型值的<span style="color:#3399ea;"><strong>格式分别是</strong></span>'CCYY-MM-DD'、'hh:mm:ss[.uuuuuu]'和'CCYY-MM-DD hh:mm:ss[.uuuuuu]'，其中的CC、YY、MM、DD、hh、mm、ss和uuuuuu<strong><span style="color:#3399ea;">分别代表</span></strong>世纪、年、月、日、时、分、秒和微妙。</li> <li>对于MySQL 5.6.4<span style="color:#3399ea;"><strong>之前</strong></span>的版本，TIME和DATETIME值也有<strong><span style="color:#3399ea;">小数秒</span></strong>部分，只是在存储时它们会<strong><span style="color:#3399ea;">被丢弃掉</span></strong></li> <li>自MySQL 5.6.5起，DATETIME列会自动把<span style="color:#3399ea;"><strong>当前时间戳</strong></span>作为初始值，并进行更新。更多相关信息在下面会介绍。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">类型转换</span></h3> <ul> <li>如果把DATE值<span style="color:#e579b6;"><strong>赋值给</strong></span>DATETIME列，那么MySQL会自动把时间部分补足为<strong><span style="color:#e579b6;">'00:00:00'</span></strong>。反方向的转换也同样有效。</li> <li>如果把DATETIME值<span style="color:#e579b6;"><strong>赋值给</strong></span>DATE或TIME列，那么MySQL会把<strong><span style="color:#e579b6;">不相干的部分去掉。</span></strong></li> <li><span style="color:#e579b6;"><strong>例如：</strong></span></li> </ul> <pre><code class="language-sql">CREATE TABLE t(dt DATETIME, d DATE, t TIME); INSERT INTO t(dt,d,t) VALUES(NOW(),NOW(),NOW()); SELECT * FROM t;</code></pre> <ul> <li> <p>TIME到DATETIME的<span style="color:#e579b6;"><strong>转换</strong></span>，<strong><span style="color:#e579b6;">依赖于具体的MySQL版本</span></strong>：自MySQL 5.6.4起，当前日期会添加上时间。对于以前的版本，这个转换并不一定会产生有意义的结果。</p> </li> </ul> </blockquote> <blockquote> <h3><span style="color:#3399ea;">DATETIME和TIME的时间值区别</span></h3> <ul> <li>在MySQL里，DATATIME类型里的<span style="color:#e579b6;"><strong>时间值</strong></span>与TIME值略有不同。 <ul> <li>对于DATATIME类型，时间部分表示的是一天里的时间，且必须是在'23:59:59'的范围内。</li> <li>但是，TIME值表示的则是一段逝去的时间。</li> </ul> </li> <li>这也正是文章开头图片里所示的TIME列的取值范围为何可以<strong><span style="color:#e579b6;">包含负值</span></strong>，以及为何可以<span style="color:#e579b6;"><strong>大于</strong></span>’23:59:59'的具体原因。</li> </ul> <p><img decoding="async" alt="" height="139" src="http://img.555519.xyz/uploads3/20220602/d8b4fafb9306071554dda604f3cc397a.jpg"></p> </blockquote> <ul> <li>当往表里插入<span style="color:#3399ea;"><strong>“短”(不完整)</strong></span>的TIME值时，一定要小心。它们可能不会被解释成你所期望的样子。例如，把<span style="color:#3399ea;"><strong>'30'和'12:30'</strong></span>插到某个TIME列，那么最终的存储值为'00:00:30'和'12:30:00'。如果想把<span style="color:#3399ea;"><strong>'12:30'当作“12分30秒”</strong></span>，那么需要以完整的形式(如'00:12:30')来提供它。</li> </ul> </h1> <ul> <li>TIMESTAMP是一种<span style="color:#3399ea;"><strong>时态数据类型</strong></span>，用于储存日期和时间的组合值。(单词timastamp的中文意思是“时 间戳 ”，它的字面意思很容易让人误以为该类型只与时间有关，其实不然)。timestamp数据类型有一些特殊的属性，在下面会介绍。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">取值范围</span></h3> <ul> <li>TIMESTAMP类型列的<span style="color:#e579b6;"><strong>取值范围</strong></span>是'1970-01-01 00:00:00[.000000]'~'2038-01-19 03:14:07[.999999]'。</li> <li>与DATETIME一样，在MySQL 5.6.4<span style="color:#e579b6;"><strong>之前</strong></span>，TIMESTAMP值也允许有<span style="color:#e579b6;"><strong>小数秒</strong></span>部分，但在存储时会被<span style="color:#e579b6;"><strong>丟弃</strong></span>。</li> <li>它的取值范围与Unix时间密切相关，其中规定1970年的第一天为<span style="color:#e579b6;"><strong>“零日”</strong></span>，也称作<strong><span style="color:#e579b6;">“纪元”</span></strong>。</li> <li>对于每一个TIMESTAMP值，MySQL会用<span style="color:#e579b6;"><strong>4个字节</strong></span>来把它存储为自纪元以来总共逝去的秒数。1970年的起始确定了TIMESTAMP类型的<strong><span style="color:#e579b6;">取值范围下限值</span></strong>。(不过请注意，TIMESTAMP的取值范围并非起始于'1970-01-0100:00:00'。你可能会想当然地认为它就是纪元以来的那个0秒，但0表示的时间戳是'0000-00-00 00:00:00')。取值范围上限值则与4个字节所能表示的最大Unix时间相对应。</li> </ul> </blockquote> <blockquote> <h3><span style="color:#3399ea;">时区</span></h3> <ul> <li>MySQL会按<span style="color:#e579b6;"><strong>世界标准时间</strong></span>(Universal Coordinated Time，UTC) 来存储TIMESTAMP值。</li> <li>当保存这样 的值时，服务器会把它从<span style="color:#e579b6;"><strong>会话时区转换为UTC</strong></span>。当以后检索该值时，服务器又会把它从UTC转换回会话时区，从而让你看到与你存储结果一样的时间值。</li> <li>不过，如果另一个客户端使用了<span style="color:#e579b6;"><strong>另一个时区</strong></span>去连接服务器，并检索该值，那么它所看到的值则是调整为<span style="color:#e579b6;"><strong>其所设置时区的</strong></span>那个值 。</li> <li>事实上，只要更改一下会话时区设置，就可以在一个会话里看到这样的效果。例如：</li> </ul> <pre><code class="language-sql">CREATE TABLE t(ts TIMESTAMP); SET time_zone = '+00:00'  # 将时区设置为UTC INSERT INTO t VALUES('2000-01-01 00:00:00'); SELECT ts FROM t;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="362" src="http://img.555519.xyz/uploads3/20220602/3c2274fa6fa80aed945bb2fa0850514a.jpg"></p> <pre><code class="language-sql">SET time_zone = '+03:00' # 将时区前调3个小时 SELECT ts FROM t;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="274" src="http://img.555519.xyz/uploads3/20220602/79c33f0591b3029babf0e2efeab168ed.jpg"></p> <ul> <li> <p>在上面示例里，指定时区所采用的方式为：相对于UTC的小时和分钟的<strong><span style="color:#e579b6;">有符号偏移置</span></strong>。在后面"全球化问题"相关文章中我们还会介绍如何像类似于使用'Europe/Zurich'这样的时区名来更改时区设置。</p> </li> </ul> </blockquote> <ul> <li>TIMESTAMP列会自动把<span style="color:#3399ea;"><strong>当前时间戳作为初始值</strong></span>，并进行更新。此外，如果在定义TIMESTAMP列时 为了允许存放NULL值而带有NULL属性，那么当把<span style="color:#3399ea;"><strong>NULL存储到该列</strong></span>时，该列值会被<strong><span style="color:#3399ea;">设置为当前时间</span></strong>戳。更多相关信息在下面会介绍。</li> </ul> </h1> <ul> <li>YEAR是<span style="color:#3399ea;"><strong>单字节数据类型</strong></span>，其用意在于提高年值的表示效率。</li> <li>在声明YEAR列时，可以指定一个<span style="color:#3399ea;"><strong>显示宽度M</strong></span>，M值只能为4或2。如果在YEAR列的定义里忽略掉M，那么其<span style="color:#3399ea;"><strong>默认值将为4</strong></span>。</li> <li>YEAR类型的<span style="color:#3399ea;"><strong>取值范围</strong></span>是1901~2155年。如果只会用到日期里的年份，如出生年份、政府选举年份等，那么使用YEAR就足够了。如果不需要完整的日期值 ，那么用YEAR会比用其他日期类型更省存储空间 。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">YEAR(2)已被废弃</span></h3> <ul> <li>YEAR(2)只显示<span style="color:#e579b6;"><strong>最后两位数</strong></span>，并且这种类型实际只能存储从1970年到2069年之间的值。</li> <li>如果使用YEAR(2)来存储该范围之外的值，那么最终的显示值将不确定。例如，YEAR(2)列里存储的1970和 2070都会显示为70。</li> <li>避免这类问题的最简单方法是<span style="color:#e579b6;"><strong>避免使用</strong></span>YEAR(2)，用 YEA(4)来代替。</li> <li>由于这样的存储问题，自MySQL 5.6.6起，就<span style="color:#e579b6;"><strong>废弃了YEAR(2)</strong></span>：在已有表里，YEAR(2)列会继续保持不变；但对于新表，这样的列会被创建为YEAR(4)。</li> </ul> </blockquote> <ul> <li>MySQL会使用其<span style="color:#3399ea;"><strong>年值判断规则</strong></span>，将输入的2位YEAR值<strong><span style="color:#3399ea;">转换成</span></strong>4位值 (在下面"解释模糊年份值"会介绍)。 例如，97和14会变成1997和2014。不过请注意，当把<strong><span style="color:#3399ea;">数值00插到4位的YEAR列</span></strong>时 ，最终存储 的值将会是0000，而不是2000。如果想要把值00转换为2000，那么需要以'0'如或'00'的字符串来指定它。</li> <li><span style="color:#3399ea;"><strong>TINYINT类型</strong></span>的存储空间占用量与YEAR类型 (只有1个字节)的一样，但<strong><span style="color:#3399ea;">取值范围不一样</span></strong>。如果想要用一个整数类型来覆盖YEAR类型所能表示的年份范围 ，那么需要<strong><span style="color:#3399ea;">使用SMALLINT</span></strong>(它将占用两倍的空间 )。如果需要表示的年份包含在YEAR类型所能表示的年份范围内，那么与使用SMALLINT相比，使用<span style="color:#3399ea;"><strong>YEAR更节省空间</strong></span>。</li> </ul> </h1> <blockquote> <h3><span style="color:#3399ea;">NULL</span></h3> <ul> <li>时态列的定义可以包含通用属性<span style="color:#e579b6;"><strong>NULL或NOT NULL</strong></span>。</li> <li>如果都不指定，则默认为NULL。TIMESTAMP类型除外，其默认值为NOT NULL。</li> </ul> </blockquote> <blockquote> <h3><span style="color:#3399ea;"><strong>DEFAULT</strong></span></h3> <ul> <li>也可以用<span style="color:#e579b6;"><strong>DEFAULT子句</strong></span>来设定默认值。在另一篇文章中我们介绍了数据类型的默认值。</li> <li>大部分情况下，这些<span style="color:#e579b6;"><strong>默认值都必须为常量</strong></span>。</li> <li>除了TIMESTAMP(自MySQL 5.6.5起)和DATETIME以外，你都<strong><span style="color:#e579b6;">不能使用</span></strong>像CURRENT_TIMESTAMP这样的函数来将DATETIME列的<strong><span style="color:#e579b6;">默认值设置为“当前日期和时间”</span></strong>。TIMESTAMP和DATETIME列<span style="color:#e579b6;"><strong>之所以比较特殊</strong></span>，是因为它们的默认值可以为<span style="color:#e579b6;"><strong>当前日期和时间</strong></span>。(更多与掌控这些类型默认值的规则相关的信息在下面"时态类型的自动特性"中会介绍)。如果其他类型想要得到这种结果，那么可以在<span style="color:#e579b6;"><strong>每次创建新行时</strong></span>，显式地将该列的值<span style="color:#e579b6;"><strong>设置为CURRENT_TIMESTAMP</strong></span>。 另外，也可以使用TIMESTAMP列或DATETIME列来代替，或者设置一个触发器，让它将该列初始化为适当的值（触发器参考https://dongshao.blog.csdn.net/article/details/90486999）。</li> </ul> </blockquote> </h1> <ul> <li>下面描述MySQL如何处理时间值里的<span style="color:#3399ea;"><strong>小数秒</strong></span>。它主要适用于MySQL 5.6.4及<strong><span style="color:#3399ea;">以上的版本</span></strong>。</li> </ul> <blockquote> <ul> <li>在TIME、DATETIME和 TIMESTAMP类型的声明语法中，允许设置一个可选的<strong><span style="color:#3399ea;">小数秒精度(fsp)</span></strong>，精度值最高可达<span style="color:#3399ea;"><strong>6位数字</strong></span>。</li> <li>值必须是0〜6，0表示没有小数部分，而6则表示精度为微秒。如果没有指定fsp，则默认值为0。</li> <li>例如，TIME和TIME(0)是<span style="color:#3399ea;"><strong>等价的</strong></span>，都没有小数部分。DATETIME(1)允许日期和时间值精确到<span style="color:#3399ea;"><strong>十分之一秒</strong></span>。TIMESTAMP(6)允许时间戳的精确值达到<span style="color:#3399ea;"><strong>微秒级</strong></span>。</li> </ul> </blockquote> <ul> <li>对于带时态参数的<span style="color:#3399ea;"><strong>函数</strong></span>，其接受或返回的时态值中都带有<span style="color:#3399ea;"><strong>小数秒部分</strong></span>。在某些情况下，MySQL 5.6.4之前的版本有些不带参数的函数，现在也<span style="color:#3399ea;"><strong>开始接受参数</strong></span>，以方便对可能有的返回值进行小数秒位数的控制。例如，CURTIME()返回的是不带小数秒部分的当前时间，而CURTIME(3)返回的时间则包括了一个精度高达千分之一秒的小数秒部分：</li> </ul> <pre><code class="language-sql">SELECT CURTIME(), CURTIME(3);</code></pre> <p><img loading="lazy" decoding="async" alt="" height="179" src="http://img.555519.xyz/uploads3/20220602/13aa2fb011135c92c0cef24c561c6142.jpg"></p> <ul> <li>关于各个函数的描述表明了什么时候允许使用fsp参数，请参阅https://dongshao.blog.csdn.net/article/details/88046679</li> <li>MySQL 5.6.4<span style="color:#3399ea;"><strong>之前的版本</strong></span>，只提供了对<span style="color:#3399ea;"><strong>微秒值</strong></span>的有限支持。有一些时间函数，如DATE_ADD()，使用了这些值，但是如果你想要在某个时间列里存储包含微秒部分的值，那么MySQL会将那个微秒<span style="color:#3399ea;"><strong>部分丢弃</strong></span>。</li> </ul> </h1> <ul> <li>TIMESTAMP和DATETIME列可以有<strong><span style="color:#3399ea;">自动初始化属性和自动更新特性</span></strong>。 <ul> <li>“自动初始化”即意味着，对于<span style="color:#e579b6;"><strong>新行</strong></span>，如果在INSERT语句里省略了这两种类型的列，那么列<span style="color:#e579b6;"><strong>会被设置为当前时间戳</strong></span>。</li> <li>“自动更新”即意味着，对于<span style="color:#e579b6;"><strong>已有的行</strong></span>，当把任何其他列更改为不同值时，这两种类型的列都会<span style="color:#e579b6;"><strong>被更新为当前时间戳</strong></span>。 (将列设置成它的当前值不算自动更新；这种做法实际上是在防止自动更新)。</li> </ul> </li> <li>对于MySQL 5.6.5<span style="color:#3399ea;"><strong>之前的版本</strong></span>，可以为表里任何单个的TIMESTAMP列指定<span style="color:#3399ea;"><strong>两种特性中的一种或全部</strong></span>。不能出现一个TIMESTAMP列拥有自动初始化特性，而另一个列拥有自动更新特性的情况 。也不能让多个列拥有自动初始化特性，或者让多个列拥有自动更新特性。</li> <li>MySQL 5.6.5扩展并<span style="color:#3399ea;"><strong>推广了对自动特性的支持：</strong></span>任何TIMESTAMP列都可以有这两种特性中的一种或全部，和DATETIME列一样。</li> <li>还有一个<span style="color:#3399ea;"><strong>只适用于TIMESTAMP列</strong></span>的<span style="color:#3399ea;"><strong>特殊特性：</strong></span>如果将列设置为NULL，那么它的值会被设置为当前时 间戳。要想允许TIMESTAMP列存储 NULL值，在定义它时需要带有NULL属性。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">语法格式</span></h3> <ul> <li>例如，下面是TIMESTAMP的语法格式（DATETIME也是一样的）：</li> </ul> <pre><code class="language-sql">col_name TIMESTAMP [DEFAULT default_value] [ON UPDATE CURRENT_TIMESTAMP]</code></pre> <ul> <li>如果<span style="color:#e579b6;"><strong>同时指定</strong></span>DEFAULT和ON UPDATE属性，它们的顺序无关紧要。</li> <li><span style="color:#e579b6;"><strong>DEFAULT默认值可以是：</strong></span> <ul> <li>CURRENT_TIMESTAMP。</li> <li>像0那样的常量值，或者是格式'CCYY-MM-DD hh:mm:ss'的值。</li> <li>也可以使用CURRENT_TIMESTAMP的同义词，如NOW()。</li> </ul> </li> <li>自MySQL 5.6.5起，<span style="color:#e579b6;"><strong>DATETIME列便开始允许</strong></span>这些与DEFAULT和ON UPDATE一样的属性。在5.6.5版本之前，对于DEFAULT属性，DATETIME只允许常量，并且不支持ON UPDATE。</li> <li>如果想让表里的<span style="color:#e579b6;"><strong>第一个TIMESTAMP列具有一个或两个自动特性</strong></span>，那么可以组合使用DEFAULT属性和ON UPDATE属性来定义它： <ul> <li>如果使用DEFAULT CURRENT_TIMESTAMP，那么列将拥有<strong>自动初始化特性</strong>。如果指定ON UPDATE CURRENTJTIMESTAMP，那么它还会拥有<strong>自动更新特性</strong>。</li> <li>如果<strong>两种属性都没有指定</strong>，那么MySQL会将列定义为具有DEFAULT CURRENT_TIMESTAMP和ON UPDATE CURRENT_TIMESTAMP两种属性。</li> <li>如果使用<strong>指定了常量值的</strong>DEFAULT constant_value属性，那么列将<strong>不具有</strong>自动初始化特性。如果指定ON UPDATE CURRENT_TIMESTAMP，那么它会有自动更新特性。</li> <li>如果没有DEFAULT，但有ON UPDATE CURRENT_TIMESTAMP，那么<strong>具体的默认 值为0，并且列有自动更新特性</strong>。</li> </ul> </li> </ul> </blockquote> <ul> <li><span style="color:#3399ea;"><strong>对于MySQL 5.6.5之前的版本</strong></span>，如果要让某个TIMESTAMP列 (而非第一列)使用自动初始化或自动更新特性，那么必须使用DEFAULT constant_value属性显式地定义第一列，同时不带CURRENT_TIMESTAMP属性。然后，对于任何其他的单个TIMESTAMP列，可以使用DEFAULT CURRENT_TIMESTAMP或ON UPDATE CURRENT_TIMESTAMP(或者同时使用这两者)。</li> <li><span style="color:#3399ea;"><strong>自MySQL 5.6.5起，</strong></span>对于<span style="color:#3399ea;"><strong>任何</strong></span>TIMESTAMP列，可以<span style="color:#3399ea;"><strong>自由地使用这两个属性</strong></span>当中的一个，也可以两个都用。此外，DATETIME列也可以有这些属性。</li> <li>如果<span style="color:#3399ea;"><strong>不想让拥有</strong></span>自动初始化特性或自动更新特性的TIMESTAMP或DATETIME列 ，受到这些特性的影响 ，那么在<span style="color:#3399ea;"><strong>执行插入或更新操作时</strong></span>，可以<span style="color:#3399ea;"><strong>显式地</strong></span>把列设置成所期望的值。例如，为防止在更改列时自动更新，可以将列设置成它的当前值。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">NULL</span></h3> <ul> <li>TIMESTAMP和DATETIME列的定义也<span style="color:#e579b6;"><strong>可以包含</strong></span>NULL或NOT NULL属性。</li> <li>TIMESTAMP的默认<span style="color:#e579b6;"><strong>属性是NOT NULL</strong></span>。 <ul> <li>这会产生一种特殊效果，即当你把列显式地设置成NULL时，MySQL会将它<strong>设置成当前时间戳</strong>。(对于插入和更新操作，都是如此)。</li> <li><strong>如果在列的定义里指定NULL</strong>，那么将该列设置为NULL时，存储的将是NULL，而不是当前时间戳。</li> </ul> </li> <li>DATETIME的<span style="color:#e579b6;"><strong>默认属性是NULL</strong></span>，并且在把DATETIME列设置为NULL时，没有产生特殊效果。</li> </ul> </blockquote> <blockquote> <h3><span style="color:#3399ea;">演示案例</span></h3> <ul> <li><span style="color:#e579b6;"><strong>有如下一张表，</strong></span>包含TIMESTAMP列。在新增行时，列会被设置成<span style="color:#e579b6;"><strong>当前时间戳</strong></span>，并且之后不会 被自动更新：</li> </ul> <pre><code class="language-sql">CREATE TABLE t1(ts_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP);</code></pre> <p><img loading="lazy" decoding="async" alt="" height="40" src="http://img.555519.xyz/uploads3/20220602/1bda25fa16476960034b13d8101637ac.jpg"></p> <ul> <li>如果要插入新行，可以通过如下几种方式将新行中的ts_create字段<span style="color:#e579b6;"><strong>设置为当前时间戳：</strong></span> <ul> <li>将列设置为NULL</li> <li>在INSERT语句中省略ts_create字段</li> </ul> </li> <li><span style="color:#e579b6;"><strong>下面来看另外一张表</strong></span>：其中包含两个TIMESTAMP类型的列，这两个列分别用于存储创建时间和最周修改时间。</li> </ul> <pre><code class="language-sql">CREATE TABLE t2(  ts_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  ts_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP );  INSERT INTO t2;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="103" src="http://img.555519.xyz/uploads3/20220602/687651ebe5836ddad304e2aa5572470b.jpg"></p> <ul> <li>插入一行进行测试：</li> </ul> <pre><code class="language-sql">INSERT INTO t2 VALUES(); SELECT * FROM t2;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="229" src="http://img.555519.xyz/uploads3/20220602/2a90825dc966a7f37a9a756d17a4df03.jpg"></p> </blockquote> </h1> <ul> <li>MySQL可以正确解释<span style="color:#3399ea;"><strong>各种格式</strong></span>的日期和时间列的输入值，其中包括<strong><span style="color:#3399ea;">字符串形式和数值形式</span></strong>。 此外，自MySQL5.6.4起，TIME、DATETIME和TIMESTAMP数据类型，还可以带有一个可选的精度高达<span style="color:#3399ea;"><strong>6位数字(微秒)</strong></span>的小数秒部分。例如，DATETIME和TIMESTAMP值支持的格式有：</li> </ul> <pre><code>'CCYY-MM-DD hh:mm:ss[.uuuuuu[' 'YY-MM-DD hh:mm:ss[.uuuuuu]' 'CCYYMMDDhhmmss[.uuuuuu]' 'YYMMDDhhmmss[.uuuuuu]' CCYYMMDDhhmmss[.uuuuuu] YYMMDDhhmmss[.uuuuuu]</code></pre> <ul> <li>对于DATE、TIME和YEAR类型值，也有类似的表示。</li> <li>MySQL也可以解释那些<span style="color:#3399ea;"><strong>没有世纪部分(即CC)</strong></span>的日期和时间格式，所用规则参考上面。</li> </ul> <blockquote> <h3><span style="color:#3399ea;">分隔符处理</span></h3> <ul> <li>对于<span style="color:#e579b6;"><strong>带分隔符的字符串</strong></span>格式，日期里可以不用"-"，时间里可以不用":"。</li> <li>任何一种标点符号都可以用作分隔符。对这些值的解释，依据的是其上下文，而非分隔符。例如，虽然人们习惯于把“:”当作时间值的分隔符，但是在期望是日期值的场合，MySQL也不会把一个包含“:”的值解释为具体的时间。</li> <li>此外，对于包含有分隔符的字符串格式，当月、日、时，分或秒的值<span style="color:#e579b6;"><strong>小于10时，可以不用指定2位数字</strong></span>。例如，下面这些值都是等价的。</li> </ul> <pre><code>'2012-02-03 05:04:09' '2012-02-03 05:04:9' '2012-02-03 05:4:9' '2012-02-03 5:4:9' '2012-02-3 5:4:9' '2012-2-3 5:4:9'</code></pre> </blockquote> <blockquote> <h3><span style="color:#3399ea;"><strong>前导零</strong></span></h3> <ul> <li>对于<span style="color:#e579b6;"><strong>带有前导零</strong></span>的日期和时间值，MySQL有多种不同的解释方式，具体取决于这些值是以<span style="color:#e579b6;"><strong>字符串形式</strong></span>指定的，还是以<span style="color:#e579b6;"><strong>数字形式</strong></span>指定的。</li> <li>例如，<span style="color:#e579b6;"><strong>字符串'001231'</strong></span>会被看作是一个有6位数字的值： <ul> <li>如果将其当作<strong>DATE类型</strong>，那么它会被解释成'2000-12-31'。</li> <li>而如果将其当作<strong>DATETIME类型</strong>，那么它会被解释成'2000-12-31 00:00:00'。</li> </ul> </li> <li>另外，在解析器将其处理成数字之后，数字001231会被看作1231，于是，对它的解释就会变得不确定。此时，最好是提供一个字符串值'001231'。</li> <li>如果<span style="color:#e579b6;"><strong>的确需要使用数字</strong></span>，则需要使用完整形式(对于DATE类型，即为20001231；而对于DATETIME类型，即为200012310000)。</li> </ul> </blockquote> <ul> <li>一般情况下，可以在DATE、DATETIME和TIMESTAMP类型之间<strong><span style="color:#3399ea;">随意地相互赋值</span></strong>，但也请记 住，存在以下这样<span style="color:#3399ea;"><strong>几条限制：</strong></span> <ul> <li>如果把DATETIME或TIMESTAMP<span style="color:#e579b6;"><strong>值赋给</strong></span>DATE列，则其中的时间部分会<span style="color:#e579b6;"><strong>被丢失</strong></span>。</li> <li>如果把DATE值<span style="color:#e579b6;"><strong>赋值给</strong></span>DATETIME或TIMESTAMP列，则结果值的时间部分将会<strong><span style="color:#e579b6;">被设置为零</span></strong> (即'00:00:00')。</li> <li><span style="color:#e579b6;"><strong>各个类型的取值范围有所不同</strong></span>。尤其是TIMESTAMP类型，其取值范围仅限于1970~2038。因此，不能把一个早于1970年的DATETIME值赋给TIMESTAMP列。如果强 行那样做，最终的结果也不会是你所期望的那样。同样 ，也不能把遥远未来的值赋给 TIMESTAMP列。</li> </ul> </li> <li>MySQL提供了很多用于处理日期和时间值的函数。更多相关信息请参考https://blog.csdn.net/qq_41453285/article/details/88046679。</li> </ul> </h1> <ul> <li>对于所有那些<span style="color:#3399ea;"><strong>带有年份值</strong></span>的日期和时间类型(包括DATE、DATETIME、TIMESTAMP和 YEAR)，MySQL在处理那些包含2位数字的年份值时，会把它们<strong><span style="color:#3399ea;">转换成4位数字</span></strong>。 <ul> <li>年份在00~69之间的值，会被转换为2000〜2069。</li> <li>年份在70〜99之间的值，会被转换为1970~1999。</li> </ul> </li> <li>把各种不同的2位数字值存储到YEAR(4)列，然后再把它们检索出来，便可以看到这些转换规 则的实际效果：</li> </ul> <pre><code class="language-sql">CREATE TABLE y_table (y YEAR(4)); INSERT INTO y_table VALUES(68),(69),(99),(00),('00'); SELECT * FROM y_table;</code></pre> <p><img loading="lazy" decoding="async" alt="" height="283" src="http://img.555519.xyz/uploads3/20220602/da3d60bf56a587b77f8f1377be0054fd.jpg"></p> <ul> <li>前面的示例也展示了某些应该引起注意的地方：00会被转换为 0000，而不是2000。如果把数 字0插到YEAR(4)列，得到的也将是0000。如果要利用某个<span style="color:#3399ea;"><strong>没有包含世纪部分的值</strong></span>得到2000年的表示结果，那么<span style="color:#3399ea;"><strong>必须使用字符串</strong></span>'0'或'00'。如果想确保MySQL看到的<strong><span style="color:#3399ea;">是字符串，而非数字</span></strong>，则可以使用<span style="color:#3399ea;"><strong>CAST</strong></span>(value AS CHAR)函数来插入YEAR值，不管value是字符串，还是数字，其结果都一律是字符串。</li> <li>需要注意的是，把2位数字年份值转换为4位数字年份值的转换规则，只是提供了一种比较合理的猜测。当未指定世纪部分时，MySQL并不知道你的2位数字年份具体指的是哪 一年。 MySQL的年份转换规则适用于很多情形，但如果它们产生的结果与你预期的不一致，那就必须得提供一个无歧义的4位数字年份值。例如，想把自18世纪以来的美国总统的出生日期和去世日期都录到president表里，那么必须使用4位数字的年份值 。这两个列的值跨越了好几个世纪，因此让MySQL根据2位数的年份值去猜测它们属于哪个世纪，绝非明智之举。</li> </ul> </h1> <ul> <li><span style="color:#3399ea;"><strong>日期等函数参见文章：</strong></span>https://blog.csdn.net/qq_41453285/article/details/88046679</li> </ul> <blockquote> <h3><span style="color:#3399ea;">演示案例</span></h3> <ul> <li>查询2005年9月的<strong><span style="color:#e579b6;">所有订单</span></strong></li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="186" src="http://img.555519.xyz/uploads3/20220602/ce65efd4fad8fe6135627caa345f8af2.jpg"></p> <ul> <li>当然，我们还可以<strong><span style="color:#e579b6;">进行简化</span></strong></li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="217" src="http://img.555519.xyz/uploads3/20220602/06d75e959f92b98baa0b157920250a27.jpg"></p> </blockquote> <blockquote> <h3><span style="color:#3399ea;">演示案例</span></h3> <ul> <li>我们有下面这个查询语句。如果order_date的类型是datetime类型（例如：2005-09-01 11:30:05），那么order_date中还会<strong><span style="color:#e579b6;">包含时分秒</span></strong>，下面的查询就会失败</li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="48" src="http://img.555519.xyz/uploads3/20220602/640e3cb92486331196e78ea02918f773.jpg"></p> <ul> <li>因此，我们可以<span style="color:#e579b6;"><strong>借助date()函数</strong></span>来解决上面那种错误</li> </ul> <p><img loading="lazy" decoding="async" alt="" class="has" height="168" src="http://img.555519.xyz/uploads3/20220602/b32d441c65c39c6331f5a9c99df2aab5.jpg"></p> <ul> <li>因此，如果<span style="color:#e579b6;"><strong>查询要的是日期</strong></span>，那么就建议使用date()函数</li> <li>类似的，<span style="color:#e579b6;"><strong>time()函数等原理都如同上面</strong></span></li> </ul> </blockquote> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102350.htm">RestTemplate中文问号?</a></p>
+                                        <p>下一个：<a href="/news/article-103188.htm">厦门领养宠物猫的地方（厦门领养宠物猫中心）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81831.htm" title="springBoot中base64与文件的相互转换">springBoot中base64与文件的相互转换</a></li>
+                        <li class="py-2"><a href="/news/article-102356.htm" title="MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）">MySQL数据类型——时间/日期类型（DATE、TIME、DATETIME、TIMESTAMP、YEAR）</a></li>
+                        <li class="py-2"><a href="/news/article-82560.htm" title="领养狗协议里面回写押金吗（犬只领养协议）">领养狗协议里面回写押金吗（犬只领养协议）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-24-today-hiddify-next-node.htm" title="「4月24日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月24日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-72999.htm" title="动物疫苗检测找哪个部门（动物疫苗检测站）">动物疫苗检测找哪个部门（动物疫苗检测站）</a></li>
+                        <li class="py-2"><a href="/news/article-95756.htm" title="动物医院部门职责范围（动物医院职位）">动物医院部门职责范围（动物医院职位）</a></li>
+                        <li class="py-2"><a href="/news/article-86847.htm" title="RequestBody多个参数Map实现以及前端json传参方式">RequestBody多个参数Map实现以及前端json传参方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-free-node-subscribe-links.htm" title="「4月13日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月13日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-18-hiddify-next-node.htm" title="「4月18日」最高速度19.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月18日」最高速度19.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-81192.htm" title="中国十大宠物粮批发市场排名榜（中国最大的宠物粮生产厂家）">中国十大宠物粮批发市场排名榜（中国最大的宠物粮生产厂家）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">74</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="footer-bottom py-3 text-center">
+        <div class="container-lg">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p class="m-0">
+                HiddifyNextGithub免费节点官网 版权所有 Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/plugins.js"></script>
+    <script src="/assets/website/js/frontend/hiddifynextgithub/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
