@@ -218,17 +218,13 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2025-11-26-hiddify-next-node.htm">「11月26日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></p>
+        <p>下一个：<a href="/free-nodes/2025-11-28-hiddify-next-node-github.htm">「11月28日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何设置？</h5></div>
+    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
     <div class="panel-body">
-        用户可添加订阅 URL，Nekoray 会定期自动下载并更新节点列表。保持节点最新可减少手动维护，提高节点可用性和网络连接稳定性，确保科学上网体验顺畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 支持哪些类型的节点导入？</h5></div>
-    <div class="panel-body">
-        Surfboard 支持 VMess、VLESS、Trojan、Shadowsocks 等节点类型。用户可通过 YAML 或 JSON 文件导入，配置策略组和规则，实现自动分流和节点管理。<hr />    </div>
+        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 如何在 iPhone 上使用？</h5></div>
@@ -236,29 +232,29 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         从 App Store 下载 Surfboard 后，导入 Clash 订阅链接即可使用。Surfboard 提供直观的节点切换和规则管理界面，可查看实时延迟与流量数据，非常适合希望简单上手的 iOS 用户。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 的节点分组管理有哪些优势？</h5></div>
-    <div class="panel-body">
-        节点分组可按用途、地区或延迟分类，结合策略组实现自动分流。方便用户管理大量节点，快速选择最佳节点，提高访问速度和连接稳定性，同时优化维护效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 是否兼容 Clash 或 V2Ray 配置文件？</h5></div>
-    <div class="panel-body">
-        Hiddify Next 支持部分 Clash 与 Xray 订阅格式，但建议使用其官方订阅格式以获得完整兼容。若订阅转换异常，可使用 Hiddify 提供的在线转换工具重新生成配置文件导入。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 使用 WebSocket + TLS 有哪些优势？</h5></div>
     <div class="panel-body">
         WebSocket + TLS 可将 V2Ray 流量伪装成 HTTPS 请求，隐藏真实通信特征。结合域名伪装和策略组使用，可以有效绕过封锁，提高节点安全性和连接稳定性，保持长期稳定访问。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 支持哪些类型的节点导入？</h5></div>
     <div class="panel-body">
-        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
+        Surfboard 支持 VMess、VLESS、Trojan、Shadowsocks 等节点类型。用户可通过 YAML 或 JSON 文件导入，配置策略组和规则，实现自动分流和节点管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何用 systemd 管理 V2Ray/ Sing-box 服务？</h5></div>
+    <div class="panel-heading"><h5>Mellow TUN 模式对游戏流量有何作用？</h5></div>
     <div class="panel-body">
-        创建 systemd 单元文件，指定 ExecStart 指令并设置 Restart=on-failure 与合适的 User/Group。启用服务并使用 `systemctl enable` 与 `systemctl start` 管理，便于开机自启与日志集中收集。<hr />    </div>
+        TUN 模式拦截系统 IP 层流量，实现全局代理。游戏流量通过低延迟节点传输，减少丢包和延迟，提高游戏体验的流畅性和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 的节点分组管理有哪些优势？</h5></div>
+    <div class="panel-body">
+        节点分组可按用途、地区或延迟分类，结合策略组实现自动分流。方便用户管理大量节点，快速选择最佳节点，提高访问速度和连接稳定性，同时优化维护效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何设置？</h5></div>
+    <div class="panel-body">
+        用户可添加订阅 URL，Nekoray 会定期自动下载并更新节点列表。保持节点最新可减少手动维护，提高节点可用性和网络连接稳定性，确保科学上网体验顺畅。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的 TLS 配置如何增强抗封锁能力？</h5></div>
@@ -266,9 +262,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         TLS 配置可将流量伪装成正常 HTTPS 请求，隐藏真实数据特征。结合域名伪装、WebSocket 或 QUIC 等传输方式，可有效绕过封锁，提高节点长期可用性和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow TUN 模式对游戏流量有何作用？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 是否兼容 Clash 或 V2Ray 配置文件？</h5></div>
     <div class="panel-body">
-        TUN 模式拦截系统 IP 层流量，实现全局代理。游戏流量通过低延迟节点传输，减少丢包和延迟，提高游戏体验的流畅性和网络稳定性。    </div>
+        Hiddify Next 支持部分 Clash 与 Xray 订阅格式，但建议使用其官方订阅格式以获得完整兼容。若订阅转换异常，可使用 Hiddify 提供的在线转换工具重新生成配置文件导入。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何用 systemd 管理 V2Ray/ Sing-box 服务？</h5></div>
+    <div class="panel-body">
+        创建 systemd 单元文件，指定 ExecStart 指令并设置 Restart=on-failure 与合适的 User/Group。启用服务并使用 `systemctl enable` 与 `systemctl start` 管理，便于开机自启与日志集中收集。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -297,16 +298,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-node-subscribe.htm" title="「11月6日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月6日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-21-free-node-subscribe-links.htm" title="「10月21日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月21日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-high-speed-nodes.htm" title="「11月19日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月19日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-hiddify-next-windows.htm" title="「11月18日」最高速度19.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月18日」最高速度19.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-14-free-node-subscribe.htm" title="「10月14日」最高速度20.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月14日」最高速度20.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-2-free-high-speed-nodes.htm" title="「11月2日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月2日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-9-hiddify-next-node-share.htm" title="「11月9日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月9日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-9-free-subscribe-node.htm" title="「10月9日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月9日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-hiddify-next-github.htm" title="「11月5日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月5日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-4-hiddify-next-node-share.htm" title="「10月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-26-hiddify-next-node.htm" title="「11月26日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月26日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-hiddify-next-node.htm" title="「11月7日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月7日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-26-hiddify-next-node-github.htm" title="「10月26日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月26日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-1-hiddify-next-node-github.htm" title="「11月1日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月1日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-hiddify-next-node-share.htm" title="「11月9日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月9日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-2-free-high-speed-nodes.htm" title="「11月2日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「11月2日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-11-free-node-subscribe-links.htm" title="「10月11日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月11日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-4-free-subscribe-node.htm" title="「12月4日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「12月4日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -318,7 +319,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
