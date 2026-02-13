@@ -213,6 +213,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-2-5-free-node-subscribe.htm">「2月5日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></p>
+        <p>下一个：<a href="/free-nodes/2026-2-7-hiddify-next-node-github.htm">「2月7日」最高速度20.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
@@ -221,24 +222,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Potatso Lite 支持手动添加 Shadowsocks 节点。用户在“配置”中选择添加节点，输入服务器、端口、加密方式等信息即可建立连接，适合手动管理单个线路。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何把 Clash 规则与本地 hosts 文件结合使用？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
     <div class="panel-body">
-        可在 Clash 的 rules 中优先设置域名直连规则，并在系统 hosts 中添加常用站点的固定解析以加速 DNS 解析。注意 hosts 优先级高于 DNS，因此修改 hosts 需谨慎以避免与真实解析冲突。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
-    <div class="panel-body">
-        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持多客户端同时管理节点？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 可以独立管理多个客户端，如 Shadowsocks 和 Clash 节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高便利性和效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何管理不同用户的带宽？</h5></div>
-    <div class="panel-body">
-        管理员可以为每个用户设置独立带宽限制和流量配额。超出配额时可自动阻断或降速，确保服务器资源合理分配，避免单用户占用过多带宽，保障整体网络体验。<hr />    </div>
+        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 与 Hiddify Next 有什么区别？</h5></div>
@@ -246,14 +232,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Nekobox 更注重轻量化和本地化，界面简洁，支持多协议基础功能；而 Hiddify Next 则整合了订阅转换、测速、规则分流等高级功能，更适合技术用户使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-body">
+        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray QUIC 模式在高丢包网络的优势？</h5></div>
     <div class="panel-body">
         QUIC 基于 UDP 支持多路复用和零握手，减少延迟和丢包。适合视频、游戏和即时通讯流量，保证高丢包环境下网络稳定性和访问速度，提高整体体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否支持多客户端同时管理节点？</h5></div>
     <div class="panel-body">
-        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
+        支持。Nekobox 可以独立管理多个客户端，如 Shadowsocks 和 Clash 节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高便利性和效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的 ACL4SSR 规则与 Rule Provider 有何区别？</h5></div>
@@ -261,9 +252,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         ACL4SSR 是第三方规则集合，专注于分流国内外网站。Rule Provider 是 Clash 的订阅机制，允许自动更新远程规则。二者可以结合使用，实现灵活分流管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
     <div class="panel-body">
-        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。    </div>
+        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何把 Clash 规则与本地 hosts 文件结合使用？</h5></div>
+    <div class="panel-body">
+        可在 Clash 的 rules 中优先设置域名直连规则，并在系统 hosts 中添加常用站点的固定解析以加速 DNS 解析。注意 hosts 优先级高于 DNS，因此修改 hosts 需谨慎以避免与真实解析冲突。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何管理不同用户的带宽？</h5></div>
+    <div class="panel-body">
+        管理员可以为每个用户设置独立带宽限制和流量配额。超出配额时可自动阻断或降速，确保服务器资源合理分配，避免单用户占用过多带宽，保障整体网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -293,15 +294,15 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2"><a href="/free-nodes/2026-1-26-free-subscribe-node.htm" title="「1月26日」最高速度22.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月26日」最高速度22.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-22-hiddify-next-node.htm" title="「1月22日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月22日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-11-today-hiddify-next-node.htm" title="「2月11日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月11日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-25-node-share-links.htm" title="「1月25日」最高速度19.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月25日」最高速度19.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-7-hiddify-next-node-github.htm" title="「2月7日」最高速度20.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月7日」最高速度20.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-8-hiddify-next-node-share.htm" title="「2月8日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月8日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-6-node-share.htm" title="「2月6日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月6日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-19-free-node-subscribe-links.htm" title="「1月19日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月19日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-1-18-free-node-subscribe.htm" title="「1月18日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月18日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-12-free-node-subscribe-links.htm" title="「1月12日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月12日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-15-free-high-speed-nodes.htm" title="「1月15日」最高速度20M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月15日」最高速度20M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-9-free-hiddify-next-node.htm" title="「1月9日」最高速度19.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月9日」最高速度19.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-8-hiddify-next-windows.htm" title="「1月8日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月8日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-28-free-hiddify-next-node.htm" title="「1月28日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月28日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-7-free-hiddify-next-node.htm" title="「1月7日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月7日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-5-free-node-subscribe.htm" title="「2月5日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月5日」最高速度19.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-14-hiddify-next-node-github.htm" title="「1月14日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月14日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-10-free-high-speed-nodes.htm" title="「2月10日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月10日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -313,10 +314,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                     </ul>
     </div>
