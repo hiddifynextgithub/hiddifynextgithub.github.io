@@ -404,9 +404,9 @@ sudo sysctl net.ipv4.tcp_congestion_control=bbr
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名为何重要？</h5></div>
+    <div class="panel-heading"><h5>Quantumult X 的自动策略组如何工作？</h5></div>
     <div class="panel-body">
-        伪装域名必须是真实可访问的网站，且证书有效。它用于伪装流量，使 Trojan 的数据在外观上完全像正常 HTTPS 请求，从而有效降低被封锁和 DPI 检测的风险。<hr />    </div>
+        Quantumult X 的自动策略组可根据延迟、可用性或测速结果自动选择最优节点，用户无需手动切换。可在策略组设置中开启“延迟优先”或“可用性优先”模式以优化体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 TAP 模式与 TUN 模式区别是什么？</h5></div>
@@ -414,29 +414,9 @@ sudo sysctl net.ipv4.tcp_congestion_control=bbr
         TAP 模式模拟以太网接口，适合游戏流量代理；TUN 模式则模拟 IP 层接口，更适合全局代理。根据用途不同可自由选择，但需管理员权限运行。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 如何通过节点测速自动切换最优线路？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 的拥塞控制算法是什么？</h5></div>
     <div class="panel-body">
-        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页浏览、视频播放和游戏流量走低延迟节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
-    <div class="panel-body">
-        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 是否可以代理局域网设备？</h5></div>
-    <div class="panel-body">
-        可以。Netch 支持启用局域网共享功能，使同一网络下的其他设备通过主机的代理访问外网。需确保防火墙允许入站连接，且代理端口在局域网中开放。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 自动节点切换如何改善网页访问速度？</h5></div>
-    <div class="panel-body">
-        Clash 结合策略组和延迟检测功能，自动选择延迟低、稳定性高的节点处理网页流量。提升访问速度和稳定性，减少加载时间和浏览卡顿，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 的重写规则能做什么？</h5></div>
-    <div class="panel-body">
-        重写（Rewrite）可用于修改请求头、屏蔽广告、替换响应内容等。通过正则匹配目标请求可实现页面定制与功能增强，但应谨慎使用以避免影响正常网站加载与安全验证。<hr />    </div>
+        Hysteria2 基于 QUIC 协议，采用 BBR 拥塞控制算法。相比传统 TCP 机制，BBR 能更好地利用带宽资源，提高高延迟网络下的吞吐率和响应速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 在路由器上使用 TUN 模式会有什么影响？</h5></div>
@@ -444,14 +424,34 @@ sudo sysctl net.ipv4.tcp_congestion_control=bbr
         启用 TUN 模式会拦截并转发路由器上全部或选定流量，这会增加路由器 CPU 与内存负担，可能影响路由器其他服务表现。建议在性能足够的设备上启用，或仅对特定设备/端口进行分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Quantumult X 的自动策略组如何工作？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 的重写规则能做什么？</h5></div>
     <div class="panel-body">
-        Quantumult X 的自动策略组可根据延迟、可用性或测速结果自动选择最优节点，用户无需手动切换。可在策略组设置中开启“延迟优先”或“可用性优先”模式以优化体验。<hr />    </div>
+        重写（Rewrite）可用于修改请求头、屏蔽广告、替换响应内容等。通过正则匹配目标请求可实现页面定制与功能增强，但应谨慎使用以避免影响正常网站加载与安全验证。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的拥塞控制算法是什么？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
     <div class="panel-body">
-        Hysteria2 基于 QUIC 协议，采用 BBR 拥塞控制算法。相比传统 TCP 机制，BBR 能更好地利用带宽资源，提高高延迟网络下的吞吐率和响应速度。    </div>
+        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 自动节点切换如何改善网页访问速度？</h5></div>
+    <div class="panel-body">
+        Clash 结合策略组和延迟检测功能，自动选择延迟低、稳定性高的节点处理网页流量。提升访问速度和稳定性，减少加载时间和浏览卡顿，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 如何通过节点测速自动切换最优线路？</h5></div>
+    <div class="panel-body">
+        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页浏览、视频播放和游戏流量走低延迟节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 是否可以代理局域网设备？</h5></div>
+    <div class="panel-body">
+        可以。Netch 支持启用局域网共享功能，使同一网络下的其他设备通过主机的代理访问外网。需确保防火墙允许入站连接，且代理端口在局域网中开放。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名为何重要？</h5></div>
+    <div class="panel-body">
+        伪装域名必须是真实可访问的网站，且证书有效。它用于伪装流量，使 Trojan 的数据在外观上完全像正常 HTTPS 请求，从而有效降低被封锁和 DPI 检测的风险。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -480,16 +480,16 @@ sudo sysctl net.ipv4.tcp_congestion_control=bbr
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-2-14-node-share-links.htm" title="「2月14日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月14日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-11-hiddify-next-windows.htm" title="「3月11日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月11日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-29-hiddify-next-node-share.htm" title="「3月29日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月29日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-16-hiddify-next-node-github.htm" title="「3月16日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月16日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-9-node-share.htm" title="「3月9日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月9日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-25-free-high-speed-nodes.htm" title="「3月25日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月25日」最高速度18.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-5-node-share.htm" title="「3月5日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月5日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-19-free-node-subscribe-links.htm" title="「1月19日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「1月19日」最高速度18.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-1-hiddify-next-github.htm" title="「3月1日」最高速度18M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月1日」最高速度18M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-9-node-share.htm" title="「2月9日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月9日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-22-hiddify-next-node-share.htm" title="「3月22日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月22日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-8-hiddify-next-node-share.htm" title="「2月8日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月8日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-26-today-hiddify-next-node.htm" title="「2月26日」最高速度22.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「2月26日」最高速度22.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-18-hiddify-next-github.htm" title="「3月18日」最高速度20M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月18日」最高速度20M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-node-subscribe-links.htm" title="「3月15日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月15日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-23-hiddify-next-windows.htm" title="「3月23日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月23日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-12-node-share.htm" title="「3月12日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月12日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-17-hiddify-next-node-github.htm" title="「3月17日」最高速度22.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月17日」最高速度22.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -501,13 +501,10 @@ sudo sysctl net.ipv4.tcp_congestion_control=bbr
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+            </li>
+                        <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                     </ul>
     </div>
