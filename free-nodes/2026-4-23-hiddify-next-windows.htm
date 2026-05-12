@@ -222,9 +222,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         XTLS 模式减少握手和加密开销，提高吞吐量和 CPU 利用率。在高并发环境下，能够保持连接稳定，适合游戏、视频和高频请求的网络场景，提高整体性能。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的端口复用有什么风险？</h5></div>
+    <div class="panel-heading"><h5>如何导入 Clash 订阅链接？</h5></div>
     <div class="panel-body">
-        SSR 支持多端口配置以复用服务，但若端口过多或设置冲突，可能被扫描工具识别或误判为异常服务。建议保持配置简洁，并合理分配端口范围以减少暴露风险。<hr />    </div>
+        打开 Clash 客户端，进入 Profiles（配置文件）页面，粘贴提供的订阅链接并点击下载。Clash 会自动更新节点列表，用户可在 Profiles 中选择对应配置启用，从而快速切换不同代理线路。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽限制？</h5></div>
@@ -232,9 +232,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         管理员可为每个用户设置上传和下载带宽上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性和使用效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何导入 Clash 订阅链接？</h5></div>
+    <div class="panel-heading"><h5>SSR 的协议插件如何应对封锁？</h5></div>
     <div class="panel-body">
-        打开 Clash 客户端，进入 Profiles（配置文件）页面，粘贴提供的订阅链接并点击下载。Clash 会自动更新节点列表，用户可在 Profiles 中选择对应配置启用，从而快速切换不同代理线路。<hr />    </div>
+        协议插件可隐藏真实通信特征，将流量伪装成正常 HTTP 或 TLS 数据。结合混淆方式使用，可以有效降低被 DPI 检测或封锁的风险，提高节点稳定性和长期可用性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的端口复用有什么风险？</h5></div>
+    <div class="panel-body">
+        SSR 支持多端口配置以复用服务，但若端口过多或设置冲突，可能被扫描工具识别或误判为异常服务。建议保持配置简洁，并合理分配端口范围以减少暴露风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 可以兼容旧版 Hiddify 吗？</h5></div>
@@ -247,11 +252,6 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         在新版 V2Ray/Xray 内核中，alterId 已被废弃，不再影响认证逻辑。建议用户设置为 0 或删除该字段，以避免连接异常或不兼容情况。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 如何防止流量被 DPI 检测？</h5></div>
-    <div class="panel-body">
-        通过协议插件和混淆方式可以模拟正常 HTTPS 或 HTTP 流量，隐藏真实流量特征。合理配置混淆插件和加密方式，可以有效绕过 DPI 检测，保证连接稳定性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VMess AEAD 加密在封锁网络中有什么优势？</h5></div>
     <div class="panel-body">
         AEAD 加密可以防止数据被篡改和流量特征泄露，降低被检测风险。在封锁较高的网络环境中，保证节点长期可用，提高数据传输安全性和访问可靠性，增强用户体验。<hr />    </div>
@@ -262,9 +262,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何应对封锁？</h5></div>
+    <div class="panel-heading"><h5>SSR 如何防止流量被 DPI 检测？</h5></div>
     <div class="panel-body">
-        协议插件可隐藏真实通信特征，将流量伪装成正常 HTTP 或 TLS 数据。结合混淆方式使用，可以有效降低被 DPI 检测或封锁的风险，提高节点稳定性和长期可用性。    </div>
+        通过协议插件和混淆方式可以模拟正常 HTTPS 或 HTTP 流量，隐藏真实流量特征。合理配置混淆插件和加密方式，可以有效绕过 DPI 检测，保证连接稳定性和长期可用性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -293,16 +293,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-3-9-node-share.htm" title="「3月9日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月9日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-12-node-share.htm" title="「3月12日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月12日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-19-hiddify-next-node-github.htm" title="「3月19日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月19日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-15-free-high-speed-nodes.htm" title="「4月15日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月15日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-19-free-subscribe-node.htm" title="「4月19日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月19日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-9-node-share-links.htm" title="「4月9日」最高速度20.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月9日」最高速度20.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-25-free-node-subscribe-links.htm" title="「4月25日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月25日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-node-subscribe-links.htm" title="「3月15日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月15日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-21-node-share-links.htm" title="「4月21日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月21日」最高速度18.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-26-hiddify-next-node.htm" title="「4月26日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月26日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-21-free-subscribe-node.htm" title="「3月21日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「3月21日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-23-hiddify-next-windows.htm" title="「4月23日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月23日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-25-free-node-subscribe-links.htm" title="「4月25日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月25日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-3-hiddify-next-github.htm" title="「5月3日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「5月3日」最高速度18.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-22-free-subscribe-node.htm" title="「4月22日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月22日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-12-hiddify-next-windows.htm" title="「4月12日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月12日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-9-node-share-links.htm" title="「5月9日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「5月9日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-28-node-share-links.htm" title="「4月28日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月28日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-13-hiddify-next-node-github.htm" title="「4月13日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「4月13日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -314,10 +314,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                     </ul>
     </div>
