@@ -379,6 +379,36 @@ A4：核对账号信息，尝试切换网络环境，检查应用权限，或者
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS 的 Reality 模式需要额外配置吗？</h5></div>
+    <div class="panel-body">
+        Reality 模式需要配置伪装域名、公钥和服务器指纹等参数。正确配置后，可有效隐藏流量特征，提高在高封锁环境下的可用性和安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 多路复用在短连接中优势是什么？</h5></div>
+    <div class="panel-body">
+        多路复用允许多个短连接共享同一通道，减少握手延迟和资源消耗。适合高频短连接场景，如游戏和即时通讯，提升吞吐量和连接稳定性，优化网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
+    <div class="panel-body">
+        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 可以导入哪些格式的规则文件？</h5></div>
+    <div class="panel-body">
+        Surfboard 支持 YAML 和部分 JSON 格式的规则文件，用户可以导入节点、策略组和分流规则。注意文件格式和语法必须符合 Surfboard 规范，否则可能导入失败。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 中的 alterId 是什么，现在还有必要配置吗？</h5></div>
+    <div class="panel-body">
+        alterId 曾用于 VMess 的用户混淆机制以防止重放攻击，但在 V2Ray 新版本与 VLess 出现后，alterId 已不再推荐使用。现代配置多使用 UUID 或直接迁移至 VLess/XTLS 以获得更好性能与安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 配置中如何避免端口扫描暴露服务？</h5></div>
+    <div class="panel-body">
+        避免使用常见端口（如 80、443）直接暴露 V2Ray 服务；若必须使用 443，建议通过 Web 服务器反代或使用 CDN；同时启用 fail2ban 与 iptables 限制异常连接频率，减少被扫描发现的风险。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 的日志功能如何开启？</h5></div>
     <div class="panel-body">
         Mihomo 的日志默认关闭以节省性能。若需调试，可在配置文件中启用 `log-level: debug` 参数，日志将输出详细连接信息与错误提示，便于排查问题。<hr />    </div>
@@ -389,44 +419,14 @@ A4：核对账号信息，尝试切换网络环境，检查应用权限，或者
         是的，WinXray 支持该组合。用户需填写正确的 host、path、端口及证书验证方式。若节点来自订阅源，将自动识别相应参数；否则需手动输入与服务端一致的配置项。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用在短连接中优势是什么？</h5></div>
-    <div class="panel-body">
-        多路复用允许多个短连接共享同一通道，减少握手延迟和资源消耗。适合高频短连接场景，如游戏和即时通讯，提升吞吐量和连接稳定性，优化网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 的 Reality 模式需要额外配置吗？</h5></div>
-    <div class="panel-body">
-        Reality 模式需要配置伪装域名、公钥和服务器指纹等参数。正确配置后，可有效隐藏流量特征，提高在高封锁环境下的可用性和安全性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否可以管理多客户端节点？</h5></div>
     <div class="panel-body">
         可以。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。结合策略组使用，可灵活分配节点，实现多客户端管理和流量优化。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 可以导入哪些格式的规则文件？</h5></div>
-    <div class="panel-body">
-        Surfboard 支持 YAML 和部分 JSON 格式的规则文件，用户可以导入节点、策略组和分流规则。注意文件格式和语法必须符合 Surfboard 规范，否则可能导入失败。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 配置中如何避免端口扫描暴露服务？</h5></div>
-    <div class="panel-body">
-        避免使用常见端口（如 80、443）直接暴露 V2Ray 服务；若必须使用 443，建议通过 Web 服务器反代或使用 CDN；同时启用 fail2ban 与 iptables 限制异常连接频率，减少被扫描发现的风险。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + XTLS 模式相比普通 VLESS 有哪些优势？</h5></div>
     <div class="panel-body">
-        XTLS 模式减少冗余加密开销，提高传输效率，并在多连接高负载环境下表现更佳。同时仍保持 TLS 安全性，结合策略组可实现高性能和高隐蔽性的双重优势。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
-    <div class="panel-body">
-        Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 中的 alterId 是什么，现在还有必要配置吗？</h5></div>
-    <div class="panel-body">
-        alterId 曾用于 VMess 的用户混淆机制以防止重放攻击，但在 V2Ray 新版本与 VLess 出现后，alterId 已不再推荐使用。现代配置多使用 UUID 或直接迁移至 VLess/XTLS 以获得更好性能与安全性。    </div>
+        XTLS 模式减少冗余加密开销，提高传输效率，并在多连接高负载环境下表现更佳。同时仍保持 TLS 安全性，结合策略组可实现高性能和高隐蔽性的双重优势。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -474,16 +474,16 @@ A4：核对账号信息，尝试切换网络环境，检查应用权限，或者
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-8-free-node-subscribe.htm" title="「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/latest-hiddify-next-node-2026-7-31.htm" title="「7月31日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月31日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-18-free-subscribe-node.htm" title="「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-25-node-share-links.htm" title="「7月25日」最高速度22.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月25日」最高速度22.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-28-hiddify-next-node.htm" title="「7月28日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月28日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-github-2026-7-29.htm" title="「7月29日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月29日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-8-9.htm" title="「8月9日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月9日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-hiddify-next-github.htm" title="「9月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-8-17.htm" title="「8月17日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月17日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-16-node-share.htm" title="「8月16日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月16日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-23-node-share-links.htm" title="「7月23日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月23日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-20-node-share.htm" title="「8月20日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月20日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-18-free-subscribe-node.htm" title="「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-1.htm" title="「9月1日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月1日」最高速度21.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-29.htm" title="「8月29日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月29日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/hiddify-next-windows-2026-8-13.htm" title="「8月13日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月13日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-24-hiddify-next-github.htm" title="「8月24日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月24日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-19.htm" title="「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -495,10 +495,10 @@ A4：核对账号信息，尝试切换网络环境，检查应用权限，或者
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>

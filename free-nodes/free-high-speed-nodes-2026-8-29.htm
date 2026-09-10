@@ -231,19 +231,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 可以结合规则实现广告屏蔽吗？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 TCP + TLS 模式适合什么场景？</h5></div>
     <div class="panel-body">
-        可以。Surfboard 支持通过规则文件匹配广告域名或 URL，将其阻断或重定向。结合策略组定期更新规则，可以实现自动广告屏蔽，提升网页浏览体验并节省带宽。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
-    <div class="panel-body">
-        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟？</h5></div>
-    <div class="panel-body">
-        将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点延迟和健康状态自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟和稳定连接。<hr />    </div>
+        TCP + TLS 模式可模拟 HTTPS 流量，增强抗封锁能力。适合网络封锁严格的环境，通过策略组选择最佳节点，可保证访问速度和连接稳定性，尤其适用于网页浏览和视频播放。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 如何实现用户流量分配？</h5></div>
@@ -256,9 +246,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Hiddify Next 是基于 sing-box 的多协议代理客户端，适用于 Android、Windows 等平台。它整合了 Vless、VMess、Trojan、Hysteria 等协议，支持自动测速和订阅转换，是移动端非常流行的代理工具。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 TCP + TLS 模式适合什么场景？</h5></div>
+    <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟？</h5></div>
     <div class="panel-body">
-        TCP + TLS 模式可模拟 HTTPS 流量，增强抗封锁能力。适合网络封锁严格的环境，通过策略组选择最佳节点，可保证访问速度和连接稳定性，尤其适用于网页浏览和视频播放。<hr />    </div>
+        将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点延迟和健康状态自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟和稳定连接。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 的节点排序依据是什么？</h5></div>
@@ -266,9 +256,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Nekoray 默认按节点延迟排序。用户可以自定义排序规则，如按订阅来源、名称或连接成功率排列，从而快速找到性能最佳或最常用的节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 的分流规则如何优化视频播放？</h5></div>
+    <div class="panel-body">
+        通过分流规则，将流媒体域名匹配到高速节点，而其他流量走备用节点。保证视频播放流畅，同时节约带宽资源，提升整体网络速度和体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的策略组支持哪些节点选择策略？</h5></div>
     <div class="panel-body">
         支持按延迟选择、随机选择、轮询或手动选择节点。结合规则匹配，用户可实现不同网站或应用使用不同节点，提高访问速度和网络稳定性，同时降低管理复杂度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 可以结合规则实现广告屏蔽吗？</h5></div>
+    <div class="panel-body">
+        可以。Surfboard 支持通过规则文件匹配广告域名或 URL，将其阻断或重定向。结合策略组定期更新规则，可以实现自动广告屏蔽，提升网页浏览体验并节省带宽。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow TUN 模式适合哪些应用？</h5></div>
@@ -276,9 +276,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         TUN 模式拦截系统 IP 层流量，实现全局代理。适合游戏、视频、浏览器等全局应用，保证所有流量走节点，提高网络稳定性和速度，比普通 SOCKS5 代理覆盖范围更广。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 的分流规则如何优化视频播放？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
     <div class="panel-body">
-        通过分流规则，将流媒体域名匹配到高速节点，而其他流量走备用节点。保证视频播放流畅，同时节约带宽资源，提升整体网络速度和体验。    </div>
+        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -326,16 +326,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-free-subscribe-node.htm" title="「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-22-hiddify-next-github.htm" title="「8月22日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月22日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-19.htm" title="「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-8-9.htm" title="「8月9日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月9日」最高速度21.8M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-3.htm" title="「9月3日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月3日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-hiddify-next-node.htm" title="「8月30日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月30日」最高速度20.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/latest-hiddify-next-node-2026-8-15.htm" title="「8月15日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月15日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-20-node-share.htm" title="「8月20日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月20日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-29.htm" title="「8月29日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月29日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-8-free-node-subscribe.htm" title="「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-31.htm" title="「8月31日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月31日」最高速度22.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-27.htm" title="「8月27日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月27日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-node-share.htm" title="「8月16日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月16日」最高速度18.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/hiddify-next-windows-2026-8-13.htm" title="「8月13日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月13日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-node-subscribe.htm" title="「8月6日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月6日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -347,10 +347,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>

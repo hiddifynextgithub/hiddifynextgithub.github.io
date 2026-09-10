@@ -226,14 +226,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 自动节点切换如何改善网页访问速度？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
     <div class="panel-body">
-        Clash 结合策略组和延迟检测功能，自动选择延迟低、稳定性高的节点处理网页流量。提升访问速度和稳定性，减少加载时间和浏览卡顿，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 与 VMess 的主要区别是什么？</h5></div>
-    <div class="panel-body">
-        VLESS 是 VMess 的轻量化替代协议，移除了内置加密逻辑，更依赖 TLS 层进行安全保护。这种设计降低了服务器压力，提升了传输效率，并增强了可扩展性。<hr />    </div>
+        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 与 Shadowrocket 有什么区别？</h5></div>
@@ -241,29 +236,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         两者都是 iOS 上的代理工具。Shadowrocket 功能更全面、更新更频繁，而 Surfboard 以轻量和快速见长。若只需简单分流与节点切换，Surfboard 足以满足日常使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
-    <div class="panel-body">
-        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 如何实现节点延迟自动切换？</h5></div>
     <div class="panel-body">
         Nekoray 支持配置策略组（Policy Group），用户可设置 URL 测试或周期检测机制，根据延迟自动选择最优节点。此功能能提升稳定性，尤其适合多线路机场订阅用户。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 mKCP 参数如何调优以适应不稳定链路？</h5></div>
+    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
     <div class="panel-body">
-        mKCP 有多个参数如 mtu、tinterval、uplink/downlink 等，可通过降低 mtu 与增大 mtu 重试间隔来适应高丢包场景；启用 FEC 与调整窗口大小能提高容错性，最终需在实际网络环境中逐步调试获得最佳值。<hr />    </div>
+        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash Premium 与普通版本有什么区别？</h5></div>
+    <div class="panel-heading"><h5>Clash 自动节点切换如何改善网页访问速度？</h5></div>
     <div class="panel-body">
-        Clash Premium 是增强版，支持更多功能如 TUN 模式、本地 DNS 解析、脚本规则和自定义代理链。它能实现更细致的流量控制和兼容更多协议，适合对网络有高级需求的用户使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
-    <div class="panel-body">
-        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
+        Clash 结合策略组和延迟检测功能，自动选择延迟低、稳定性高的节点处理网页流量。提升访问速度和稳定性，减少加载时间和浏览卡顿，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 支持哪几种代理协议？</h5></div>
@@ -273,7 +258,22 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何识别节点是否被封锁或限速？</h5></div>
     <div class="panel-body">
-        通过对比不同节点的 speedtest、ping、下载测速以及 traceroute 路由变化来判断；若多个节点同时异常可能是本地网络问题，单个节点异常则可能被封锁或运营商限速，应尝试更换端口或传输方式。    </div>
+        通过对比不同节点的 speedtest、ping、下载测速以及 traceroute 路由变化来判断；若多个节点同时异常可能是本地网络问题，单个节点异常则可能被封锁或运营商限速，应尝试更换端口或传输方式。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS 与 VMess 的主要区别是什么？</h5></div>
+    <div class="panel-body">
+        VLESS 是 VMess 的轻量化替代协议，移除了内置加密逻辑，更依赖 TLS 层进行安全保护。这种设计降低了服务器压力，提升了传输效率，并增强了可扩展性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 mKCP 参数如何调优以适应不稳定链路？</h5></div>
+    <div class="panel-body">
+        mKCP 有多个参数如 mtu、tinterval、uplink/downlink 等，可通过降低 mtu 与增大 mtu 重试间隔来适应高丢包场景；启用 FEC 与调整窗口大小能提高容错性，最终需在实际网络环境中逐步调试获得最佳值。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash Premium 与普通版本有什么区别？</h5></div>
+    <div class="panel-body">
+        Clash Premium 是增强版，支持更多功能如 TUN 模式、本地 DNS 解析、脚本规则和自定义代理链。它能实现更细致的流量控制和兼容更多协议，适合对网络有高级需求的用户使用。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -321,16 +321,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-30-hiddify-next-node.htm" title="「7月30日」最高速度20.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月30日」最高速度20.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-22-free-hiddify-next-node.htm" title="「7月22日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月22日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/latest-hiddify-next-node-2026-7-31.htm" title="「7月31日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月31日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-17-node-share-links.htm" title="「7月17日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月17日」最高速度21.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-26-today-hiddify-next-node.htm" title="「7月26日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月26日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-19-free-node-subscribe-links.htm" title="「7月19日」最高速度19.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月19日」最高速度19.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-20-free-hiddify-next-node.htm" title="「7月20日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月20日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-13-free-node-subscribe-links.htm" title="「7月13日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「7月13日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-3.htm" title="「9月3日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月3日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-6-free-node-subscribe.htm" title="「8月6日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月6日」最高速度19.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-11.htm" title="「8月11日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月11日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月26日」最高速度21.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-19.htm" title="「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月19日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-18-free-subscribe-node.htm" title="「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月18日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-hiddify-next-github.htm" title="「9月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月4日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-22-hiddify-next-github.htm" title="「8月22日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月22日」最高速度19M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-27.htm" title="「8月27日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月27日」最高速度19.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -342,10 +342,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
