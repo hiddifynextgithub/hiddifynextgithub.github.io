@@ -403,14 +403,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         在服务器端配置文件中启用 port_forwarding 参数并指定目标端口与地址。确保防火墙开放转发端口，客户端使用对应端口连接即可实现流量中继。此功能常用于内网穿透或端口复用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 TLS 配置如何增强抗封锁能力？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
     <div class="panel-body">
-        TLS 配置可将流量伪装成正常 HTTPS 请求，隐藏真实数据特征。结合域名伪装、WebSocket 或 QUIC 等传输方式，可有效绕过封锁，提高节点长期可用性和连接稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 全局代理与规则代理的区别是什么？</h5></div>
-    <div class="panel-body">
-        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用或 IP 走节点，优化带宽利用和网络效率，根据不同需求选择使用模式。<hr />    </div>
+        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 支持 Trojan 协议吗？</h5></div>
@@ -418,24 +413,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         WinXray 内核基于 Xray-core，因此原生支持 Trojan 协议。用户在导入配置时，只需选择 Trojan 类型节点即可，无需额外插件，非常适合需要 TLS 伪装的环境。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 如何区分全局代理和规则代理？</h5></div>
-    <div class="panel-body">
-        全局代理会将所有流量通过节点转发，而规则代理仅对指定 IP、端口或应用生效。用户可根据需求选择代理模式，实现流量优化和不同应用的最佳网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的 Routing 设置可以实现什么？</h5></div>
     <div class="panel-body">
         V2Ray 的 Routing 系统支持基于域名、IP、端口或协议的智能分流。用户可以指定特定网站直连、部分服务走代理，还能创建黑白名单，实现灵活的网络访问控制。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
+    <div class="panel-heading"><h5>如何给 Clash 添加自定义域名白名单以提升访问体验？</h5></div>
     <div class="panel-body">
-        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 节点订阅更新失败怎么办？</h5></div>
-    <div class="panel-body">
-        首先检查订阅 URL 是否有效，再确认网络是否通畅。必要时可手动刷新或重新添加订阅链接，保证节点列表最新。结合策略组可保证稳定连接和科学上网体验。<hr />    </div>
+        在 rules 中添加 `DOMAIN-SUFFIX,example.com,DIRECT` 或 `DOMAIN-KEYWORD,example,DIRECT` 条目，将常用且可靠的站点设为直连，可减少代理绕行延迟并避免因代理造成的登录/验证问题。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 Socks 模式有什么作用？</h5></div>
@@ -443,9 +428,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Netch 的 Socks 模式允许用户将代理仅应用于指定进程，而非全局网络。此模式非常适合单个游戏或程序代理，避免影响其他应用的连接方式与速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何给 Clash 添加自定义域名白名单以提升访问体验？</h5></div>
+    <div class="panel-heading"><h5>Netch 全局代理与规则代理的区别是什么？</h5></div>
     <div class="panel-body">
-        在 rules 中添加 `DOMAIN-SUFFIX,example.com,DIRECT` 或 `DOMAIN-KEYWORD,example,DIRECT` 条目，将常用且可靠的站点设为直连，可减少代理绕行延迟并避免因代理造成的登录/验证问题。    </div>
+        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用或 IP 走节点，优化带宽利用和网络效率，根据不同需求选择使用模式。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 TLS 配置如何增强抗封锁能力？</h5></div>
+    <div class="panel-body">
+        TLS 配置可将流量伪装成正常 HTTPS 请求，隐藏真实数据特征。结合域名伪装、WebSocket 或 QUIC 等传输方式，可有效绕过封锁，提高节点长期可用性和连接稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 如何区分全局代理和规则代理？</h5></div>
+    <div class="panel-body">
+        全局代理会将所有流量通过节点转发，而规则代理仅对指定 IP、端口或应用生效。用户可根据需求选择代理模式，实现流量优化和不同应用的最佳网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 节点订阅更新失败怎么办？</h5></div>
+    <div class="panel-body">
+        首先检查订阅 URL 是否有效，再确认网络是否通畅。必要时可手动刷新或重新添加订阅链接，保证节点列表最新。结合策略组可保证稳定连接和科学上网体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -493,16 +493,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-8-free-node-subscribe.htm" title="「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月8日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月12日」最高速度21M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-8-17.htm" title="「8月17日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月17日」最高速度23M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/latest-hiddify-next-node-2026-8-15.htm" title="「8月15日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月15日」最高速度18.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-9-23.htm" title="「9月23日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月23日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-21.htm" title="「9月21日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月21日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-30-today-hiddify-next-node.htm" title="「9月30日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月30日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-github-2026-9-7.htm" title="「9月7日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月7日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-10-free-hiddify-next-node.htm" title="「9月10日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月10日」最高速度21.1M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-windows-2026-9-17.htm" title="「9月17日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月17日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-21.htm" title="「8月21日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「8月21日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-subscribe-node.htm" title="「9月24日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月24日」最高速度22.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-19.htm" title="「9月19日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月19日」最高速度20.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-22-hiddify-next-node.htm" title="「9月22日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月22日」最高速度22M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-13.htm" title="「9月13日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月13日」最高速度20.5M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-10-5.htm" title="「10月5日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月5日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-subscribe-node.htm" title="「9月26日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月26日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-9.htm" title="「9月9日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月9日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-node-subscribe.htm" title="「10月2日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月2日」最高速度21.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -514,13 +514,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">8</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                     </ul>
     </div>
