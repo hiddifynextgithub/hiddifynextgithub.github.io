@@ -403,14 +403,9 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 在高延迟网络中如何优化连接？</h5></div>
+    <div class="panel-heading"><h5>VLESS 的伪装流量如何提升隐蔽性？</h5></div>
     <div class="panel-body">
-        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Vmess 与 Trojan 哪个更快？</h5></div>
-    <div class="panel-body">
-        在相同环境下，Trojan 通常连接更快，因为它使用原生 TLS 通道；Vmess 则稍有额外的协议开销。但在配置合理的情况下，两者的速度差距不大，主要取决于服务器线路质量。<hr />    </div>
+        VLESS 通过 Reality 或 XTLS 模式对流量进行伪装，使其在外观上与正常 HTTPS 请求一致。这样可以绕过深度包检测和封锁，提高高封锁网络环境下的可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的协议和混淆组合如何选择最适合的？</h5></div>
@@ -418,19 +413,14 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
         选择模拟 HTTPS 或 HTTP 的混淆方式，再搭配 AEAD 或协议插件，可以隐藏流量特征并提高抗封锁能力。不同网络环境需测试，选择最稳定和可靠的组合。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 支持哪些平台？</h5></div>
-    <div class="panel-body">
-        Mellow 是基于 Electron 的跨平台代理工具，支持 Windows、macOS 和 Linux。它通过 TUN 模式接管全局流量，并支持 Clash 规则和订阅格式，非常灵活。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
-    <div class="panel-body">
-        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VMess AEAD 加密在安全性方面有何优势？</h5></div>
     <div class="panel-body">
         AEAD 加密可防止数据篡改、重放攻击和流量特征泄露。在高封锁环境下保证节点可用，提升数据安全和连接稳定性，同时降低被检测风险，确保长期安全访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + XTLS 在高延迟网络中如何优化连接？</h5></div>
+    <div class="panel-body">
+        XTLS 模式通过减少握手和加密开销降低延迟。结合策略组和多节点切换，可在高延迟或不稳定网络环境下保证网页浏览、视频播放和游戏连接稳定，提高用户体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 导入 Clash 订阅后规则丢失，可能原因？</h5></div>
@@ -438,9 +428,19 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
         部分客户端在解析订阅时只保留节点信息而忽略 rules 或 proxies-group，建议使用支持完整解析的订阅转换器（如 sub-converter）先将订阅转换为兼容格式再导入，或手动合并规则文件。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 的伪装流量如何提升隐蔽性？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
     <div class="panel-body">
-        VLESS 通过 Reality 或 XTLS 模式对流量进行伪装，使其在外观上与正常 HTTPS 请求一致。这样可以绕过深度包检测和封锁，提高高封锁网络环境下的可用性。<hr />    </div>
+        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 手动节点切换有哪些优点？</h5></div>
+    <div class="panel-body">
+        手动切换节点可以根据延迟和用途选择最佳节点，适合在节点不稳定或特殊需求下使用。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Vmess 与 Trojan 哪个更快？</h5></div>
+    <div class="panel-body">
+        在相同环境下，Trojan 通常连接更快，因为它使用原生 TLS 通道；Vmess 则稍有额外的协议开销。但在配置合理的情况下，两者的速度差距不大，主要取决于服务器线路质量。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟？</h5></div>
@@ -448,9 +448,9 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
         将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点延迟和健康状态自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟和稳定连接。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 手动节点切换有哪些优点？</h5></div>
+    <div class="panel-heading"><h5>Mellow 支持哪些平台？</h5></div>
     <div class="panel-body">
-        手动切换节点可以根据延迟和用途选择最佳节点，适合在节点不稳定或特殊需求下使用。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。    </div>
+        Mellow 是基于 Electron 的跨平台代理工具，支持 Windows、macOS 和 Linux。它通过 TUN 模式接管全局流量，并支持 Clash 规则和订阅格式，非常灵活。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -498,16 +498,16 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-30-today-hiddify-next-node.htm" title="「9月30日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月30日」最高速度18.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-free-subscribe-node.htm" title="「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/latest-hiddify-next-node-2026-9-29.htm" title="「9月29日」最高速度18M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月29日」最高速度18M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-20-node-share.htm" title="「9月20日」最高速度22.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月20日」最高速度22.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-16-free-hiddify-next-node.htm" title="「9月16日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月16日」最高速度18.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-11.htm" title="「9月11日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月11日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-28-free-subscribe-node.htm" title="「9月28日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月28日」最高速度21.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-share-2026-10-5.htm" title="「10月5日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月5日」最高速度20.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-9.htm" title="「9月9日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月9日」最高速度18.9M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-6-hiddify-next-github.htm" title="「10月6日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月6日」最高速度19.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-18-node-share.htm" title="「9月18日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月18日」最高速度19.4M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-7.htm" title="「10月7日」最高速度20.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月7日」最高速度20.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-6-free-node-subscribe.htm" title="「9月6日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月6日」最高速度22.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/hiddify-next-node-github-2026-9-7.htm" title="「9月7日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月7日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-2-free-subscribe-node.htm" title="「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月2日」最高速度22.2M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-11.htm" title="「9月11日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月11日」最高速度22.3M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-21.htm" title="「9月21日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「9月21日」最高速度20.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-15.htm" title="「10月15日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月15日」最高速度19.6M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-8-node-share.htm" title="「10月8日」最高速度19.7M/S，2025年HiddifyNext每天更新免费节点订阅链接">「10月8日」最高速度19.7M/S，2025年HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -519,7 +519,7 @@ A4: 建议调低游戏画质，关闭后台应用，开启荣耀手机“性能�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">8</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
